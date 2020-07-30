@@ -38,18 +38,24 @@ $(document).ready(function(){
 });
 
 function loadInspiradores(){
-    var sessions=[
-        JSON.parse(localStorage.getItem('escucha')).activity_2,
-        JSON.parse(localStorage.getItem('tacto')).activity_2,
-        JSON.parse(localStorage.getItem('vista')).activity_2,
-        JSON.parse(localStorage.getItem('olfato')).activity_2,
-        JSON.parse(localStorage.getItem('gusto')).activity_2,
-    ];
-    for(var i=0; i<=4; i++){
-        if(sessions[i]){
-            $(".alert").css("display", "block");
-            $(".btnContinue").css("display", "block");
-            $(".alert").text("Ya has completado todas las actividades de los sentidos");
-        }
+
+    var senses=JSON.parse(localStorage.getItem('senses'));
+
+    var validate={
+        escucha:senses.escucha,
+        vista:senses.vista,
+        tacto:senses.tacto,
+        olfato:senses.olfato,
+        gusto:senses.gusto
+    };
+
+    if(validate.escucha && validate.vista &&validate.tacto &&validate.olfato &&validate.gusto){
+
+        console.log(validate.escucha);
+        $(".alert").css("display", "block");
+        $(".btnContinue").css("display", "block");
+        $(".alert").text("Ya has completado todas las actividades de los sentidos");
+        
     }
+    
 }

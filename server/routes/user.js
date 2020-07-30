@@ -209,19 +209,34 @@ app.post("/respuesta", (req,res)=>{
         sense:body.sense,
         value:body.answer,
         activity:body.activity
-    })
-    
-    question.save((err,answerStored)=>{
+    });
+
+    Quest.findOne({user:body.id, question:body.question, sense:body.sense}, (err, ansFound)=>{
         if(err){
+			return res.status(400).json({
+				ok:false,
+				message:err
+			});
+        }
+        if(ansFound){
             return res.status(400).json({
                 ok:false,
-                message:err
+                message:"exists",
+                data:ansFound
             });
         }
-
-        return res.status(200).json({
-            ok:true,
-            message:"Felicidades, has alcanzado un nuevo nivel de exploración."
+        question.save((err,answerStored)=>{
+            if(err){
+                return res.status(400).json({
+                    ok:false,
+                    message:err
+                });
+            }
+    
+            return res.status(200).json({
+                ok:true,
+                message:"Felicidades, has alcanzado un nuevo nivel de exploración."
+            });
         });
     });
 });

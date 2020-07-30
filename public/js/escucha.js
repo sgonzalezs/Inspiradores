@@ -9,54 +9,66 @@ $(document).ready(function(){
     }else{
         $("#questionEscucha").text("¿Qué conflicto crees que se pudo evitar en tu barrio, si los involucrados se hubieran sentado a conversar, escuchando lo que el otro tiene para decir?");
     }
-    let escucha=JSON.parse(localStorage.getItem('escucha'));
-    if(!escucha.activity_2){
-        $("#formEscucha").on("submit", function(e){
-            e.preventDefault();
-            let data={
-                id:identity._id,
-                answer:$("#txtAnswer").val(),
-                question:$("#questionEscucha").text(),
-                sense:'escucha',
-                activity:'reflexion'
+
+    $("#formEscucha").on("submit", function(e){
+        e.preventDefault();
+        let data={
+            id:identity._id,
+            answer:$("#txtAnswer").val(),
+            question:$("#questionEscucha").text(),
+            sense:'escucha',
+            activity:'reflexion'
+        }
+
+        fetch('/respuesta', {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+            'Content-Type': 'application/json'
             }
-    
-            fetch('/respuesta', {
-                method: 'POST', 
-                body: JSON.stringify(data),
-                headers:{
-                  'Content-Type': 'application/json'
+        })
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(response){
+            if(!response.ok){
+                if(response.message=="exists"){
+                    $(".alert").css("display", "block");
+                    $(".alert").text("Ya has completado esta sección");
+                    $(".btnContinue").css("display", "block");
+                    $(".btnSend").attr("disabled", true);
+                    validateData(identity);
                 }
-              })
-              .then(function(res){
-                  return res.json();
-              })
-              .then(function(response){
-                  if(!response.ok){
-                      console.log(response.message);
-                  }else{
-                      $(".alert").css("display", "block");
-                      $(".alert").text(response.message);
-                      $(".btnContinue").css("display", "block");
-                      localStorage.setItem('escucha', JSON.stringify(
-                        {
-                            user_id:identity._id, 
-                            sense:"escucha", 
-                            activity_1:true,
-                            activity_2:true
-                        }));
-                  }
-              })
-              .catch(function(err){
-                  console.log('Error:', err)
-              });
+            }else{
+                $(".alert").css("display", "block");
+                $(".alert").text(response.message);
+                $(".btnContinue").css("display", "block");
+                validateData(identity);
+            }
+        })
+        .catch(function(err){
+            console.log('Error:', err)
         });
-    }else{
-        $(".alert").css("display", "block");
-        $(".alert").text("Ya has completado esta sección");
-        $(".btnContinue").css("display", "block");
-        $(".btnSend").attr("disabled", true);
-    }
-    
+    });
 });
+
+function validateData(identity){
+    if(!localStorage.getItem('senses')){
+        localStorage.setItem('senses', JSON.stringify(
+            {
+                user:identity._id,
+                escucha:true,
+                vista:false,
+                tacto:false,
+                olfato:false,
+                gusto:false
+
+            })
+        );
+    }else{
+        let senses=JSON.parse(localStorage.getItem('senses'));
+        senses.escucha=true;
+        localStorage.setItem('senses', JSON.stringify(senses));
+    }
+}
 
