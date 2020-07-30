@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 function getAvatarUser(){
     let image=localStorage.getItem('userAvatar');
-
+    
     switch(image.split("/")[3]){
         case "pirataMin_1.png":
             $(".avatarSelected img").attr("src", image);

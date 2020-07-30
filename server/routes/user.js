@@ -6,6 +6,7 @@ const Inspiring=require("../models/inspiring.js");
 //token config
 const jwt=require("jsonwebtoken");
 const { verifyToken } = require('../middlewares/auth.js');
+const inspiring = require('../models/inspiring.js');
 
 const app=express();
 
@@ -153,6 +154,28 @@ app.get("/votos/:user", (req,res)=>{
                 data:dataFounded
             });
         }
+    });
+});
+
+app.post("/insp", (req,res)=>{
+    let inspiring=new Inspiring({
+        name:req.body.name,
+        like:0,
+        dislike:0
+    });
+
+    inspiring.save((err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            message:data
+        });
     });
 });
 

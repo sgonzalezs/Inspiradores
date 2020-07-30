@@ -1,5 +1,8 @@
 $(document).ready(function(){
-
+	// localStorage.removeItem('token');
+	// localStorage.removeItem('user');
+	// localStorage.removeItem('identity');
+	// localStorage.removeItem('userAvatar');
     $("#formLogin").on('submit', function(e){
         e.preventDefault();
 
