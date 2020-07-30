@@ -1,0 +1,23 @@
+body{
+    background-image: url('../images/avatar/fondo_2.png');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-size: 100% 110%;
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        background-size: 100% 150%;
+    }
+}
+
+.option img{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.olfatoContent p{
+    font-family: 'Bungee', cursive;
+    font-size:25px;
+    color: #ffffff;
+}

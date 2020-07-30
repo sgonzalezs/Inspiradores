@@ -1,0 +1,88 @@
+body{
+    background-image: url('../images/fondo/FondoCompleto.png');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-size: 100% 100vh;
+}
+
+@media only screen and (max-width: 1080px) {
+    body {
+        background-size: 100% 150%;
+    }
+}
+
+.formLogin{
+    position: relative;
+    margin-top: 30%;
+}
+
+.formTitle{
+    font-family: 'Bungee', cursive;
+    color:#ffffff;
+    border:1px solid #f3f3f3;
+    padding: 10px 10px 0px 10px;
+}
+
+.btnLogin{
+    width: 200px;
+    font-family: 'Bungee', cursive;
+    color:#ffffff;
+    background-image: url('../images/fondo/Fondo.png');
+    background-size: cover;
+    /* background:linear-gradient(180deg, #8226fa,  #1c4ad3 30%, #4d79ff ); */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+    margin-left: 25%;
+    box-shadow: 8px 9px 17px -4px rgba(0,0,0,0.75);
+}
+
+input{
+    border:1px solid #f3f3f3;
+    background-color: transparent;
+    padding: 7px;
+    width:100%;
+    color: #ffffff;
+    font-style: italic;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+input::placeholder {
+    color: #f3f3f3;
+    font-style: italic;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+input:focus, .btnLogin:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+}
+
+/* Olas */
+div.olas img{
+    float: right;
+}
+
+@media only screen and (max-width: 900px) {
+    input{
+        padding: 0px 5px;
+    }
+
+    .btnLogin{
+        width: 100px;
+        font-size: 15px;
+        margin-left: 20%;
+    }
+
+    .formTitle{
+        font-family: 'Bungee', cursive;
+        color:#ffffff;
+        border:1px solid #f3f3f3;
+        padding: 5px 5px 0px 5px;
+    }
+    .formTitle h4{
+        font-size: 20px;
+    }
+}
