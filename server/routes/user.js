@@ -138,6 +138,11 @@ app.get("/inspiracion-reflexion", (req,res)=>{
 });
 
 
+// Recorridos
+app.get("/recorrido", (req,res)=>{
+    res.sendFile("recorridos.html", {root:"public/recorridos"});
+});
+
 app.get("/votos/:user", (req,res)=>{
     let user=req.params.user;
     Inspiring.findOne({name:user}, (err, dataFounded)=>{

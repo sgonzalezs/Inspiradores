@@ -40,6 +40,7 @@ $(document).ready(function(){
             }else{
                 $(".alert").css("display", "block");
                 $(".alert").text(response.message);
+                $(".btnSend").attr("disabled", true);
                 $(".btnContinue").css("display", "block");
             }
         })
