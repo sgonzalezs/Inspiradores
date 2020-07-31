@@ -6,7 +6,6 @@ const Inspiring=require("../models/inspiring.js");
 //token config
 const jwt=require("jsonwebtoken");
 const { verifyToken } = require('../middlewares/auth.js');
-const inspiring = require('../models/inspiring.js');
 
 const app=express();
 
@@ -34,10 +33,7 @@ app.get("/escucha-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/escucha"});
 });
 
-// app.get("/sentido/escucha", (req,res)=>{
-//     res.sendFile("musica.html", {root:"public/sentidos/escucha"});
-// });
-// --------------------------------------
+// ----------------------------------------
 
 //Rutas Sentido Vista
 app.get("/vista", (req,res)=>{
@@ -63,7 +59,7 @@ app.get("/tacto-recompensas", (req,res)=>{
 });
 // -------------------------------------------
 
-// Rutas Sentido Olfato------------------------------
+// Rutas Sentido Olfato
 app.get("/olfato", (req,res)=>{
     res.sendFile("olfato.html", {root:"public/sentidos/olfato"});
 });
@@ -135,6 +131,10 @@ app.get("/arex", (req,res)=>{
 
 app.get("/melissa-toro", (req,res)=>{
     res.sendFile("mtoro.html", {root:"public/inspiracion"});
+});
+
+app.get("/inspiracion-reflexion", (req,res)=>{
+    res.sendFile("reflexion.html", {root:"public/inspiracion"});
 });
 
 

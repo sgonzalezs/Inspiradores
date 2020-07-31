@@ -1,5 +1,5 @@
 body{
-    background-image: url('../images/avatar/fondo_2.png');
+    background-image: url('../images/fondo/Fondo3.png');
     background-size: cover;
     background-repeat:no-repeat;
     background-size: 100% 100vh;
@@ -40,7 +40,7 @@ p.resume{
     font-style: italic;
 }
 
-.btnContinue{
+.btnContinue, .btnSend{
     background-image: url('../images/avatar/Fondo.png');
     background-size: cover;
     padding:5px;
@@ -56,7 +56,22 @@ p.resume{
     box-shadow: 8px 9px 17px -4px rgba(0,0,0,0.75);
 }
 
-.btnContinue:focus{
+.btnContinue:focus, .btnSend{
+    outline:none !important;
+    outline-width: 0 !important;
+}
+
+.answer{
+    border:3px solid #f3f3f3;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 7px;
+    width:100%;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.answer:focus{
     outline:none !important;
     outline-width: 0 !important;
 }

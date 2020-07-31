@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Inspiradores</title>
+    <title>Reflexión</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script>
         if(!localStorage.getItem('token')){
@@ -16,9 +16,9 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='./css/style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/inspiracion-style.css'>
+    <!-- <link rel='stylesheet' type='text/css' href='./css/style.css'> -->
+    <link rel='stylesheet' type='text/css' href='../css/avatar-style.css'>
+    <link rel='stylesheet' type='text/css' href='../css/inspiracion-style.css'>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg navAvatar">
@@ -39,52 +39,32 @@
     <section class="container-fluid">
         <section class="row content">
             <div class="col-sm-8">
-                <div class="imagesSection">
-                    <a href="/catalina-arroyave">
-                        <img src="./images/inspiracion/personas/Artes - Catalina Arroyave_1.jpg" />
-                    </a>
-                    <a href="/jke">
-                        <img src="./images/inspiracion/personas/Artes - Jke_2.jpg" />
-                    </a>
-                    <a href="/brigitte-baptiste">
-                        <img src="./images/inspiracion/personas/Ciencia - Brigitte Baptiste_1.jpg" />
-                    </a>
-                    <a href="/maria-camila-trillos">
-                        <img src="./images/inspiracion/personas/Ciencia - Maria Camila Trillos_2.jpg" />
-                    </a>
-                </div>
-                <div class="imagesSection">
-                    <a href="/arex">
-                        <img src="./images/inspiracion/personas/Cuerpo - Arex_1.jpg" />
-                    </a>
-                    <a href="/boyka">
-                        <img src="./images/inspiracion/personas/Cuerpo - Boyka_2.jpg" />
-                    </a>
-                    <a href="/juan-pablo-valencia">
-                        <img src="./images/inspiracion/personas/Sociedad - Juan Pablo Valencia_2.jpg" />
-                    </a>
-                    <a href="/melissa-toro">
-                        <img src="./images/inspiracion/personas/Sociedad - Melissa Toro_1.jpg" />
-                    </a>
-                </div>
+                <video class="videoLoad" autoplay controls>
+                    <source src="../../media/sentidos/Escucha.mp4" type="video/mp4">
+                    Este navegador no es compatible con la reproducción de vídeos.
+                </video>
             </div>  
             <div class="col-sm-4">
-                <h2 class="text-white title">INSPIRADORES</h2>
-                <p class="subTitle">
-                    Encuentro con inspiradores
-                </p>
-                <p class="resume">
-                    Bienvenidos a esta nueva etapa del camino. 
-                    Esta vez viviremos otras vidas y conoceremos historias 
-                    inspiradoras de cada uno de nuestros mundos. Elige un personaje y déjate sorprender.
-                </p>
-                <a href="/inspiracion-reflexion">
-                    <button class="btnContinue" type="button" >Continuar</button>      
+                <form id="formReflexion">
+                    <h2 class="text-white title">INSPIRADORES</h2>
+                    <p class="subTitle">
+                        Mira el video y responde:
+                    </p>
+                    <p id="question">
+                    </p>
+                    <textarea class="answer" id="txtAnswer" required></textarea>
+                    <button type="Submit" class="btnSend">RESPONDER</button>
+                </form>
+                <div class="alert alert-primary mt-2" role="alert" style="display:none;">
+                    
+                </div>
+                <a href="/">
+                    <button class="btnContinue" type="button" style="display: none;">Continuar</button>      
                 </a> 
             </div>
         </section>
     </section>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
         crossorigin="anonymous">
@@ -97,7 +77,8 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
         crossorigin="anonymous">
     </script>
-    
-    <script src="./js/getAvatar.js"></script>
+
+    <script src="../js/getAvatar.js"></script>
+    <script src="../js/inspiradores/reflexion.js"></script>
 </body>
 </html>
