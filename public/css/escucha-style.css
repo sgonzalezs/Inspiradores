@@ -98,18 +98,29 @@ div.audio audio{
     background: #7136a1;
 }
 
-.avatarLoaded img{
+.avatarLoaded{
     position: absolute;
-    width: 33%;
+    width: 100%;
+    height: 120px;
     bottom: 0;
     left:0;
 }
+.avatarLoaded img{
+    bottom: 0;
+    left:0;
+    width: 40%;
+    
+}
 
 .trophyEscucha img{
-    position: absolute;
-    width: 25%;
-    left:35%;
-    margin-top:20px;
+    width: 30%;
+    margin-left:40%;
+    margin-top:50px;
+    bottom:50%;
+}
+
+div.congratulations{
+    margin-top: 150px;
 }
 
 
