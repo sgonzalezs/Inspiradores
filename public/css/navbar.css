@@ -9,7 +9,7 @@
     position: relative;
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1080px){
     .navAvatar{
         background-image: url('../images/avatar/Fondo.png');
     }

@@ -11,6 +11,10 @@ body{
     }
 }
 
+.title{
+    font-family: 'Bungee', cursive;
+}
+
 .paragraph{
     font-style: italic;
 }
