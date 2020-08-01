@@ -137,10 +137,25 @@ app.get("/inspiracion-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/inspiracion"});
 });
 
+app.get("/inspiracion-recompensas", (req,res)=>{
+    res.sendFile("recompensas.html", {root:"public/inspiracion"});
+});
 
 // Recorridos
 app.get("/recorrido", (req,res)=>{
     res.sendFile("recorridos.html", {root:"public/recorridos"});
+});
+
+app.get("/encuentro", (req,res)=>{
+    res.sendFile("centro.html", {root:"public/recorridos"});
+});
+
+app.get("/conocimiento", (req,res)=>{
+    res.sendFile("conocimiento.html", {root:"public/recorridos"});
+});
+
+app.get("/apropiacion", (req,res)=>{
+    res.sendFile("apropiacion.html", {root:"public/recorridos"});
 });
 
 app.get("/votos/:user", (req,res)=>{

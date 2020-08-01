@@ -68,6 +68,15 @@ body{
 
 p.resume{
     font-style: italic;
-    font-size: 18px;
+    font-size: 15px;
 }
+
+/* Imagenes de recorridos */
+
+.imagesGroup img{
+    width: 48%;
+    margin: 1%;
+    float: right;
+}
+
 
