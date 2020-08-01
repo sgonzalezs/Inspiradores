@@ -1,10 +1,16 @@
 $(document).ready(function(){
-	// localStorage.removeItem('token');
-	// localStorage.removeItem('user');
-	// localStorage.removeItem('identity');
-	// localStorage.removeItem('userAvatar');
+	
     $("#formLogin").on('submit', function(e){
         e.preventDefault();
+
+		if(localStorage.getItem('token')){
+			
+			localStorage.removeItem('token');
+			localStorage.removeItem('user');
+			localStorage.removeItem('identity');
+			localStorage.removeItem('userAvatar');
+			localStorage.removeItem('senses');
+		}
 
         var data = {
 			name: $("#txtName").val(),
