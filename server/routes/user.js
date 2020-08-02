@@ -158,25 +158,6 @@ app.get("/apropiacion", (req,res)=>{
     res.sendFile("apropiacion.html", {root:"public/recorridos"});
 });
 
-app.get("/votos/:user", (req,res)=>{
-    let user=req.params.user;
-    Inspiring.findOne({name:user}, (err, dataFounded)=>{
-        if(err){
-            return res.status(400).json({
-                ok:false,
-                message:err
-            });
-        }
-
-        if(dataFounded){
-            return res.status(200).json({
-                ok:true,
-                data:dataFounded
-            });
-        }
-    });
-});
-
 app.post("/insp", (req,res)=>{
     let inspiring=new Inspiring({
         name:req.body.name,
@@ -195,6 +176,32 @@ app.post("/insp", (req,res)=>{
         return res.status(200).json({
             ok:true,
             message:data
+        });
+    });
+});
+
+app.post("/votes", (req,res)=>{
+    let body=req.body;
+    
+    let inspiring=new Inspiring({
+        name:body.name,
+        category:"Cuerpo",
+        user:"55522",
+        like:true,
+        dislike:false
+    });
+
+    inspiring.save((err, newVote)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            message:newVote
         });
     });
 });

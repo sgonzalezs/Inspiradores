@@ -6,10 +6,11 @@ $(document).ready(function(){
         let name=$(this).attr("value").split("-")[0];
         let data={
             name,
-            option:value
+            option:value,
+            user:identity._id
         };
 
-        fetch('/votacion', {
+        fetch('/vote', {
             method: 'POST', 
             body: JSON.stringify(data),
             headers:{
@@ -21,13 +22,18 @@ $(document).ready(function(){
         })
         .then(function(response){
             if(!response.ok){
-                console.log(response.message);
+                if(response.message=="exists"){
+                    $(".btnContinue").css("display", "block");
+                    $(".groupButtons").css("pointer-events", "none");
+                    getVotes(name);
+                    $(".alert").css("display", "block");
+                    $(".alert").text("Ya calificaste este video");
+                }
             }else{
                 $(".btnContinue").css("display", "block");
                 $(".groupButtons").css("pointer-events", "none");
                 getVotes(name);
-                // $(".alert").css("display", "block");
-                // $(".alert").text("ya has votado");
+                
             }
         })
         .catch(function(err){
@@ -51,9 +57,18 @@ function getVotes(user){
         if(!response.ok){
             console.log(response.message);
         }else{
+            var likes=0;
+            var dislikes=0;
+            for(var i=0; i<response.data.length; i++){
+                if(response.data[i].like){
+                    likes++;
+                }else{
+                    dislikes++;
+                }
+            }
             $(".votes").text();
-            $(".like").text(response.data.like);
-            $(".dislike").text(response.data.dislike);
+            $(".like").text(likes);
+            $(".dislike").text(dislikes);
         }
     })
     .catch(function(err){
