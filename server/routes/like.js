@@ -34,7 +34,7 @@ app.post("/vote", (req,res)=>{
         dislike=true;
     }
 
-    Vote.find({user:body.user, inspiring: body.name}, (err, voteReg)=>{
+    Vote.findOne({user:body.user, inspiring: body.name}, (err, voteReg)=>{
         if(err){
             return res.status(400).json({
                 ok:false,
@@ -45,7 +45,8 @@ app.post("/vote", (req,res)=>{
         if(voteReg){
             return res.status(400).json({
                 ok:false,
-                message:"exists"
+                message:"exists",
+                voteReg
             });
         }
 
