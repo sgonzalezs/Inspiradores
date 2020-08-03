@@ -7,6 +7,8 @@ var cAns=0;
 function answerGusto(identity){
 
     $(".option img").click(function(){
+        $(this).css("border","3px solid #ffffff");
+        $(this).css("opacity","0.8");
         var question=$(this).attr("value").split("-")[0];
         var answer=$(this).attr("value").split("-")[1];
         
