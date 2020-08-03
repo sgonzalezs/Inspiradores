@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='./css/style.css'>
+    <link rel='stylesheet' type='text/css' href='./css/user-style.css'>
     <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
     <link rel='stylesheet' type='text/css' href='./css/inspiracion-style.css'>
 </head>
@@ -33,9 +34,49 @@
             </div>
         </div>
         <div class="avatarSelected">
-            <img src="" width="80px">
+            <a href="#" data-toggle="modal" data-target="#avatarInfo" onclick="getUserInfo()">
+                <img src="" width="80px">
+            </a>
         </div>
     </nav>
+    <div class="modal fade avatarModal" id="avatarInfo" 
+        data-backdrop="static" data-keyboard="false" tabindex="-1" 
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color:#fff">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-2 avatarProfile">
+                                <div class="avatarSelected">
+                                    <a href="#" data-toggle="modal" data-target="#avatarInfo">
+                                        <img src="" width="80px">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <p>Nombre: </p>
+                                    <h4 class="userName"></h4>
+                                </div>
+                                <div class="form-group">
+                                    <p>Correo: </p>
+                                    <p class="userEmail"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="container-fluid">
         <section class="row content">
             <div class="col-sm-8">
@@ -99,5 +140,6 @@
     </script>
     
     <script src="./js/getAvatar.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 </html>
