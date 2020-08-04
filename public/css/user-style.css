@@ -3,3 +3,11 @@
     color: #ffffff;
     font-family: 'Bungee', cursive;
 }
+
+a.logout{
+    transition: transform 0.1s;
+}
+
+a.logout:hover{
+    transform:scale(1.05,1.05);
+}

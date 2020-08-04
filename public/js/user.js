@@ -23,10 +23,11 @@ function getUserInfo(){
             }
         }else{
             let trophies=response.message;
+            $(".trophiesGroup").empty();
             trophies.forEach(function(e,i){
                 $(".trophiesGroup").append(`
-                    <div class="col-md-4">
-                        <img src="../images/sentidos/premios/${e.trophy}" width="80">
+                    <div class="col-sm-4">
+                        <img src="../images/sentidos/premios/${e.trophy}" width="100">
                     </div>
                 `);
             });
@@ -35,4 +36,14 @@ function getUserInfo(){
     .catch(function(err){
         console.log(err);
     });
+}
+
+function logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('identity');
+    localStorage.removeItem('userAvatar');
+    localStorage.removeItem('senses');
+
+    window.location="/";
 }
