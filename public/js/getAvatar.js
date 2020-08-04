@@ -1,5 +1,11 @@
 $(document).ready(function(){
     getAvatarUser();
+
+    $(".btnReflexion").click(function(){
+        let sense=$(this).attr("value");
+        getTrophy(sense);
+    });
+
 });
 
 function getAvatarUser(){
@@ -42,4 +48,33 @@ function getAvatarUser(){
             $(".avatarLoaded img").attr("src", "./images/sentidos/pirata_4.png");
         break;
     }
+}
+
+function getTrophy(sense){
+    let identity=JSON.parse(localStorage.getItem("identity"));
+    let trophy=$(".trophyImg").attr("value");
+    let data={
+        user:identity._id,
+        sense,
+        trophy
+    };
+    
+    fetch('/premio', {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{
+        'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+
+        window.location="/sentido";
+        
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 }

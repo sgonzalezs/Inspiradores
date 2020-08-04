@@ -18,7 +18,7 @@ $(document).ready(function(){
             question:$("#questionEscucha").text(),
             sense:'escucha',
             activity:'reflexion'
-        }
+        };
 
         fetch('/respuesta', {
             method: 'POST', 
