@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Elige tu sentido favorito</title>
+    <title>Reflexión</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script>
         if(!localStorage.getItem('token')){
@@ -15,9 +15,9 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='./css/style.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/sentidos-style.css'>
+    <link rel='stylesheet' type='text/css' href='./css/recorridos-style.css'>
     <link rel='stylesheet' type='text/css' href='./css/user-style.css'>
 </head>
 <body>
@@ -87,35 +87,30 @@
     <section class="conatiner">
         <section class="row m-2">
             <div class="col-sm-12">
-                <div class="row contentSentidos">
-                    <div class="col-sm-8 contentSentidosImg">
-                        <a href="/escucha">
-                            <img src="./images/sentidos/1_escucha.jpg">
-                        </a>
-                        <a href="/vista">
-                            <img src="./images/sentidos/2_vision.jpg">
-                        </a>
-                        <a href="/tacto">
-                            <img src="./images/sentidos/5_tacto.jpg">
-                        </a>
-                        <a href="/olfato">
-                            <img src="./images/sentidos/3_olfato.jpg">
-                        </a>
-                        <a href="/gusto">
-                            <img src="./images/sentidos/4_gusto.jpg">
-                        </a>
+                <div class="row content">
+                    <div class="col-md-8">
+                        <video class="videoLoad" id="videoLoad" autoplay controls>
+                            <source src="../media/inspiracion/Maria Camila Trillos-Bachillerato.mp4" type="video/mp4">
+                            Este navegador no es compatible con la reproducción de vídeos.
+                        </video>
                     </div>
-                    <div class="col-sm-4 contentSentidosDesc">
-                        <h1>Selecciona tu sentido favorito</h1>
-                        <p>
-                            A través de ellos nos comunicamos con el mundo exterior. 
-                            Antes de entender lo que nos rodea, vamos a explorar nuestros sentidos. 
-                            Elige uno y comienza este viaje.
-                        </p>
+                    <div class="col-md-4">
+                        <form id="form">
+                            <h2 class="text-white title">REFLEXION</h2>
+                            <p class="subTitle">
+                                Hoy conoces un poco más a Medellìn, es hora de soñar conocer otros lugares y 
+                                ponerlo como meta.
+                            </p>
+                            <p id="question" class="paragraph">
+                                 ¿Hay algún lugar que quieras conocer al que no hayas ido?
+                            </p>
+                            <textarea class="answer" id="txtAnswer" required></textarea>
+                            <button type="Submit" class="btnSend">RESPONDER</button>
+                        </form>
                         <div class="alert alert-primary mt-2" role="alert" style="display:none;">
-                    
+                            
                         </div>
-                        <a href="/sentidos-reflexion">
+                        <a href="/escucha-recompensas">
                             <button class="btnContinue" type="button" style="display: none;">Continuar</button>      
                         </a> 
                     </div>
@@ -136,8 +131,9 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
         crossorigin="anonymous">
     </script>
-    <script src="./js/sentidos.js"></script>
-    <script src="./js/getAvatar.js"></script>
-    <script src="./js/user.js"></script>
+    <script src="../js/sentidos.js"></script>
+    <script src="../js/getAvatar.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/recorridos.js"></script>
 </body>
 </html>

@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    loadInspiradores();
+    var identity=JSON.parse(localStorage.getItem('identity'));
+    loadInspiradores(identity);
+    validateSenses(identity);
+    
     let image=localStorage.getItem('userAvatar');
     switch(image.split("/")[3]){
         case "pirataMin_1.png":
@@ -37,9 +40,43 @@ $(document).ready(function(){
 
 });
 
-function loadInspiradores(){
+function validateSenses(identity){
+    let user=identity._id;
+    let answer='complete';
+    let question='senses';
+
+    fetch('/senses/'+user+"&"+answer+"&"+question, {
+        method: 'GET',
+        headers:{
+        'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+
+                $(".alert").css("display", "none");
+                $(".btnContinue").css("display", "none");
+                $(".alert").text("");
+            }
+        }else{
+            $(".alert").css("display", "block");
+            $(".btnContinue").css("display", "block");
+            $(".alert").text("Ya has completado todas las actividades de los sentidos");
+        }
+    })
+    .catch(function(err){
+        console.log('Error:', err);
+    });
+}
+
+function loadInspiradores(identity){
 
     var senses=JSON.parse(localStorage.getItem('senses'));
+    
     if(senses){
         var validate={
             escucha:senses.escucha,
@@ -54,6 +91,40 @@ function loadInspiradores(){
             $(".btnContinue").css("display", "block");
             $(".alert").text("Ya has completado todas las actividades de los sentidos");
             
+            let data={
+                id:identity._id,
+                answer:"complete",
+                question:"senses",
+                sense:'all',
+                activity:'validate'
+            };
+    
+            fetch('/respuesta', {
+                method: 'POST', 
+                body: JSON.stringify(data),
+                headers:{
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(response){
+                if(!response.ok){
+                    if(response.message=="exists"){
+                        $(".alert").css("display", "block");
+                        $(".btnContinue").css("display", "block");
+                        $(".alert").text("Ya has completado todas las actividades de los sentidos");
+                    }
+                }else{
+                    $(".alert").css("display", "block");
+                    $(".btnContinue").css("display", "block");
+                    $(".alert").text("Ya has completado todas las actividades de los sentidos");
+                }
+            })
+            .catch(function(err){
+                console.log('Error:', err);
+            });
         }
         
     }
