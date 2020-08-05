@@ -3,8 +3,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Reflexión</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Recompensas</title>
+    <!-- <meta name='viewport' content='width=device-width, initial-scale=1'> -->
     <script>
         if(!localStorage.getItem('token')){
             window.location="/";
@@ -16,9 +16,10 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/recorridos-style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/user-style.css'>
+    <!-- <link rel='stylesheet' type='text/css' href='./css/style.css'> -->
+    <link rel='stylesheet' type='text/css' href='../css/avatar-style.css'>
+    <link rel='stylesheet' type='text/css' href='../css/escucha-style.css'>
+    <link rel='stylesheet' type='text/css' href='../css/user-style.css'>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg navAvatar">
@@ -32,7 +33,7 @@
               <a class="nav-item nav-link active" href="#"><p>EVENTOS</p></a>
             </div>
         </div>
-        <div class="avatarSelected" id="avatarUser">
+        <div class="avatarSelected">
             <a href="#" data-toggle="modal" data-target="#avatarInfo" onclick="getUserInfo()">
                 <img src="" width="80px">
             </a>
@@ -68,53 +69,35 @@
                                     <p class="userEmail"></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <p>Premios Obtenidos: </p>
-                                <div class="row trophiesGroup">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" style="color:#fff" class="logout" onclick="logout();" title="Cerrar Sesión">
-                        <img src="./images/icons/logout.png">
-                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <section class="conatiner">
-        <section class="row m-2">
-            <div class="col-sm-12">
-                <div class="row content">
-                    <div class="col-md-8">
-                        <video class="videoLoad" id="videoLoad" autoplay controls>
-                            <source src="../media/inspiracion/Maria Camila Trillos-Bachillerato.mp4" type="video/mp4">
-                            Este navegador no es compatible con la reproducción de vídeos.
-                        </video>
-                    </div>
-                    <div class="col-md-4">
-                        <form id="form">
-                            <h2 class="text-white title">REFLEXION</h2>
-                            <p class="subTitle">
-                                Hoy conoces un poco más a Medellìn, es hora de soñar conocer otros lugares y 
-                                ponerlo como meta.
-                            </p>
-                            <p id="question" class="paragraph">
-                                 ¿Hay algún lugar que quieras conocer al que no hayas ido?
-                            </p>
-                            <textarea class="answer" id="txtAnswer" required></textarea>
-                            <button type="Submit" class="btnSend">RESPONDER</button>
-                        </form>
-                        <div class="alert alert-primary mt-2" role="alert" style="display:none;">
-                            
-                        </div>
-                        <a href="/recorridos-recompensas">
-                            <button class="btnContinue" type="button" style="display: none;">Continuar</button>      
-                        </a> 
-                    </div>
+    <section class="container-fluid">
+        <section class="row">
+            <div class="col-md-8">
+                <div class="avatarLoaded">
+                    <img src="" alt="Pirata Seleccionado">
                 </div>
+                <div class="trophyEscucha">
+                    <img src="../images/recorridos/premios/espada.png" class="trophyImg" value="espada.png">
+                </div>
+            </div>
+            <div class="col-md-4 congratulations">
+                <h2 class="text-white title">ESCUCHA</h2>
+                <p id="success">
+                    Felicidades, has alcanzado un nuevo nivel de exploración.
+                </p>
+                <!-- <div class="alert alert-primary mt-2" role="alert" style="display:none;">
+                    
+                </div> -->
+                <a href="#">
+                    <button type="button" class=" btnReflexion" value="recorridos">Siguiente</button>
+                </a>
             </div>
         </section>
     </section>
@@ -133,6 +116,5 @@
     </script>
     <script src="../js/getAvatar.js"></script>
     <script src="../js/user.js"></script>
-    <script src="../js/recorridos.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ function getUserInfo(){
             trophies.forEach(function(e,i){
                 $(".trophiesGroup").append(`
                     <div class="col-sm-4">
-                        <img src="../images/sentidos/premios/${e.trophy}" width="100">
+                        <img src="../images/premios/${e.trophy}" width="100">
                     </div>
                 `);
             });

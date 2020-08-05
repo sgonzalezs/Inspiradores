@@ -162,6 +162,10 @@ app.get("/recorridos-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/recorridos"});
 });
 
+app.get("/recorridos-recompensas", (req,res)=>{
+    res.sendFile("recompensas.html", {root:"public/recorridos"});
+});
+
 app.get("/senses/:user&:answer&:question", (req,res)=>{
     let user=req.params.user;
     let answer=req.params.answer;
