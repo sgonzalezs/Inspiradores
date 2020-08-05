@@ -6,6 +6,36 @@ $(document).ready(function(){
         getTrophy(sense);
     });
 
+    $(".bntInspiradores").click(function(){
+        let identity=JSON.parse(localStorage.getItem("identity"));
+        let type=$(this).attr("value");
+        let trophy=$(".trophyImg").attr("value");
+        let data={
+            user:identity._id,
+            sense:type,
+            trophy
+        };
+        
+        fetch('/premio', {
+            method: 'POST', 
+            body: JSON.stringify(data),
+            headers:{
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(response){
+
+            window.location="/recorrido";
+            
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+    });
+
 });
 
 function getAvatarUser(){
