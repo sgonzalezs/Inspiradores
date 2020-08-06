@@ -1,14 +1,27 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let type=$(".paragraph").attr("id").split("-")[1];
+
+    if(!localStorage.getItem('recorridos')){
+        localStorage.setItem('recorridos', JSON.stringify(
+            {
+                user:identity._id,
+                centro:false,
+                apropiacion:false,
+                conocimiento:false,
+
+            })
+        );
+    }
+
     $("#form").on("submit", function(e){
         e.preventDefault();
         let data={
             id:identity._id,
             answer:$("#txtAnswer").val(),
             question:$(".paragraph").text(),
-            sense:'recorridos',
-            activity:type
+            sense:type,
+            activity:'recorridos'
         };
 
         fetch('/respuesta', {
@@ -33,6 +46,9 @@ $(document).ready(function(){
                 $(".alert").css("display", "block");
                 $(".alert").text(response.message);
                 $(".btnContinue").css("display", "block");
+                let recorridos=JSON.parse(localStorage.getItem('recorridos'));
+                recorridos[type]=true;
+                localStorage.setItem('recorridos', JSON.stringify(recorridos));
             }
         })
         .catch(function(err){
@@ -40,3 +56,6 @@ $(document).ready(function(){
         });
     });
 });
+
+
+
