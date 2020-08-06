@@ -7,17 +7,24 @@ $(document).ready(function(){
         getTrophy(sense, category);
     });
 
-    $(".bntInspiradores").click(function(){
+    $(".btnRecompensa").click(function(){
         let identity=JSON.parse(localStorage.getItem("identity"));
         let type=$(this).attr("value");
+        let puntaje=0;
+        if(type=="recorridos"){
+            puntaje=100;
+        }
+        if(type=="inspiradores"){
+            puntaje=75;
+        }
         let trophy=$(".trophyImg").attr("value");
         let data={
             user:identity._id,
             sense:type,
             trophy,
-            points:75
+            points:puntaje
         };
-        
+
         fetch('/premio', {
             method: 'POST', 
             body: JSON.stringify(data),
@@ -29,9 +36,13 @@ $(document).ready(function(){
             return res.json();
         })
         .then(function(response){
-
-            window.location="/recorrido";
-            
+            if(type=="recorridos"){
+                // window.location="";
+                console.log("Loaded");
+            }
+            if(type=="inspiradores"){
+                window.location="/recorrido";
+            }
         })
         .catch(function(err){
             console.log(err);

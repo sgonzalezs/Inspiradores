@@ -84,7 +84,7 @@ div.audio audio{
     font-size: 18px;
 }
 
-.btnReflexion{
+.btnReflexion, .btnRecompensa{
     padding:15px;
     background: #7136a1;
     color:white;
@@ -94,7 +94,7 @@ div.audio audio{
     font-size:30px;
     margin-top: 10px;
 }
-.btnReflexion:focus{
+.btnReflexion:focus, .btnRecompensa:focus{
     background: #7136a1;
 }
 
