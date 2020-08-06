@@ -24,10 +24,15 @@ function getUserInfo(){
         }else{
             let trophies=response.message;
             $(".trophiesGroup").empty();
+            $("p.points").text();
+            var points=0;
             trophies.forEach(function(e,i){
+                points=points+e.point;
+                $("p.points").text(points);
                 $(".trophiesGroup").append(`
-                    <div class="col-sm-4">
-                        <img src="../images/premios/${e.trophy}" width="100">
+                    <div class="col-sm-4 form-group">
+                        <p>${e.sense}</p>
+                        <img src="../images/premios/${e.trophy}" width="80">
                     </div>
                 `);
             });
