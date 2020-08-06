@@ -1,14 +1,14 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    
+    let type=$(".paragraph").attr("id").split("-")[1];
     $("#form").on("submit", function(e){
         e.preventDefault();
         let data={
             id:identity._id,
             answer:$("#txtAnswer").val(),
-            question:$("#question").text(),
+            question:$(".paragraph").text(),
             sense:'recorridos',
-            activity:'reflexion'
+            activity:type
         };
 
         fetch('/respuesta', {

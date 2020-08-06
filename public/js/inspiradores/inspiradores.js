@@ -2,7 +2,7 @@ $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     validateInspirings(identity);
     loadRecorridos(identity);
-
+    
     if(!localStorage.getItem('inspiring')){
         localStorage.setItem('inspiring', JSON.stringify(
             {
