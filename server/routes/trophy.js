@@ -48,7 +48,8 @@ app.post("/premio", (req,res)=>{
             let trophy=new Tropy({
                 user:body.user,
                 sense:body.sense,
-                trophy:body.trophy
+                trophy:body.trophy,
+                point:body.points
             });
 
             trophy.save((error, trophySave)=>{

@@ -45,6 +45,7 @@ function logout(){
     localStorage.removeItem('userAvatar');
     localStorage.removeItem('senses');
     localStorage.removeItem('inspiring');
+    localStorage.removeItem('recorridos')
 
     window.location="/";
 }

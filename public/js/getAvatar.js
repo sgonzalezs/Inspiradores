@@ -2,8 +2,9 @@ $(document).ready(function(){
     getAvatarUser();
 
     $(".btnReflexion").click(function(){
-        let sense=$(this).attr("value");
-        getTrophy(sense);
+        let sense=$(this).attr("value").split("-")[1];
+        let category=$(this).attr("value").split("-")[0];
+        getTrophy(sense, category);
     });
 
     $(".bntInspiradores").click(function(){
@@ -13,7 +14,8 @@ $(document).ready(function(){
         let data={
             user:identity._id,
             sense:type,
-            trophy
+            trophy,
+            points:75
         };
         
         fetch('/premio', {
@@ -80,13 +82,18 @@ function getAvatarUser(){
     }
 }
 
-function getTrophy(sense){
+function getTrophy(sense, category){
     let identity=JSON.parse(localStorage.getItem("identity"));
     let trophy=$(".trophyImg").attr("value");
+    let puntaje=0;
+    if(category=="sentidos"){
+        puntaje=20;
+    }
     let data={
         user:identity._id,
         sense,
-        trophy
+        trophy,
+        points:puntaje
     };
     
     fetch('/premio', {

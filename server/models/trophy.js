@@ -15,6 +15,10 @@ let trophySchema=new Schema({
     trophy:{
         type:String,
         required:[true, "Debes ingresar el premio"]
+    },
+    point:{
+        type:Number,
+        required: [true,"El puntaje es obligatorio"]
     }
 });
 
