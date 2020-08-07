@@ -85,49 +85,46 @@ function validateInspirings(identity){
             cuerpo:inspirings.cuerpo,
             sociedad:inspirings.sociedad
         };
-        let videos=JSON.parse(localStorage.getItem('videos'));
 
-        console.log(videos[0]);
+        if(validate.arte && validate.ciencia &&validate.cuerpo &&validate.sociedad){
+            $(".alert").css("display", "block");
+            $(".alert").text("Haz clic en continuar");
+            $(".btnContinue").css("display", "block");
 
-        // if(validate.arte && validate.ciencia &&validate.cuerpo &&validate.sociedad){
-        //     $(".alert").css("display", "block");
-        //     $(".alert").text("Haz clic en continuar");
-        //     $(".btnContinue").css("display", "block");
+            let data={
+                id:identity._id,
+                answer:"complete",
+                question:"inspirings",
+                sense:'all',
+                activity:'validate'
+            };
 
-        //     let data={
-        //         id:identity._id,
-        //         answer:"complete",
-        //         question:"inspirings",
-        //         sense:'all',
-        //         activity:'validate'
-        //     };
-
-        //     fetch('/respuesta', {
-        //         method: 'POST', 
-        //         body: JSON.stringify(data),
-        //         headers:{
-        //         'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     .then(function(res){
-        //         return res.json();
-        //     })
-        //     .then(function(response){
-        //         if(!response.ok){
-        //             if(response.message=="exists"){
-        //                 $(".alert").css("display", "block");
-        //                 $(".btnContinue").css("display", "block");
-        //                 $(".alert").text("Haz clic en continuar");
-        //             }
-        //         }else{
-        //             $(".alert").css("display", "block");
-        //             $(".btnContinue").css("display", "block");
-        //             $(".alert").text("Haz clic en continuar");
-        //         }
-        //     })
-        //     .catch(function(err){
-        //         console.log('Error:', err);
-        //     });
-        // }
+            fetch('/respuesta', {
+                method: 'POST', 
+                body: JSON.stringify(data),
+                headers:{
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(response){
+                if(!response.ok){
+                    if(response.message=="exists"){
+                        $(".alert").css("display", "block");
+                        $(".btnContinue").css("display", "block");
+                        $(".alert").text("Haz clic en continuar");
+                    }
+                }else{
+                    $(".alert").css("display", "block");
+                    $(".btnContinue").css("display", "block");
+                    $(".alert").text("Haz clic en continuar");
+                }
+            })
+            .catch(function(err){
+                console.log('Error:', err);
+            });
+        }
     }
 }

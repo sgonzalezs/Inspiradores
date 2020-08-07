@@ -6,7 +6,7 @@ $(document).ready(function(){
         let category=$(this).attr("value").split("-")[0];
         getTrophy(sense, category);
     });
-    
+
     $(".btnRecompensa").click(function(){
         let identity=JSON.parse(localStorage.getItem("identity"));
         let type=$(this).attr("value");
@@ -15,8 +15,16 @@ $(document).ready(function(){
             puntaje=300;
         }
         if(type=="inspiradores"){
-            puntaje=75;
+            let videos=JSON.parse(localStorage.getItem('videos'));
+            let count=0;
+            for(var i=0; i<=7; i++){
+                if(videos[i]){
+                    count++;
+                }
+            }
+            puntaje=count*75;
         }
+        
         let trophy=$(".trophyImg").attr("value");
         let data={
             user:identity._id,

@@ -1,5 +1,6 @@
 .modal-content{
     background-image: url('../images/fondo/Fondo.png');
+    background-size: cover;
     color: #ffffff;
     font-family: 'Bungee', cursive;
 }
