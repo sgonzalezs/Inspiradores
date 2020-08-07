@@ -6,13 +6,13 @@ $(document).ready(function(){
         let category=$(this).attr("value").split("-")[0];
         getTrophy(sense, category);
     });
-
+    
     $(".btnRecompensa").click(function(){
         let identity=JSON.parse(localStorage.getItem("identity"));
         let type=$(this).attr("value");
         let puntaje=0;
         if(type=="recorridos"){
-            puntaje=100;
+            puntaje=300;
         }
         if(type=="inspiradores"){
             puntaje=75;

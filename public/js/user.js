@@ -30,7 +30,7 @@ function getUserInfo(){
                 points=points+e.point;
                 $("p.points").text(points);
                 $(".trophiesGroup").append(`
-                    <div class="col-sm-4 form-group">
+                    <div class="col-sm-4">
                         <p>${e.sense}</p>
                         <img src="../images/premios/${e.trophy}" width="80">
                     </div>
@@ -50,7 +50,7 @@ function logout(){
     localStorage.removeItem('userAvatar');
     localStorage.removeItem('senses');
     localStorage.removeItem('inspiring');
-    localStorage.removeItem('recorridos')
+    localStorage.removeItem('recorridos');
 
     window.location="/";
 }
