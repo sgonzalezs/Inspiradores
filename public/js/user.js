@@ -51,6 +51,7 @@ function logout(){
     localStorage.removeItem('senses');
     localStorage.removeItem('inspiring');
     localStorage.removeItem('recorridos');
+    localStorage.removeItem('videos');
 
     window.location="/";
 }

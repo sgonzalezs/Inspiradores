@@ -33,7 +33,7 @@
               <a class="nav-item nav-link active" href="#"><p>EVENTOS</p></a>
             </div>
         </div>
-        <div class="avatarSelected">
+        <div class="avatarSelected" id="avatarUser">
             <a href="#" data-toggle="modal" data-target="#avatarInfo" onclick="getUserInfo()">
                 <img src="" width="80px">
             </a>
@@ -68,11 +68,27 @@
                                     <p>Correo: </p>
                                     <p class="userEmail"></p>
                                 </div>
+                                <div class="form-group">
+                                    <p>Puntaje: </p>
+                                    <div class="row">
+                                        <img src="../images/icons/coin.png" width="40" height="40">
+                                        <p class="points ml-1"></p> 
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Premios Obtenidos: </p>
+                                <div class="row trophiesGroup">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <a href="#" style="color:#fff" class="logout" onclick="logout();" title="Cerrar Sesión">
+                        <img src="../images/icons/logout.png">
+                    </a>
                 </div>
             </div>
         </div>
