@@ -1,11 +1,11 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let age=identity.age;
-    var video=document.getElementById('videoLoad');
+    var video=document.getElementById('video');
     
     if(age<13){
-        video.src="../media/inspiracion/Maria Camila Trillos-Primaria.mp4";
+        video.src="https://www.youtube.com/embed/vLktbE_M-9g";
     }else{
-        video.src="../media/inspiracion/Maria Camila Trillos-Bachillerato.mp4";
+        video.src="https://www.youtube.com/embed/CvHIP0zo5Sg";
     }
 });

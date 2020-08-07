@@ -1,11 +1,11 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let age=identity.age;
-    var video=document.getElementById('videoLoad');
+    var video=document.getElementById('video');
     
     if(age<13){
-        video.src="../media/inspiracion/Juan Pablo Valencia-Primaria.mp4";
+        video.src="https://www.youtube.com/embed/SKIAIE_rrDU";
     }else{
-        video.src="../media/inspiracion/Juan Pablo Valencia-Bachillerato.mp4";
+        video.src="https://www.youtube.com/embed/mKqFfNMuBMg";
     }
 });
