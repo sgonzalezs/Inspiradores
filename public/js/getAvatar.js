@@ -1,6 +1,6 @@
 $(document).ready(function(){
     getAvatarUser();
-
+    // $(".avatarLoaded img").attr("src", "./images/sentidos/pirata.png");
     $(".btnReflexion").click(function(){
         let sense=$(this).attr("value").split("-")[1];
         let category=$(this).attr("value").split("-")[0];
