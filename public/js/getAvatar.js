@@ -1,14 +1,45 @@
 $(document).ready(function(){
+    let identity=JSON.parse(localStorage.getItem("identity"));
     getAvatarUser();
     // $(".avatarLoaded img").attr("src", "./images/sentidos/pirata.png");
     $(".btnReflexion").click(function(){
         let sense=$(this).attr("value").split("-")[1];
         let category=$(this).attr("value").split("-")[0];
-        getTrophy(sense, category);
+
+        let user=identity._id;
+        let answer=sense;
+        let activity="reflexion";
+        fetch('/validate/'+user+"&"+answer+"&"+activity, {
+            method: 'GET', 
+            headers:{
+            'Content-Type': 'application/json'
+            }
+        })
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(response){
+            if(!response.ok){
+                if(response.message=="not found"){
+                    $(".alert").css("display", "block");
+                    $(".alert").attr("class", "alert alert-danger mt-2");
+                    $(".alert").text("Debes compeltar todo el recorrido para reclamar el premio");
+                    $(".redirectRecompensa").attr("href", "/sentido");
+                }
+            }else{
+                getTrophy(sense, category);
+            }
+            console.log(response);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+
+        // validateReflection(identity, sense,category);
     });
 
     $(".btnRecompensa").click(function(){
-        let identity=JSON.parse(localStorage.getItem("identity"));
+        
         let type=$(this).attr("value");
         let puntaje=0;
         if(type=="recorridos"){
@@ -32,7 +63,7 @@ $(document).ready(function(){
             trophy,
             points:puntaje
         };
-
+        
         fetch('/premio', {
             method: 'POST', 
             body: JSON.stringify(data),
@@ -45,7 +76,6 @@ $(document).ready(function(){
         })
         .then(function(response){
             if(type=="recorridos"){
-                // window.location="";
                 console.log("Loaded");
             }
             if(type=="inspiradores"){
@@ -99,6 +129,37 @@ function getAvatarUser(){
             $(".avatarLoaded img").attr("src", "./images/sentidos/pirata_4.png");
         break;
     }
+}
+
+function validateReflection(identity, type){
+    let user=identity._id;
+    let answer=type;
+    let activity="reflexion";
+    fetch('/validate/'+user+"&"+answer+"&"+activity, {
+        method: 'GET', 
+        headers:{
+        'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                $(".alert").css("display", "block");
+                $(".alert").attr("class", "alert alert-danger mt-2");
+                $(".alert").text("Debes compeltar todo el recorrido para reclamar el premio");
+                $(".redirectRecompensa").attr("href", "/sentido");
+            }
+        }else{
+            
+        }
+        console.log(response);
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 }
 
 function getTrophy(sense, category){

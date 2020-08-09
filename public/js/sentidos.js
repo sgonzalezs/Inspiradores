@@ -1,7 +1,8 @@
 $(document).ready(function(){
     var identity=JSON.parse(localStorage.getItem('identity'));
     loadInspiradores(identity);
-    validateSenses(identity);
+    // validateSenses(identity);
+    getSensesComplete(identity);
     
     let image=localStorage.getItem('userAvatar');
     switch(image.split("/")[3]){
@@ -40,15 +41,12 @@ $(document).ready(function(){
 
 });
 
-function validateSenses(identity){
-    let user=identity._id;
-    let answer='complete';
-    let question='senses';
+function getSensesComplete(identity){
 
-    fetch('/senses/'+user+"&"+answer+"&"+question, {
-        method: 'GET',
+    fetch('/premios/'+identity._id,{
+        method:'GET',
         headers:{
-        'Content-Type': 'application/json'
+            'Content-type':'application/json'
         }
     })
     .then(function(res){
@@ -56,22 +54,67 @@ function validateSenses(identity){
     })
     .then(function(response){
         if(!response.ok){
-            if(response.message=="not found"){
-
-                $(".alert").css("display", "none");
-                $(".btnContinue").css("display", "none");
-                $(".alert").text("");
+            if(response.message=="No data"){
+                
             }
         }else{
-            $(".alert").css("display", "block");
-            $(".btnContinue").css("display", "block");
-            $(".alert").text("Ya has completado todas las actividades de los sentidos");
+            let trophies=response.message;
+            let senses=[];
+            
+            trophies.forEach(function(e,i){
+                var sense=trophies[i].sense;
+                if(sense=="escucha"||sense=="vista"||sense=="tacto"||sense=="olfato"||sense=="gusto"){
+                    senses.push(sense);
+                }
+                // $("."+sense).css("opacity", "0.8");
+                $("."+sense).css("pointer-events", "none");
+                $("."+sense).attr("src", "../images/sentidos/"+sense+"_checked.png");
+            });
+            if(senses.length==5){
+                $(".alert").css("display", "block");
+                $(".btnContinue").css("display", "block");
+                $(".alert").text("Ya has completado todas las actividades de los sentidos");
+            }
+            
         }
     })
     .catch(function(err){
-        console.log('Error:', err);
-    });
+        console.log(err);
+    }); 
 }
+
+// function validateSenses(identity){
+//     let user=identity._id;
+//     let answer='complete';
+//     let question='senses';
+
+//     fetch('/senses/'+user+"&"+answer+"&"+question, {
+//         method: 'GET',
+//         headers:{
+//         'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(function(res){
+//         return res.json();
+//     })
+//     .then(function(response){
+//         if(!response.ok){
+//             if(response.message=="not found"){
+
+//                 $(".alert").css("display", "none");
+//                 $(".btnContinue").css("display", "none");
+//                 $(".alert").text("");
+//             }
+//         }else{
+//             $(".alert").css("display", "block");
+//             $(".btnContinue").css("display", "block");
+//             $(".alert").text("Ya has completado todas las actividades de los sentidos");
+//         }
+//     })
+//     .catch(function(err){
+//         console.log('Error:', err);
+//     });
+// }
 
 function loadInspiradores(identity){
 

@@ -23,10 +23,15 @@ function getUserInfo(){
             }
         }else{
             let trophies=response.message;
+            let senses=[];
             $(".trophiesGroup").empty();
             $("p.points").text();
             var points=0;
             trophies.forEach(function(e,i){
+                var sense=trophies[i].sense;
+                if(sense=="escucha"||sense=="vista"||sense=="tacto"||sense=="olfato"||sense=="gusto"){
+                    senses.push(sense);
+                }
                 points=points+e.point;
                 $("p.points").text(points);
                 $(".trophiesGroup").append(`
@@ -36,6 +41,9 @@ function getUserInfo(){
                     </div>
                 `);
             });
+            if(senses.length==5){
+                $(".btnContinueSentidos").css("display", "block");
+            }
         }
     })
     .catch(function(err){
