@@ -1,10 +1,10 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    answerGusto(identity);
+    answerVista(identity);
 });
 
 var cAns=0;
-function answerGusto(identity){
+function answerVista(identity){
 
     $(".option img").click(function(){
         $(this).css("border","3px solid #ffffff");
@@ -18,7 +18,7 @@ function answerGusto(identity){
             id:identity._id,
             question,
             answer:answer,
-            sense:'gusto',
+            sense:'vista',
             activity:'seleccion'
         }
 
@@ -36,15 +36,15 @@ function answerGusto(identity){
             if(!response.ok){
                 if(response.message=="exists"){
                     $(".btnContinue").css("display", "block");
-                    $(".gustoContent").css("pointer-events", "none");
+                    $(".vistaContent").css("pointer-events", "none");
                     $(".alert").css("display", "block");
                     $(".alert").text("Ya has completado esta sección");
                 }
             }else{
                 cAns++;
-                if(cAns==5){
+                if(cAns==4){
                     $(".btnContinue").css("display", "block");
-                    $(".gustoContent").css("pointer-events", "none");
+                    $(".vistaContent").css("pointer-events", "none");
                 }
             }
         })

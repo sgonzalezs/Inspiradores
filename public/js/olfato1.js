@@ -12,13 +12,17 @@ function answerOlfato(identity){
         var question=$(this).attr("value").split("-")[0];
         var answer=$(this).attr("value").split("-")[1];
         
+        let prop=$(this).attr("class");
+        $(this).css("box-shadow","0px 0px 5px 0px rgba(0,0,0,0.75)");
+        $("."+prop).css("pointer-events", "none");
+
         let data={
             id:identity._id,
             question,
             answer:answer,
             sense:'olfato',
             activity:'seleccion'
-        }
+        };
 
         fetch('/respuesta', {
             method: 'POST', 

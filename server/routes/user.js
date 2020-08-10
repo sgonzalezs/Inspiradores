@@ -37,6 +37,10 @@ app.get("/escucha-recompensas", (req,res)=>{
 
 //Rutas Sentido Vista
 app.get("/vista", (req,res)=>{
+    res.sendFile("vista.html", {root:"public/sentidos/vista"});
+});
+
+app.get("/vista-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/vista"});
 });
 
@@ -164,6 +168,11 @@ app.get("/recorridos-reflexion", (req,res)=>{
 
 app.get("/recorridos-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/recorridos"});
+});
+
+// CIERRE
+app.get("/premiacion", (req,res)=>{
+    res.sendFile("cierre.html", {root:"public/"});
 });
 
 app.get("/senses/:user&:answer&:question", (req,res)=>{

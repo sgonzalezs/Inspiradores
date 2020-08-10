@@ -1,0 +1,35 @@
+
+div.premiacion img{
+    width: 50%;
+    height: 550px;
+    margin-left:20%;
+}
+
+@media only screen and (max-width: 800px) {
+    div.premiacion img{
+        height: 300px;
+    }
+}
+
+div.description{
+    margin-top: 10%;
+}
+
+h2.title{
+    font-family: 'Bungee', cursive;
+}
+
+.btnFinalizar{
+    padding:15px;
+    background: #7136a1;
+    color:white;
+    border:0px;
+    border-radius: 5px;
+    width: 90%;
+    font-size:30px;
+    margin-top: 10px;
+}
+.btnFinalizar:focus{
+    background: #7136a1;
+}
+

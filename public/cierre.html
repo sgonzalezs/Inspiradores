@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Centro</title>
+    <title>Premiación</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script>
         if(!localStorage.getItem('token')){
@@ -15,10 +15,9 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link rel='stylesheet' type='text/css' href='../css/avatar-style.css'>
-    <link rel='stylesheet' type='text/css' href='../css/recorridos-style.css'>
-    <link rel='stylesheet' type='text/css' href='../css/user-style.css'>
+    <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
+    <link rel='stylesheet' type='text/css' href='./css/cierre-style.css'>
+    <link rel='stylesheet' type='text/css' href='./css/user-style.css'>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg navAvatar">
@@ -70,7 +69,7 @@
                                 <div class="form-group">
                                     <p>Puntaje: </p>
                                     <div class="row">
-                                        <img src="../images/icons/coin.png" width="40" height="40">
+                                        <img src="./images/icons/coin.png" width="40" height="40">
                                         <p class="points ml-1"></p> 
                                     </div>
                                     
@@ -92,60 +91,44 @@
             </div>
         </div>
     </div>
-    <section class="container-fluid">
-        <section class="row content">
-            <div class="col-sm-8">
-                <!-- <video class="videoLoad" id="videoLoad" autoplay controls>
-                    <source src="../media/inspiracion/Maria Camila Trillos-Bachillerato.mp4" type="video/mp4">
-                    Este navegador no es compatible con la reproducción de vídeos.
-                </video> -->
-                <iframe width="100%" height="400" src="https://www.youtube.com/embed/wnmU228YgRg" 
-                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>  
-            <div class="col-sm-4">
-                <h2 class="text-white title">ENCUENTRO</h2>
+    <!-- <section class="conatiner-fluid">
+        <section class="row">
+            <div class="col-md-8 premiacion">
+                <img src="./images/recorridos/final.jpg">
+            </div>
+            <div class="col-md-4 description">
+                <h2 class="text-white title">RECORRIDOS</h2>
                 <p class="subTitle">
-                    El conjunto patrimonial del centro
+                    Felicidades, ¡has alcanzado el máximo nivel de exploración y llegado al mundo de la vida 
+                    en sociedad! para Inspiración Comfama y Navegantes ha sido un placer tenerte en nuestra 
+                    tripulación. Invita a tus compañeros de clase a realizar su recorrido.
                 </p>
-                <p class="resume">
-                    El centro de Medellín es el lugar encuentro de todos. 
-                    Además con solo levantar nuestra mirada nos podemos encontrar con fachadas de casas 
-                    y edificios que te dejan sin aliento. Lugares que cuentan la historia de tu ciudad y 
-                    que son parte integral de nuestra memoria. ¡Bienvenido al centro!
+
+                <a href="#">
+                    <button type="button" class="btnFinalizar" value="recorridos">Finalizar</button>
+                </a>
+            </div>
+        </section>
+    </section> -->
+    <section class="container-fluid">
+        <section class="row">
+            <div class="col-md-8 premiacion">
+                <img src="./images/recorridos/final.jpg">
+            </div>
+            <div class="col-md-4 description">
+                <h2 class="text-white title">RECORRIDOS</h2>
+                <p class="subTitle">
+                    Felicidades, ¡has alcanzado el máximo nivel de exploración y llegado al mundo de la vida 
+                    en sociedad! para Inspiración Comfama y Navegantes ha sido un placer tenerte en nuestra 
+                    tripulación. Invita a tus compañeros de clase a realizar su recorrido.
                 </p>
-                <div class="row imagesGroup">
-                    <div class="col-md-12">
-                        <img src="../images/recorridos/encuentro/Encuentro1.png" />
-                    
-                        <img src="../images/recorridos/encuentro/Encuentro2.png" />
-                    
-                        <img src="../images/recorridos/encuentro/Encuentro3.png" />
-                    
-                        <img src="../images/recorridos/encuentro/Encuentro4.png" />
-                    </div>
-                </div>
-                <form id="form">
-                    <p id="question-centro" class="paragraph">
-                        ¿Qué te gustó de este recorrido?
-                    </p>
-                    <textarea class="answer" id="txtAnswer" required></textarea>
-                    <button type="Submit" class="btnSend">RESPONDER</button>
-                </form>
-                <div class="alert alert-primary mt-2" role="alert" style="display:none;">
-                    
-                </div>
-                <a href="/recorrido">
-                    <button class="btnContinue" type="button" style="display: none;">Continuar</button>      
-                </a> 
-                <!-- <a href="/inspiracion-reflexion">
-                    <button class="btnContinue" type="button" >Continuar</button>      
-                </a>  -->
+
+                <a href="#" onclick="logout();">
+                    <button type="button" class="btnFinalizar" value="recorridos">Finalizar</button>
+                </a>
             </div>
         </section>
     </section>
-    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
         crossorigin="anonymous">
@@ -158,9 +141,8 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
         crossorigin="anonymous">
     </script>
-    
-    <script src="../js/getAvatar.js"></script>
-    <script src="../js/user.js"></script>
-    <script src="../js/recorridos.js"></script>
+    <script src="./js/sentidos.js"></script>
+    <script src="./js/getAvatar.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 </html>
