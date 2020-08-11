@@ -1,11 +1,12 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     answerVista(identity);
+    
 });
 
 var cAns=0;
 function answerVista(identity){
-
+    
     $(".option img").click(function(){
         $(this).css("border","3px solid #ffffff");
         $(this).css("opacity","0.8");
@@ -39,12 +40,14 @@ function answerVista(identity){
                     $(".vistaContent").css("pointer-events", "none");
                     $(".alert").css("display", "block");
                     $(".alert").text("Ya has completado esta sección");
+                    getStatistics("vista", "seleccion");
                 }
             }else{
                 cAns++;
                 if(cAns==4){
                     $(".btnContinue").css("display", "block");
                     $(".vistaContent").css("pointer-events", "none");
+                    getStatistics("vista", "seleccion");
                 }
             }
         })
@@ -52,5 +55,50 @@ function answerVista(identity){
             console.log('Error:', err)
         });
     });
+}
 
+function getStatistics(sense, activity){
+    fetch('/datos/'+sense+'&'+activity,{
+        type:'GET',
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        var info=response.data;
+        var acum=[{
+                "Vista1A":[{type:"A"}],
+                "Vista2A":[{type:"A"}],
+                "Vista1B":[{type:"B"}],
+                "Vista2B":[{type:"B"}],
+                "Vista1C":[{type:"C"}],
+                "Vista2C":[{type:"C"}],
+                "Vista1D":[{type:"D"}],
+                "Vista2D":[{type:"D"}]
+            }];
+        $("div.statistic").css("display", "block");
+        $("div.statistic").text("0");
+        var staticA=0;
+        var staticB=0;
+        var staticC=0;
+        var staticD=0;
+        info.forEach(function(e,i){
+            if(e.value==$("."+e.value).attr("class").split(" ")[1]){
+                acum[0][e.value].push({el:e.value});
+                
+                $("."+e.value).text(acum[0][e.value].length-1);
+                staticA=100/((acum[0]["Vista1A"].length-1)+(acum[0]["Vista2A"].length-1));
+                staticB=100/((acum[0]["Vista1B"].length-1)+(acum[0]["Vista2B"].length-1));
+                staticC=100/((acum[0]["Vista1C"].length-1)+(acum[0]["Vista2C"].length-1));
+                staticD=100/((acum[0]["Vista1D"].length-1)+(acum[0]["Vista2D"].length-1));
+            }
+            // console.log(((acum[0]["Vista1A"].length-1)+(acum[0]["Vista2A"].length-1)));
+        });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 }

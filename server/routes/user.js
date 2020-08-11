@@ -202,6 +202,29 @@ app.get("/senses/:user&:answer&:question", (req,res)=>{
     });
 });
 
+app.get("/datos/:sense&:activity", (req,res)=>{
+    let sense=req.params.sense;
+    let activity=req.params.activity;
+    Quest.find({sense, activity}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message: err
+            });
+        }
+        if(!data){
+            return res.status(400).json({
+                ok:false,
+                message:"not found"
+            });
+        }
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    });
+});
+
 app.get("/validate/:user&:answer&:activity", (req,res)=>{
     let user=req.params.user;
     let answer=req.params.answer;

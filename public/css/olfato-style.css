@@ -2,7 +2,7 @@ body{
     background-image: url('../images/fondo/Fondo2-sentidos.png');
     background-size: cover;
     background-repeat:no-repeat;
-    background-size: 100% 100vh;
+    background-size: 100% 140%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -25,4 +25,17 @@ body{
     font-family: 'Bungee', cursive;
     font-size:25px;
     color: #ffffff;
+}
+
+div.statistic{
+    position: absolute; 
+    z-index:1;
+    margin:40px;
+    background-color: #ffffff;
+    display: none;
+    font-family: 'Bungee', cursive;
+    font-size:25px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    opacity: 0.8;
 }

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     answerOlfato(identity);
+    
 });
 
 var cAns=0;
@@ -41,6 +42,7 @@ function answerOlfato(identity){
                     $(".olfatoContent").css("pointer-events", "none");
                     $(".alert").css("display", "block");
                     $(".alert").text("Ya has completado esta sección");
+                    getStatistics("olfato", "seleccion");
                 }
             }else{
                 $(this).css("box-shadow","0px 0px 5px 0px rgba(0,0,0,0.75)");
@@ -48,11 +50,59 @@ function answerOlfato(identity){
                 if(cAns==4){
                     $(".btnContinue").css("display", "block");
                     $(".olfatoContent").css("pointer-events", "none");
+                    getStatistics("olfato", "seleccion");
                 }
             }
         })
         .catch(function(err){
             console.log('Error:', err)
         });
+    });
+}
+
+function getStatistics(sense, activity){
+    fetch('/datos/'+sense+'&'+activity,{
+        type:'GET',
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        var info=response.data;
+        var acum=[{
+                "Olfato1A":[{type:"A"}],
+                "Olfato2A":[{type:"A"}],
+                "Olfato1B":[{type:"B"}],
+                "Olfato2B":[{type:"B"}],
+                "Olfato1C":[{type:"C"}],
+                "Olfato2C":[{type:"C"}],
+                "Olfato1D":[{type:"D"}],
+                "Olfato2D":[{type:"D"}]
+            }];
+        $("div.statistic").css("display", "block");
+        $("div.statistic").text("0");
+        var staticA=0;
+        var staticB=0;
+        var staticC=0;
+        var staticD=0;
+        info.forEach(function(e,i){
+            if(e.value==$("."+e.value).attr("class").split(" ")[1]){
+                acum[0][e.value].push({el:e.value});
+                
+                $("."+e.value).text(acum[0][e.value].length-1);
+                staticA=100/((acum[0]["Olfato1A"].length-1)+(acum[0]["Olfato2A"].length-1));
+                staticB=100/((acum[0]["Olfato1B"].length-1)+(acum[0]["Olfato2B"].length-1));
+                staticC=100/((acum[0]["Olfato1C"].length-1)+(acum[0]["Olfato2C"].length-1));
+                staticD=100/((acum[0]["Olfato1D"].length-1)+(acum[0]["Olfato2D"].length-1));
+            }
+            // console.log(((acum[0]["Olfato1A"].length-1)+(acum[0]["Olfato2A"].length-1)));
+        });
+        
+    })
+    .catch(function(err){
+        console.log(err);
     });
 }

@@ -62,3 +62,16 @@ body{
     outline:none !important;
     outline-width: 0 !important;
 }
+
+div.statistic{
+    position: absolute; 
+    z-index:1;
+    margin:40px;
+    background-color: #ffffff;
+    display: none;
+    font-family: 'Bungee', cursive;
+    font-size:25px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    opacity: 0.8;
+}
