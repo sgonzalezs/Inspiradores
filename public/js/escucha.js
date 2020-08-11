@@ -1,8 +1,11 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    
     let age=identity.age;
+    getValidate(identity, "escucha", age);
     
+});
+
+function answerEscuchaReflexion(identity, age){
     $("#questionEscucha").text();
     if(age<13){
         $("#questionEscucha").text("¿Qué consecuencias has vivido por no escuchar a tus papás?");
@@ -50,7 +53,37 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
-});
+}
+
+function getValidate(identity, sense, age){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&reflexion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerEscuchaReflexion(identity, age);
+            }
+        }
+        else{
+            $(".btnContinue").css("display", "block");
+            $(".btnSend").attr("disabled", true);
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
 
 function validateData(identity){
     if(!localStorage.getItem('senses')){

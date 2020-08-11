@@ -1,6 +1,6 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    answerGusto(identity);
+    getValidate(identity, "gusto");
 });
 
 var cAns=0;
@@ -35,11 +35,11 @@ function answerGusto(identity){
         .then(function(response){
             if(!response.ok){
                 if(response.message=="exists"){
-                    $(".btnContinue").css("display", "block");
-                    $(".gustoContent").css("pointer-events", "none");
-                    $(".alert").css("display", "block");
-                    $(".alert").text("Ya has completado esta sección");
-                    getStatistics("gusto", "seleccion");
+                    // $(".btnContinue").css("display", "block");
+                    // $(".gustoContent").css("pointer-events", "none");
+                    // $(".alert").css("display", "block");
+                    // $(".alert").text("Ya has completado esta sección");
+                    // getStatistics("gusto", "seleccion");
                 }
             }else{
                 cAns++;
@@ -99,6 +99,39 @@ function getStatistics(sense, activity){
             }
             // console.log(acum);
         });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&seleccion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerGusto(identity);
+            }
+        }
+        if(response.data.length<5){
+            answerGusto(identity);
+        }else{
+            $(".btnContinue").css("display", "block");
+            $(".gustoContent").css("pointer-events", "none");
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+            getStatistics("gusto", "seleccion");
+        }
     })
     .catch(function(err){
         console.log(err);

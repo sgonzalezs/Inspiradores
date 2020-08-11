@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(require('./server/routes/user.js'));
 app.use(require('./server/routes/like.js'));
 app.use(require('./server/routes/trophy.js'));
+app.use(require('./server/routes/validate.js'));
 
 app.listen(port, (err)=>{
     if(err){

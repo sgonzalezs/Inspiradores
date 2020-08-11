@@ -1,7 +1,6 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    answerVista(identity);
-    
+    getValidate(identity, "vista")
 });
 
 var cAns=0;
@@ -88,15 +87,43 @@ function getStatistics(sense, activity){
         info.forEach(function(e,i){
             if(e.value==$("."+e.value).attr("class").split(" ")[1]){
                 acum[0][e.value].push({el:e.value});
-                
                 $("."+e.value).text(acum[0][e.value].length-1);
-                staticA=100/((acum[0]["Vista1A"].length-1)+(acum[0]["Vista2A"].length-1));
-                staticB=100/((acum[0]["Vista1B"].length-1)+(acum[0]["Vista2B"].length-1));
-                staticC=100/((acum[0]["Vista1C"].length-1)+(acum[0]["Vista2C"].length-1));
-                staticD=100/((acum[0]["Vista1D"].length-1)+(acum[0]["Vista2D"].length-1));
             }
-            // console.log(((acum[0]["Vista1A"].length-1)+(acum[0]["Vista2A"].length-1)));
         });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&seleccion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerVista(identity);
+            }
+        }
+        if(response.data.length<4){
+            answerVista(identity);
+        }
+        if(response.data.length==4){
+            $(".btnContinue").css("display", "block");
+            $(".vistaContent").css("pointer-events", "none");
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+            getStatistics("vista", "seleccion");
+        }
     })
     .catch(function(err){
         console.log(err);

@@ -1,6 +1,9 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
+    getValidate(identity, "olfato");
+});
 
+function answerOlfatoRelfexion(identity){
     $("#questionOlfato").text();
     $("#questionOlfato").text("¿Tienes a alguien para recordar? ¿con qué olor lo identificas?");
    
@@ -43,8 +46,37 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
+}
 
-});
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&reflexion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerOlfatoRelfexion(identity);
+            }
+        }
+        else{
+            $(".btnContinue").css("display", "block");
+            $(".btnSend").attr("disabled", true);
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
 
 function validateData(identity){
     if(!localStorage.getItem('senses')){

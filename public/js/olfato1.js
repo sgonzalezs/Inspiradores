@@ -1,6 +1,6 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    answerOlfato(identity);
+    getValidate(identity, "olfato");
     
 });
 
@@ -38,11 +38,11 @@ function answerOlfato(identity){
         .then(function(response){
             if(!response.ok){
                 if(response.message=="exists"){
-                    $(".btnContinue").css("display", "block");
-                    $(".olfatoContent").css("pointer-events", "none");
-                    $(".alert").css("display", "block");
-                    $(".alert").text("Ya has completado esta sección");
-                    getStatistics("olfato", "seleccion");
+                    // $(".btnContinue").css("display", "block");
+                    // $(".olfatoContent").css("pointer-events", "none");
+                    // $(".alert").css("display", "block");
+                    // $(".alert").text("Ya has completado esta sección");
+                    // getStatistics("olfato", "seleccion");
                 }
             }else{
                 $(this).css("box-shadow","0px 0px 5px 0px rgba(0,0,0,0.75)");
@@ -101,6 +101,40 @@ function getStatistics(sense, activity){
             // console.log(((acum[0]["Olfato1A"].length-1)+(acum[0]["Olfato2A"].length-1)));
         });
         
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&seleccion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerOlfato(identity);
+            }
+        }
+        if(response.data.length<4){
+            answerOlfato(identity);
+        }else{
+            $(".btnContinue").css("display", "block");
+            $(".olfatoContent").css("pointer-events", "none");
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+            getStatistics("olfato", "seleccion");
+        }
+
     })
     .catch(function(err){
         console.log(err);

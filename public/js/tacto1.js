@@ -1,6 +1,9 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    
+    getValidate(identity, "tacto");
+});
+
+function answerTacto(identity){
     var pictures=[ 
         'abuelito',
         'Cantante', 
@@ -60,5 +63,39 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
+}
 
-});
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&seleccion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerTacto(identity);
+            }
+        }
+
+        if(response.data.length<10){
+            answerTacto(identity);
+        }
+
+        if(response.data.length==10){
+            $(".groupButtons button").attr("disabled", true);
+            $(".btnContinue").css("display", "block");
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}

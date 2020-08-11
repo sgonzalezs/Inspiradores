@@ -1,6 +1,9 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
+    getValidate(identity, "tacto");
+});
 
+function answerTactoRelfexion(identity){
     $("#questionTacto").text();
     $("#questionTacto").text("Con la Covid-19 se está replanteando a nivel mundial el contacto físico con los demás ¿cómo sientes que esto ha afectado tu relación con tus amigos más cercanos?.");
     
@@ -45,8 +48,37 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
+}
 
-});
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&reflexion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerTactoRelfexion(identity);
+            }
+        }
+        else{
+            $(".btnContinue").css("display", "block");
+            $(".btnSend").attr("disabled", true);
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
 
 function validateData(identity){
     if(!localStorage.getItem('senses')){

@@ -1,6 +1,8 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    answerMusica(identity);
+
+    getValidate(identity, "escucha");
+    // answerMusica(identity);
 });
 
 function answerMusica(identity){
@@ -40,5 +42,34 @@ function answerMusica(identity){
             console.log('Error:', err)
         });
     });
-    
+}
+
+function getValidate(identity, sense){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&seleccion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerMusica(identity);
+            }
+        }
+        else{
+            $(".btnAudio").attr("disabled", true);
+            $(".btnContinue").css("display", "block");
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 }
