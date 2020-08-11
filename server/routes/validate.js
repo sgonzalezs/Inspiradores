@@ -32,7 +32,7 @@ app.get("/seleccion/:user&:sense&:activity", (req,res)=>{
         });
     }
 
-    if(activity=="reflexion"){
+    if(activity=="reflexion" || activity=="recorridos"){
         Quest.findOne({user, sense, activity}, (err, data)=>{
             if(err){
                 return res.status(400).json({

@@ -2,6 +2,10 @@ $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let age=identity.age;
     
+    getValidate(identity, "inspiradores", age)
+});
+
+function answerInspiradores(identity, age){
     $("#question").text();
     if(age<13){
         $("#question").text("¿Quisieras ser como alguno de ellos?");
@@ -15,7 +19,7 @@ $(document).ready(function(){
             id:identity._id,
             answer:$("#txtAnswer").val(),
             question:$("#question").text(),
-            sense:'reflexion',
+            sense:'inspiradores',
             activity:'reflexion'
         }
 
@@ -48,4 +52,34 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
-});
+}
+
+function getValidate(identity, sense, age){
+    let user=identity._id;
+
+    fetch("/seleccion/"+user+"&"+sense+"&reflexion",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerInspiradores(identity, age);
+            }
+        }
+        else{
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+            $(".btnContinue").css("display", "block");
+            $(".btnSend").attr("disabled", true);
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}

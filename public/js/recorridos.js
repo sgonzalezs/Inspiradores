@@ -1,7 +1,7 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let type=$(".paragraph").attr("id").split("-")[1];
-
+    getValidate(identity, type);
     if(!localStorage.getItem('recorridos')){
         localStorage.setItem('recorridos', JSON.stringify(
             {
@@ -14,6 +14,10 @@ $(document).ready(function(){
         );
     }
 
+    
+});
+
+function answerReflexionRecorridos(identity, type){
     $("#form").on("submit", function(e){
         e.preventDefault();
         let data={
@@ -55,7 +59,34 @@ $(document).ready(function(){
             console.log('Error:', err)
         });
     });
-});
+}
 
-
+function getValidate(identity, sense){
+    let user=identity._id;
+    fetch("/seleccion/"+user+"&"+sense+"&recorridos",{
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="not found"){
+                answerReflexionRecorridos(identity, sense);
+            }
+        }
+        else{
+            $(".alert").css("display", "block");
+            $(".alert").text("Ya has completado esta sección");
+            $(".btnContinue").css("display", "block");
+            $(".btnSend").attr("disabled", true);
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
 
