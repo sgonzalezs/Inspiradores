@@ -19,6 +19,7 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='./css/style.css'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='./css/olas-style.css'> -->
 </head>
@@ -27,20 +28,63 @@
         <section class="row">
             <div class="col-sm-4 offset-sm-6">
                 <form id="formLogin" class="formLogin">
-                    <div class="form-group formTitle float-right">
-                        <h4>INSCRÍBETE</h4>
+                    <div class="row ">
+                        <div class=" formTitle">
+                            <h4 class="">INSCRÍBETE</h4>
+                        </div>
+                    </div>
+                    <div class="form-group subTitleLogin">
+                        <p>Informacion de usuario</p>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="txtName" name="txtName" placeholder="Nombre" required/>
+                        <input type="text" id="txtName" name="txtName" 
+                            placeholder="Nombre de usuario" required />
                     </div>
                     <div class="form-group">
-                        <input type="email" id="txtEmail" name="txtEmail" placeholder="Correo" required/>
+                        <input type="email" id="txtEmail" name="txtEmail" 
+                            placeholder="Correo electrónico" required  />
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <select id="slc_document" name="slc_document" required >
+                                <option value="">Tipo de documento</option>
+                                <option value="t.i">T.I</option>
+                                <option value="c.c">C.C</option>
+                            </select>
+                        </div>
+                        <div class=" col-md-7">
+                            <div class="input-group">
+                                <div class="input-group-icon">N°</div>
+                                <div class="input-group-area">
+                                    <input type="number" id="n_document" name="n_document" required>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
+                        <input type="number" id="txt_number" name="txt_number" placeholder="Whatsapp" required/>
+                    </div>
+                    <!-- <div class="form-group">
                         <input type="number" id="txtAge" name="txtAge" placeholder="Edad" required/>
+                    </div> -->
+                    <div class="form-group ">
+                        <p class="paragraphLogin">
+                            ¡Hola! ahora haces parte de esta aventura y para poder continuar con la busqueda del tesoro,
+                            debemos asegurarnos de contar con la autorización de tus padres o acudientes
+                        </p>
+                        <p class="subTitleParent">Informacion de acudiente</p>
                     </div>
                     <div class="form-group">
+                        <input type="text" id="txt_nameParent" name="txt_nameParent" placeholder="Nombre completo" 
+                        required/>
+                        <input type="number" id="txt_docParent" name="txt_docParent" 
+                        placeholder="Numero de documento" style="margin-top: 7px;" 
+                        required/>
+                    </div>
+                    <div class="form-group groupFooter">
                         <button type="Submit" class="btnLogin">INGRESA</button>
+                        <a href="#">Aviso de privacidad*</a>
+                        <a href="#">Contáctenos</a>
                     </div>
                 </form>
             </div>

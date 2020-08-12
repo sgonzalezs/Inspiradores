@@ -42,7 +42,7 @@ $(document).ready(function(){
 });
 
 function getSensesComplete(identity){
-
+    
     fetch('/premios/'+identity._id,{
         method:'GET',
         headers:{
@@ -66,7 +66,6 @@ function getSensesComplete(identity){
                 if(sense=="escucha"||sense=="vista"||sense=="tacto"||sense=="olfato"||sense=="gusto"){
                     senses.push(sense);
                 }
-                // $("."+sense).css("opacity", "0.8");
                 $("."+sense).css("pointer-events", "none");
                 $("."+sense).attr("src", "../images/sentidos/"+sense+"_checked.png");
             });

@@ -225,33 +225,6 @@ app.get("/datos/:sense&:activity", (req,res)=>{
     });
 });
 
-app.get("/validate/:user&:answer&:activity", (req,res)=>{
-    let user=req.params.user;
-    let answer=req.params.answer;
-    let activity=req.params.activity;
-
-    Quest.findOne({user, sense:answer, activity}, (err, dataFound)=>{
-        if(err){
-            return res.status(400).json({
-                ok:false,
-                message: err
-            });
-        }
-
-        if(!dataFound){
-            return res.status(404).json({
-                ok:false,
-                message:"not found"
-            });
-        }
-
-        return res.status(200).json({
-            ok:true,
-            message:"complete"
-        }); 
-    });
-});
-
 app.post("/insp", (req,res)=>{
     let inspiring=new Inspiring({
         name:req.body.name,
@@ -409,8 +382,12 @@ app.post("/registro", (req,res)=>{
 		}else{
 			let user=new User({
 				name:body.name,
-				email:body.email,
-				age:body.age
+                email:body.email,
+                typeDoc:body.type_doc,
+                document:body.document,
+                number:body.number,
+                parentName:body.parent_name,
+                parentDoc:body.parent_doc
 			});
 			user.save((error, newUser)=>{
 				if(error){

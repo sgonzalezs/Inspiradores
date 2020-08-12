@@ -3,19 +3,23 @@ $(document).ready(function(){
     $("#formLogin").on('submit', function(e){
         e.preventDefault();
 
-		if(localStorage.getItem('token')){
+		// if(localStorage.getItem('token')){
 			
-			localStorage.removeItem('token');
-			localStorage.removeItem('user');
-			localStorage.removeItem('identity');
-			localStorage.removeItem('userAvatar');
-			localStorage.removeItem('senses');
-		}
+		// 	localStorage.removeItem('token');
+		// 	localStorage.removeItem('user');
+		// 	localStorage.removeItem('identity');
+		// 	localStorage.removeItem('userAvatar');
+		// 	localStorage.removeItem('senses');
+		// }
 
         var data = {
 			name: $("#txtName").val(),
 			email: $("#txtEmail").val(),
-			age: $("#txtAge").val()
+			type_doc:$("#slc_document").val(),
+			document:$("#n_document").val(),
+			number:$("#txt_number").val(),
+			parent_name:$("#txt_nameParent").val(),
+			parent_doc:$("#txt_docParent").val()
 		};
 
 		fetch('/registro', {

@@ -2,7 +2,7 @@ $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     validateInspirings(identity);
     loadRecorridos(identity);
-
+    getSensesComplete(identity);
     if(!localStorage.getItem('inspiring')){
         localStorage.setItem('inspiring', JSON.stringify(
             {
@@ -127,4 +127,47 @@ function validateInspirings(identity){
             });
         }
     }
+}
+
+function getSensesComplete(identity){
+    
+    fetch('/premios/'+identity._id,{
+        method:'GET',
+        headers:{
+            'Content-type':'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(!response.ok){
+            if(response.message=="No data"){
+                console.log(response);
+            }
+        }else{
+            let trophies=response.message;
+            let senses=[];
+            
+            trophies.forEach(function(e,i){
+                var sense=trophies[i].sense;
+                if(sense=="escucha"||sense=="vista"||sense=="tacto"||sense=="olfato"||sense=="gusto"){
+                    senses.push(sense);
+                }
+                $("."+sense).css("pointer-events", "none");
+                $("."+sense).attr("src", "../images/sentidos/"+sense+"_checked.png");
+            });
+            if(senses.length<5){
+                $(".alert").css("display", "block");
+                $(".redirectInspirings").attr("href", "/sentido");
+                $(".btnContinue").css("display", "block");
+                $(".alert").text("Debes completar todos los sentidos para continuar con esta sección");
+                $(".imagesSection").css("pointer-events", "none");
+            }
+            
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    }); 
 }

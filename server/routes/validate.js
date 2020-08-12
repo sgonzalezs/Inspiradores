@@ -57,4 +57,31 @@ app.get("/seleccion/:user&:sense&:activity", (req,res)=>{
     
 });
 
+app.get("/validate/:user&:answer&:activity", (req,res)=>{
+    let user=req.params.user;
+    let answer=req.params.answer;
+    let activity=req.params.activity;
+
+    Quest.findOne({user, sense:answer, activity}, (err, dataFound)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message: err
+            });
+        }
+
+        if(!dataFound){
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            message:"complete"
+        }); 
+    });
+});
+
 module.exports=app;
