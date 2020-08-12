@@ -74,5 +74,31 @@ app.post("/vote", (req,res)=>{
     
 });
 
+app.get("/validate-like/:user&:inspiring", (req,res)=>{
+    let user=req.params.user;
+    let inspiring=req.params.inspiring;
+
+    Vote.findOne({user, inspiring}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+        if(!data){
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            });
+           
+        }
+
+        return res.status(200).json({
+            ok:true,
+            message:"complete"
+        });
+    });
+});
+
 
 module.exports=app;

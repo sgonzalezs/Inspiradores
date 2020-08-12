@@ -25,15 +25,12 @@ $(document).ready(function(){
                 if(response.message=="exists"){
                     $(".btnContinue").css("display", "block");
                     $(".groupButtons").css("pointer-events", "none");
-                    getVotes(name);
                     $(".alert").css("display", "block");
                     $(".alert").text("Ya calificaste este video");
                 }
             }else{
                 $(".btnContinue").css("display", "block");
                 $(".groupButtons").css("pointer-events", "none");
-                getVotes(name);
-                
             }
         })
         .catch(function(err){
@@ -43,35 +40,3 @@ $(document).ready(function(){
 
 });
 
-function getVotes(user){
-    fetch('/votos/'+user, {
-        method: 'GET',
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      })
-    .then(function(res){
-        return res.json();
-    })
-    .then(function(response){
-        if(!response.ok){
-            console.log(response.message);
-        }else{
-            var likes=0;
-            var dislikes=0;
-            for(var i=0; i<response.data.length; i++){
-                if(response.data[i].like){
-                    likes++;
-                }else{
-                    dislikes++;
-                }
-            }
-            $(".votes").text();
-            $(".like").text(likes);
-            $(".dislike").text(dislikes);
-        }
-    })
-    .catch(function(err){
-        console.log('Error:', err)
-    });
-}

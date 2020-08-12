@@ -1,7 +1,6 @@
 $(document).ready(function(){
     var identity=JSON.parse(localStorage.getItem('identity'));
     loadInspiradores(identity);
-    // validateSenses(identity);
     getSensesComplete(identity);
     
     let image=localStorage.getItem('userAvatar');
@@ -42,7 +41,7 @@ $(document).ready(function(){
 });
 
 function getSensesComplete(identity){
-    
+
     fetch('/premios/'+identity._id,{
         method:'GET',
         headers:{
@@ -168,7 +167,5 @@ function loadInspiradores(identity){
                 console.log('Error:', err);
             });
         }
-        
     }
-   
 }
