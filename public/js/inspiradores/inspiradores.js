@@ -3,42 +3,7 @@ $(document).ready(function(){
     // validateInspirings(identity);
     loadRecorridos(identity);
     getSensesComplete(identity);
-    // if(!localStorage.getItem('inspiring')){
-    //     localStorage.setItem('inspiring', JSON.stringify(
-    //         {
-    //             user:identity._id,
-    //             arte:false,
-    //             ciencia:false,
-    //             cuerpo:false,
-    //             sociedad:false
-    //         })
-    //     );
-
-    //     localStorage.setItem('videos', JSON.stringify(
-    //         {
-    //             0:false,
-    //             1:false,
-    //             2:false,
-    //             3:false,
-    //             4:false,
-    //             5:false,
-    //             6:false,
-    //             7:false,
-    //         })
-    //     );
-    // }
-
-    // $(".imagesSection img").click(function(){
-    //     let type=$(this).attr("value").split("-")[0];
-    //     let video=$(this).attr("value").split("-")[1];
-    //     let inspirings=JSON.parse(localStorage.getItem('inspiring'));
-    //     inspirings[type]=true;
-    //     localStorage.setItem('inspiring', JSON.stringify(inspirings));
-
-    //     let videos=JSON.parse(localStorage.getItem('videos'));
-    //     videos[video]=true;
-    //     localStorage.setItem('videos', JSON.stringify(videos));
-    // });
+    
 });
 
 function loadRecorridos(identity){

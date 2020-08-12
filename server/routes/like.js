@@ -53,6 +53,7 @@ app.post("/vote", (req,res)=>{
         let vote=new Vote({
             inspiring:body.name,
             user:body.user,
+            category:body.category,
             like,
             dislike
         });

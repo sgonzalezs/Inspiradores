@@ -1,18 +1,11 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    let age=identity.age;
-    var video=document.getElementById('video');
     validateVote(identity);
-    if(age<13){
-        video.src="https://www.youtube.com/embed/C04DNSS8rL4";
-    }else{
-        video.src="https://www.youtube.com/embed/2vxGP3zWPFY";
-    }
 });
 
 function validateVote(identity){
     let user=identity._id;
-    let inspiring="Melissa Toro";
+    let inspiring="Boyka";
 
     fetch("/validate-like/"+user+"&"+inspiring, {
         type:"GET",
@@ -24,7 +17,7 @@ function validateVote(identity){
         return res.json();
     })
     .then(function(response){
-        console.log(response.message);
+        console.log(response);
         if(!response.ok){
             if(response.message=="not found"){
                 
@@ -44,7 +37,7 @@ function validateVote(identity){
 }
 
 function getVotes(){
-    fetch('/votos/Melissa Toro', {
+    fetch('/votos/Boyka', {
         method: 'GET',
         headers:{
           'Content-Type': 'application/json'

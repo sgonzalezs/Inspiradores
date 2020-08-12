@@ -11,6 +11,10 @@ let voteSchema=new Schema({
         type:String,
         required:true
     },
+    category:{
+        type:String,
+        required:[true, "Debes ingresar una categoria"]
+    },
     like:{
         type:Boolean,
         required:true
