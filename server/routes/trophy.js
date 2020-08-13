@@ -28,6 +28,33 @@ app.get("/premios/:user", (req,res)=>{
     });
 });
 
+app.put("/puntaje", (req,res)=>{
+    let body=req.body;
+    let update={
+        point:body.points
+    };
+
+    Tropy.findOneAndUpdate({user:body.user, sense:body.sense}, update, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        if(!data){
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            })
+        }
+        return res.status(200).json({
+            ok:true,
+            message:"updated"
+        });
+    });
+});
+
 app.post("/premio", (req,res)=>{
     let body=req.body;
 

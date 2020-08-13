@@ -38,23 +38,23 @@ $(document).ready(function(){
         // validateReflection(identity, sense,category);
     });
 
-    $(".btnRecompensa").click(function(){
+    $(".btnRecorridos").click(function(){
         
         let type=$(this).attr("value");
         let puntaje=0;
         if(type=="recorridos"){
             puntaje=300;
         }
-        if(type=="inspiradores"){
-            let videos=JSON.parse(localStorage.getItem('videos'));
-            let count=0;
-            for(var i=0; i<=7; i++){
-                if(videos[i]){
-                    count++;
-                }
-            }
-            puntaje=count*75;
-        }
+        // if(type=="inspiradores"){
+        //     let videos=JSON.parse(localStorage.getItem('videos'));
+        //     let count=0;
+        //     for(var i=0; i<=7; i++){
+        //         if(videos[i]){
+        //             count++;
+        //         }
+        //     }
+        //     puntaje=count*75;
+        // }
         
         let trophy=$(".trophyImg").attr("value");
         let data={

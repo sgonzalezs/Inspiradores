@@ -22,6 +22,25 @@ app.get("/votos/:user", (req,res)=>{
     });
 });
 
+app.get("/validate-votes/:user", (req,res)=>{
+    let user=req.params.user;
+    Vote.find({user}, (err, dataFounded)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        if(dataFounded){
+            return res.status(200).json({
+                ok:true,
+                data:dataFounded
+            });
+        }
+    });
+});
+
 app.post("/vote", (req,res)=>{
     let body=req.body;
     let like=false;

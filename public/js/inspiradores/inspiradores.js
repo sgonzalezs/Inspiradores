@@ -1,10 +1,51 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     // validateInspirings(identity);
-    loadRecorridos(identity);
+    // loadRecorridos(identity);
     getSensesComplete(identity);
-    
+    getVotesvalidate(identity)
 });
+
+function getVotesvalidate(identity){
+    let user=identity._id;
+
+    fetch("/validate-votes/"+user, {
+        type:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.ok){
+            var data=[];
+            response.data.forEach(function(e,i){
+                var category=e.category;
+                if(category=="Cuerpo" || category=="Arte" || category=="Sociedad" || category=="Ciencia"){
+                    data.push(category);  
+                }
+                
+            });
+            
+            var data_filter = data.filter( onlyUnique );
+            if(data_filter.length==4){
+                $(".alert").css("display", "block");
+                $(".alert").text("Haz clic en continuar");
+                $(".btnContinue").css("display", "block");
+            }
+        }
+    })
+    .catch(function(err){
+
+    });
+}
+
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
 
 function loadRecorridos(identity){
     let user=identity._id;
@@ -118,8 +159,8 @@ function getSensesComplete(identity){
                 if(sense=="escucha"||sense=="vista"||sense=="tacto"||sense=="olfato"||sense=="gusto"){
                     senses.push(sense);
                 }
-                $("."+sense).css("pointer-events", "none");
-                $("."+sense).attr("src", "../images/sentidos/"+sense+"_checked.png");
+                // $("."+sense).css("pointer-events", "none");
+                // $("."+sense).attr("src", "../images/sentidos/"+sense+"_checked.png");
             });
             if(senses.length<5){
                 $(".alert").css("display", "block");
