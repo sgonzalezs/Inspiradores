@@ -79,9 +79,17 @@ body{
     border-right: 2px solid white;
 }
 
+.currentNav img{
+    margin:15px 0px 0px 20px;
+    position: absolute;
+    z-index: 1;
+}
+
 .currentNav p{
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 70px;
+    padding-left: 85px;
+    padding-top: 10px;
+    font-size: 27px;
 }
 
 /* ---------------------------------------------------------- */

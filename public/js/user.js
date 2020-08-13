@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    getUserInfo();
+});
+
 function getUserInfo(){
     let indentity=JSON.parse(localStorage.getItem('identity'));
     $(".userName").text(indentity.name);
@@ -25,7 +29,7 @@ function getUserInfo(){
             let trophies=response.message;
             let senses=[];
             $(".trophiesGroup").empty();
-            $("p.points").text();
+            $("p.points").text(0);
             var points=0;
             trophies.forEach(function(e,i){
                 var sense=trophies[i].sense;

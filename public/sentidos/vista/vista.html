@@ -17,8 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
     <!-- <link rel='stylesheet' type='text/css' href='./css/style.css'> -->
-    <link rel='stylesheet' type='text/css' href='../../css/navbar.css'>
+    <!-- <link rel='stylesheet' type='text/css' href='../../css/navbar.css'> -->
     <link rel='stylesheet' type='text/css' href='../../css/escucha-style.css'>
+    <link rel='stylesheet' type='text/css' href='../../css/avatar-style.css'>
     <link rel='stylesheet' type='text/css' href='../../css/olfato-style.css'>
     <link rel='stylesheet' type='text/css' href='../../css/user-style.css'>
 </head>
@@ -29,9 +30,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="/sentido"><p>INICIO</p> </a>
-              <a class="nav-item nav-link active currentNav" href="#"><p>RETA A UN AMIGO</p></a>
-              <a class="nav-item nav-link active" href="#"><p>EVENTOS</p></a>
+                <a class="nav-item nav-link active" href="/sentido"><p>INICIO</p></a>
+                    <div class="row currentNav">
+                        <img src="../../images/icons/points.png" width="170px">
+                        <p class="points ml-1"></p> 
+                    </div>
+                <a class="nav-item nav-link active" href="#"><p>EVENTOS</p></a>
             </div>
         </div>
         <div class="avatarSelected" id="avatarUser">
@@ -212,7 +216,7 @@
                     
                 </div>
                 <a href="/vista-reflexion">
-                    <button class="btnContinue" type="button" style="display: none;">Siguiente</button>      
+                    <button class="btnContinue" style="font-size: 20px;" type="button" style="display: none;">Siguiente</button>      
                 </a> 
             </div>
         </section>

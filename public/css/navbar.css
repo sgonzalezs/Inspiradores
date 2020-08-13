@@ -53,13 +53,22 @@
     height: auto;
 }
 
-.currentNav{
+
+/* .currentNav{
     margin:0 60px 0 60px;
     border-left: 2px solid white;
     border-right: 2px solid white;
 }
 
-.currentNav p{
-    padding-left: 50px;
-    padding-right: 50px;
+.currentNav img{
+    margin:15px 0px 0px 20px;
+    position: absolute;
+    z-index: 1;
 }
+
+.currentNav p{
+    padding-right: 70px;
+    padding-left: 85px;
+    padding-top: 10px;
+    font-size: 27px;
+} */
