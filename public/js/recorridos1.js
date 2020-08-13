@@ -1,8 +1,34 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    validateRecorridos(identity);
-    loadPremiacion(identity);
+    // validateRecorridos(identity);
+    getRecorridos(identity);
+    // loadPremiacion(identity);
 });
+
+function getRecorridos(identity){
+    let user=identity._id;
+    fetch("/recorridos-validacion/"+user+"&recorridos", {
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.ok){
+            if(response.data.length>0){
+                $(".alert").css("display", "block");
+                $(".alert").text("Haz clic en continuar");
+                $(".btnContinue").css("display", "block");
+            }
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
 
 function loadPremiacion(identity){
     let user=identity._id;

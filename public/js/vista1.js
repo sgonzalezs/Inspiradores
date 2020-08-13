@@ -21,7 +21,7 @@ function answerVista(identity){
             sense:'vista',
             activity:'seleccion'
         }
-
+        cAns++;
         fetch('/respuesta', {
             method: 'POST', 
             body: JSON.stringify(data),
@@ -35,14 +35,14 @@ function answerVista(identity){
         .then(function(response){
             if(!response.ok){
                 if(response.message=="exists"){
-                    $(".btnContinue").css("display", "block");
-                    $(".vistaContent").css("pointer-events", "none");
-                    $(".alert").css("display", "block");
-                    $(".alert").text("Ya has completado esta sección");
-                    getStatistics("vista", "seleccion");
+                    // $(".btnContinue").css("display", "block");
+                    // $(".vistaContent").css("pointer-events", "none");
+                    // $(".alert").css("display", "block");
+                    // $(".alert").text("Ya has completado esta sección");
+                    // getStatistics("vista", "seleccion");
                 }
             }else{
-                cAns++;
+                
                 if(cAns==4){
                     $(".btnContinue").css("display", "block");
                     $(".vistaContent").css("pointer-events", "none");

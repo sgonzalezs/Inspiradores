@@ -26,7 +26,6 @@ function getVotesvalidate(identity){
                 if(category=="Cuerpo" || category=="Arte" || category=="Sociedad" || category=="Ciencia"){
                     data.push(category);  
                 }
-                
             });
             
             var data_filter = data.filter( onlyUnique );
@@ -47,92 +46,92 @@ function onlyUnique(value, index, self) {
 }
 
 
-function loadRecorridos(identity){
-    let user=identity._id;
-    let answer='complete';
-    let question='inspirings';
+// function loadRecorridos(identity){
+//     let user=identity._id;
+//     let answer='complete';
+//     let question='inspirings';
 
-    fetch('/senses/'+user+"&"+answer+"&"+question, {
-        method: 'GET',
-        headers:{
-        'Content-Type': 'application/json'
-        }
-    })
-    .then(function(res){
-        return res.json();
-    })
-    .then(function(response){
-        if(!response.ok){
-            if(response.message=="not found"){
+//     fetch('/senses/'+user+"&"+answer+"&"+question, {
+//         method: 'GET',
+//         headers:{
+//         'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(function(res){
+//         return res.json();
+//     })
+//     .then(function(response){
+//         if(!response.ok){
+//             if(response.message=="not found"){
 
-                $(".alert").css("display", "none");
-                $(".btnContinue").css("display", "none");
-                $(".alert").text("");
-            }
-        }else{
-            $(".alert").css("display", "block");
-            $(".alert").text("Haz clic en continuar");
-            $(".btnContinue").css("display", "block");
-        }
-    })
-    .catch(function(err){
-        console.log('Error:', err);
-    });
-}
+//                 $(".alert").css("display", "none");
+//                 $(".btnContinue").css("display", "none");
+//                 $(".alert").text("");
+//             }
+//         }else{
+//             $(".alert").css("display", "block");
+//             $(".alert").text("Haz clic en continuar");
+//             $(".btnContinue").css("display", "block");
+//         }
+//     })
+//     .catch(function(err){
+//         console.log('Error:', err);
+//     });
+// }
 
-function validateInspirings(identity){
-    let inspirings=JSON.parse(localStorage.getItem('inspiring'));
+// function validateInspirings(identity){
+//     let inspirings=JSON.parse(localStorage.getItem('inspiring'));
 
-    if(inspirings){
-        let validate={
-            arte:inspirings.arte,
-            ciencia:inspirings.ciencia,
-            cuerpo:inspirings.cuerpo,
-            sociedad:inspirings.sociedad
-        };
+//     if(inspirings){
+//         let validate={
+//             arte:inspirings.arte,
+//             ciencia:inspirings.ciencia,
+//             cuerpo:inspirings.cuerpo,
+//             sociedad:inspirings.sociedad
+//         };
 
-        if(validate.arte && validate.ciencia &&validate.cuerpo &&validate.sociedad){
-            $(".alert").css("display", "block");
-            $(".alert").text("Haz clic en continuar");
-            $(".btnContinue").css("display", "block");
+//         if(validate.arte && validate.ciencia &&validate.cuerpo &&validate.sociedad){
+//             $(".alert").css("display", "block");
+//             $(".alert").text("Haz clic en continuar");
+//             $(".btnContinue").css("display", "block");
 
-            let data={
-                id:identity._id,
-                answer:"complete",
-                question:"inspirings",
-                sense:'all',
-                activity:'validate'
-            };
+//             let data={
+//                 id:identity._id,
+//                 answer:"complete",
+//                 question:"inspirings",
+//                 sense:'all',
+//                 activity:'validate'
+//             };
 
-            fetch('/respuesta', {
-                method: 'POST', 
-                body: JSON.stringify(data),
-                headers:{
-                'Content-Type': 'application/json'
-                }
-            })
-            .then(function(res){
-                return res.json();
-            })
-            .then(function(response){
-                if(!response.ok){
-                    if(response.message=="exists"){
-                        $(".alert").css("display", "block");
-                        $(".btnContinue").css("display", "block");
-                        $(".alert").text("Haz clic en continuar");
-                    }
-                }else{
-                    $(".alert").css("display", "block");
-                    $(".btnContinue").css("display", "block");
-                    $(".alert").text("Haz clic en continuar");
-                }
-            })
-            .catch(function(err){
-                console.log('Error:', err);
-            });
-        }
-    }
-}
+//             fetch('/respuesta', {
+//                 method: 'POST', 
+//                 body: JSON.stringify(data),
+//                 headers:{
+//                 'Content-Type': 'application/json'
+//                 }
+//             })
+//             .then(function(res){
+//                 return res.json();
+//             })
+//             .then(function(response){
+//                 if(!response.ok){
+//                     if(response.message=="exists"){
+//                         $(".alert").css("display", "block");
+//                         $(".btnContinue").css("display", "block");
+//                         $(".alert").text("Haz clic en continuar");
+//                     }
+//                 }else{
+//                     $(".alert").css("display", "block");
+//                     $(".btnContinue").css("display", "block");
+//                     $(".alert").text("Haz clic en continuar");
+//                 }
+//             })
+//             .catch(function(err){
+//                 console.log('Error:', err);
+//             });
+//         }
+//     }
+// }
 
 function getSensesComplete(identity){
     

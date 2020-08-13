@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var identity=JSON.parse(localStorage.getItem('identity'));
-    loadInspiradores(identity);
+    // loadInspiradores(identity);
     getSensesComplete(identity);
     
     let image=localStorage.getItem('userAvatar');

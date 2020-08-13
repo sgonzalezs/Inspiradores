@@ -27,6 +27,7 @@ function answerTacto(identity){
             sense:'tacto',
             activity:'seleccion'
         }
+        count++;
         fetch('/respuesta', {
             method: 'POST', 
             body: JSON.stringify(data),
@@ -38,19 +39,17 @@ function answerTacto(identity){
             return res.json();
         })
         .then(function(response){
+            $(".pictureTitle").text();
+            $(".pictureTitle").text(pictures[count]);
+            $(".contentTacto img").attr("src", "../images/sentidos/tacto/tipos/"+pictures[count]+".jpg");
             if(!response.ok){
                 if(response.message=="exists"){
-                    $(".groupButtons button").attr("disabled", true);
-                    $(".btnContinue").css("display", "block");
-
-                    $(".alert").css("display", "block");
-                    $(".alert").text("Ya has completado esta sección");
+                    // $(".groupButtons button").attr("disabled", true);
+                    // $(".btnContinue").css("display", "block");
+                    // $(".alert").css("display", "block");
+                    // $(".alert").text("Ya has completado esta sección");
                 }
             }else{
-                count++;
-                $(".pictureTitle").text();
-                $(".pictureTitle").text(pictures[count]);
-                $(".contentTacto img").attr("src", "../images/sentidos/tacto/tipos/"+pictures[count]+".jpg");
                 if(count==10){
                     $(".contentTacto img").attr("src", "../images/sentidos/tacto/tipos/Profesor.jpg");
                     $(".groupButtons button").attr("disabled", true);

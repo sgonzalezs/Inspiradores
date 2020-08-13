@@ -24,7 +24,7 @@ function answerOlfato(identity){
             sense:'olfato',
             activity:'seleccion'
         };
-
+        cAns++;
         fetch('/respuesta', {
             method: 'POST', 
             body: JSON.stringify(data),
@@ -46,7 +46,7 @@ function answerOlfato(identity){
                 }
             }else{
                 $(this).css("box-shadow","0px 0px 5px 0px rgba(0,0,0,0.75)");
-                cAns++;
+                
                 if(cAns==4){
                     $(".btnContinue").css("display", "block");
                     $(".olfatoContent").css("pointer-events", "none");

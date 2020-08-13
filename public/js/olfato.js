@@ -39,6 +39,8 @@ function answerOlfatoRelfexion(identity){
             }else{
                 $(".btnContinue").css("display", "block");
                 $(".btnSend").attr("disabled", true);
+                $(".alert").css("display", "block");
+                $(".alert").text(response.message);
                 validateData(identity);
             }
         })

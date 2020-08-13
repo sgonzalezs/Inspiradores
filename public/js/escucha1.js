@@ -63,10 +63,14 @@ function getValidate(identity, sense){
             }
         }
         else{
-            $(".btnAudio").attr("disabled", true);
-            $(".btnContinue").css("display", "block");
-            $(".alert").css("display", "block");
-            $(".alert").text("Ya has completado esta sección");
+            if(response.data.length>0){
+                $(".btnAudio").attr("disabled", true);
+                $(".btnContinue").css("display", "block");
+                $(".alert").css("display", "block");
+                $(".alert").text("Ya has completado esta sección");
+            }else{
+                answerMusica(identity);
+            }
         }
     })
     .catch(function(err){

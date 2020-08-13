@@ -37,56 +37,6 @@ $(document).ready(function(){
 
         // validateReflection(identity, sense,category);
     });
-
-    $(".btnRecorridos").click(function(){
-        
-        let type=$(this).attr("value");
-        let puntaje=0;
-        if(type=="recorridos"){
-            puntaje=300;
-        }
-        // if(type=="inspiradores"){
-        //     let videos=JSON.parse(localStorage.getItem('videos'));
-        //     let count=0;
-        //     for(var i=0; i<=7; i++){
-        //         if(videos[i]){
-        //             count++;
-        //         }
-        //     }
-        //     puntaje=count*75;
-        // }
-        
-        let trophy=$(".trophyImg").attr("value");
-        let data={
-            user:identity._id,
-            sense:type,
-            trophy,
-            points:puntaje
-        };
-        
-        fetch('/premio', {
-            method: 'POST', 
-            body: JSON.stringify(data),
-            headers:{
-            'Content-Type': 'application/json'
-            }
-        })
-        .then(function(res){
-            return res.json();
-        })
-        .then(function(response){
-            if(type=="recorridos"){
-                console.log("Loaded");
-            }
-            if(type=="inspiradores"){
-                window.location="/recorrido";
-            }
-        })
-        .catch(function(err){
-            console.log(err);
-        });
-    });
-
 });
 
 function getAvatarUser(){

@@ -13,7 +13,7 @@ function answerGusto(identity){
         $("."+prop).css("pointer-events", "none");
         var question=$(this).attr("value").split("-")[0];
         var answer=$(this).attr("value").split("-")[1];
-        
+        cAns++;
         let data={
             id:identity._id,
             question,
@@ -42,7 +42,7 @@ function answerGusto(identity){
                     // getStatistics("gusto", "seleccion");
                 }
             }else{
-                cAns++;
+                
                 if(cAns==5){
                     $(".btnContinue").css("display", "block");
                     $(".gustoContent").css("pointer-events", "none");

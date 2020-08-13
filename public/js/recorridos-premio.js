@@ -1,15 +1,14 @@
 $(document).ready(function(){
-    let identity=JSON.parse(localStorage.getItem("identity"));
-    $(".btnInspiradores").click(function(){
-        getInspirings(identity);
+    let identity=JSON.parse(localStorage.getItem('identity'));
+    $(".btnRecorridos").click(function(){
+        getRecorridos(identity);
     });
 });
 
-function getInspirings(identity){
+function getRecorridos(identity){
     let user=identity._id;
-
-    fetch("/validate-votes/"+user, {
-        type:"GET",
+    fetch("/recorridos-validacion/"+user+"&recorridos", {
+        method:"GET",
         headers:{
             "Content-Type":"application/json"
         }
@@ -19,34 +18,33 @@ function getInspirings(identity){
     })
     .then(function(response){
         if(response.ok){
-            var data=[];
-            response.data.forEach(function(e,i){
-                var category=e.category;
-                if(category=="Cuerpo" || category=="Arte" || category=="Sociedad" || category=="Ciencia"){
-                    data.push(category);  
-                }
-            });
-            console.log(data);
-            
-            var points=75*data.length;
-            getTrophy(identity, points);
-            
+            var categories=[];
+            if(response.data.length>0){
+                response.data.forEach(function(e,i){
+                    if(e.sense=="centro" || e.sense=="conocimiento" || e.sense=="apropiacion"){
+                        categories.push(e.sense);
+                    }
+                });
+                var points=categories.length*100;
+                getTrophyRecorridos(identity,points);
+            }
         }
     })
     .catch(function(err){
-
+        console.log(err);
     });
+    
 }
 
-function getTrophy(identity, points){
+function getTrophyRecorridos(identity, points){
     let trophy=$(".trophyImg").attr("value");
     let data={
         user:identity._id,
-        sense:"inspiradores",
+        sense:"recorridos",
         trophy,
         points
     };
-
+    
     fetch('/premio', {
         method: 'POST', 
         body: JSON.stringify(data),
@@ -58,12 +56,10 @@ function getTrophy(identity, points){
         return res.json();
     })
     .then(function(response){
-        if(!response.ok){
-            if(response.message=="exists"){
-                updatedPoints(data.user, data.sense, data.points);
-            }
+        if(response.message=="exists"){
+            updatedPoints(data.user, data.sense, data.points);
         }else{
-            window.location="/recorrido";
+            window.location="/premiacion";
         }
     })
     .catch(function(err){
@@ -90,7 +86,8 @@ function updatedPoints(user, sense, points){
     })
     .then(function(response){
         if(response.ok){
-            window.location="/recorrido";
+            
+            window.location="/premiacion";
         }
     })
     .catch(function(err){

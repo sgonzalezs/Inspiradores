@@ -84,4 +84,30 @@ app.get("/validate/:user&:answer&:activity", (req,res)=>{
     });
 });
 
+app.get("/recorridos-validacion/:user&:activity", (req,res)=>{
+    let user=req.params.user;
+    let activity=req.params.activity;
+
+    Quest.find({user, activity}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        if(!data){
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    });
+});
+
 module.exports=app;
