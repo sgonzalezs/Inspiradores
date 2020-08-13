@@ -125,9 +125,22 @@ div.congratulations{
     right:0;
 }
 
+.footer img{
+    position: relative;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    float: right;
+    margin-top: 15%;
+}
+
+
 @media only screen and (max-width: 1080px) {
     div.congratulations{
         margin-top: 70%;
+    }
+    .footer img{
+        margin-top:95%;
     }
 }
 

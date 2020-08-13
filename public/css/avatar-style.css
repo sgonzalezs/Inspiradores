@@ -86,10 +86,19 @@ body{
 }
 
 .currentNav p{
-    padding-right: 70px;
+    padding-right: 80px;
     padding-left: 85px;
     padding-top: 10px;
-    font-size: 27px;
+    font-size: 25px;
+}
+
+/* footer copyright */
+.footer img{
+    /* position: relative;
+    z-index: 1; */
+    right: 0;
+    bottom: 0;
+    float: right;
 }
 
 /* ---------------------------------------------------------- */

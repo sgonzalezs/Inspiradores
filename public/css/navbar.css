@@ -54,7 +54,7 @@
 }
 
 
-/* .currentNav{
+.currentNav{
     margin:0 60px 0 60px;
     border-left: 2px solid white;
     border-right: 2px solid white;
@@ -67,8 +67,8 @@
 }
 
 .currentNav p{
-    padding-right: 70px;
+    padding-right: 80px;
     padding-left: 85px;
     padding-top: 10px;
-    font-size: 27px;
-} */
+    font-size: 25px;
+}
