@@ -16,11 +16,11 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-    <!-- <link rel='stylesheet' type='text/css' href='./css/style.css'> -->
+
     <link rel='stylesheet' type='text/css' href='./css/avatar-style.css'>
-    <link rel='stylesheet' type='text/css' href='./css/sentidos-style.css'>
     <link rel='stylesheet' type='text/css' href='./css/user-style.css'>
     <link rel='stylesheet' type='text/css' href='./css/navbar.css'>
+    <link rel='stylesheet' type='text/css' href='./css/mapa-style.css'>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg navAvatar">
@@ -99,46 +99,37 @@
     </div>
     <section class="conatiner">
         <section class="row m-2">
-            <div class="col-sm-12">
-                <div class="row contentSentidos">
-                    <div class="col-sm-8 contentSentidosImg">
-                        <a href="/escucha">
-                            <img src="./images/sentidos/escucha.jpg" class="escucha">
-                        </a>
-                        <a href="/vista">
-                            <img src="./images/sentidos/vision.jpg" class="vista">
-                        </a>
-                        <a href="/tacto">
-                            <img src="./images/sentidos/tacto.jpg" class="tacto">
-                        </a>
-                        <a href="/olfato">
-                            <img src="./images/sentidos/olfato.jpg" class="olfato">
-                        </a>
-                        <a href="/gusto">
-                            <img src="./images/sentidos/gusto.jpg" class="gusto">
-                        </a>
-                    </div>
-                    <div class="col-sm-4 contentSentidosDesc">
-                        <h1>Selecciona tu sentido favorito</h1>
-                        <p>
-                            A través de ellos nos comunicamos con el mundo exterior. 
-                            Antes de entender lo que nos rodea, vamos a explorar nuestros sentidos. 
-                            Elige uno y comienza este viaje.
-                        </p>
-                        <div class="alert alert-primary mt-2" role="alert" style="display:none;">
-                    
-                        </div>
-                        <a href="/sentidos-reflexion">
-                            <button class="btnContinue btnContinueSentidos" type="button" style="display: none;">Continuar</button>      
-                        </a> 
-                    </div>
+            <div class="col-sm-12 mapa">
+                <div class="inspiradoresIsla">
+                    <a href="/inspiraciones">
+                        <!-- <img src="./images/mapa/2Inspiraciones.png" alt=""> -->
+                        <img src="./images/mapa/inspiradores_lock.png" class="imgInspiradores" alt="">
+                    </a>
                 </div>
+                <div class="sentidosIsla">
+                    <a href="/sentido">
+                        <img src="./images/mapa/1Sentidos.png" class="imgSentidos" alt="">
+                    </a>
+                </div>
+                <div class="nivelIsla">
+                    <a href="#">
+                        <img src="./images/mapa/SigNivel.png" class="imgLevel" alt="">
+                    </a>
+                </div>
+                <div class="recorridosIsla">
+                    <a href="/recorrido">
+                        <img src="./images/mapa/recorridos_lock.png" class="imgRecorridos" alt="">
+                    </a>
+                </div>
+                <img src="./images/mapa/Fondo.png" alt="">
             </div>
         </section>
     </section>
+
     <div class="footer">
         <img src="./images/avatar/copyright.png" alt="todos los derechos reservados" />
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
         crossorigin="anonymous">
@@ -151,8 +142,8 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
         crossorigin="anonymous">
     </script>
-    <script src="./js/sentidos.js"></script>
     <script src="./js/getAvatar.js"></script>
     <script src="./js/user.js"></script>
+    <script src="./js/mapa/mapa.js"></script>
 </body>
 </html>

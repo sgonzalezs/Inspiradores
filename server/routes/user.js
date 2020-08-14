@@ -175,6 +175,10 @@ app.get("/premiacion", (req,res)=>{
     res.sendFile("cierre.html", {root:"public/"});
 });
 
+app.get("/viaje", (req,res)=>{
+    res.sendFile("mapa.html", {root:"public/"});
+});
+
 app.get("/senses/:user&:answer&:question", (req,res)=>{
     let user=req.params.user;
     let answer=req.params.answer;
