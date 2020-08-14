@@ -43,9 +43,9 @@ $(document).ready(function(){
 				if(response.message=="login"){
 					let identity=JSON.parse(localStorage.getItem('identity'))
 					localStorage.setItem('userAvatar', identity.image);
-					window.location.replace('/sentido');
+					window.location.replace('/viaje');
 				}else{
-					window.location.replace('/avatar');	
+					window.location.replace('/viaje');	
 				}
 			}
 		})
