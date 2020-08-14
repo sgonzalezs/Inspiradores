@@ -62,7 +62,7 @@ $(document).ready(function(){
                       console.log(response.message);
                   }else{
                       localStorage.setItem('userAvatar', image);
-                      window.location="sentido";
+                      window.location="/viaje";
                   }
               })
               .catch(function(err){

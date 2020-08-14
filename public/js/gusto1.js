@@ -92,10 +92,16 @@ function getStatistics(sense, activity){
                 acum[0][e.value].push({el:e.value});
                 
                 $("."+e.value).text(acum[0][e.value].length);
+                
                 // staticA=100/((acum[0]["Gusto1A"].length-1)+(acum[0]["Gusto2A"].length-1));
                 // staticB=100/((acum[0]["Gusto1B"].length-1)+(acum[0]["Gusto2B"].length-1));
                 // staticC=100/((acum[0]["Gusto1C"].length-1)+(acum[0]["Gusto2C"].length-1));
                 // staticD=100/((acum[0]["Gusto1D"].length-1)+(acum[0]["Gusto2D"].length-1));
+            }
+            if($("."+e.value).text().length>=3){
+                $("div."+e.value).css({
+                    "left":"0%"
+                });
             }
             // console.log(acum);
         });

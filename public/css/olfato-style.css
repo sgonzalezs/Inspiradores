@@ -30,7 +30,9 @@ body{
 div.statistic{
     position: absolute; 
     z-index:1;
-    margin:40px;
+    /* margin:45px 5px 0px 15px; */
+    left:30%;
+    top:30%;
     background-color: #ffffff;
     display: none;
     font-family: 'Bungee', cursive;

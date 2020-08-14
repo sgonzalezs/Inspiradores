@@ -45,7 +45,7 @@ $(document).ready(function(){
 					localStorage.setItem('userAvatar', identity.image);
 					window.location.replace('/viaje');
 				}else{
-					window.location.replace('/viaje');	
+					window.location.replace('/avatar');	
 				}
 			}
 		})

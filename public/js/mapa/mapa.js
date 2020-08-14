@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var identity=JSON.parse(localStorage.getItem('identity'));
+    $(".imgLevel").css("pointer-events", "none");
     getSensesvalidate(identity);
 });
 

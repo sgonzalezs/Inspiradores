@@ -84,21 +84,19 @@ function getStatistics(sense, activity){
             }];
         $("div.statistic").css("display", "block");
         $("div.statistic").text("0");
-        var staticA=0;
-        var staticB=0;
-        var staticC=0;
-        var staticD=0;
+
         info.forEach(function(e,i){
             if(e.value==$("."+e.value).attr("class").split(" ")[1]){
                 acum[0][e.value].push({el:e.value});
                 
                 $("."+e.value).text(acum[0][e.value].length-1);
-                staticA=100/((acum[0]["Olfato1A"].length-1)+(acum[0]["Olfato2A"].length-1));
-                staticB=100/((acum[0]["Olfato1B"].length-1)+(acum[0]["Olfato2B"].length-1));
-                staticC=100/((acum[0]["Olfato1C"].length-1)+(acum[0]["Olfato2C"].length-1));
-                staticD=100/((acum[0]["Olfato1D"].length-1)+(acum[0]["Olfato2D"].length-1));
+                if($("."+e.value).text().length>=3){
+                    $("div."+e.value).css({
+                        "left":"20%"
+                    });
+                }
             }
-            // console.log(((acum[0]["Olfato1A"].length-1)+(acum[0]["Olfato2A"].length-1)));
+
         });
         
     })
