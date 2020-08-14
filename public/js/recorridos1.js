@@ -22,6 +22,11 @@ function getRecorridos(identity){
                 $(".alert").css("display", "block");
                 $(".alert").text("Haz clic en continuar");
                 $(".btnContinue").css("display", "block");
+                
+                response.data.forEach(function(e,i){
+                    $("."+e.sense).attr("src","../images/recorridos/"+e.sense+"_check.jpg");
+                    $("."+e.sense).css("pointer-events", "none");
+                });
             }
         }
     })
@@ -53,6 +58,7 @@ function loadPremiacion(identity){
                 $(".alert").text("");
             }
         }else{
+            
             $(".alert").css("display", "block");
             $(".alert").text("Haz clic en continuar");
             $(".btnContinue").css("display", "block");

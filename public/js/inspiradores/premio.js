@@ -34,7 +34,7 @@ function getInspirings(identity){
         }
     })
     .catch(function(err){
-
+        console.log(err);
     });
 }
 
@@ -63,7 +63,7 @@ function getTrophy(identity, points){
                 updatedPoints(data.user, data.sense, data.points);
             }
         }else{
-            window.location="/recorrido";
+            window.location="/viaje";
         }
     })
     .catch(function(err){
@@ -90,7 +90,7 @@ function updatedPoints(user, sense, points){
     })
     .then(function(response){
         if(response.ok){
-            window.location="/recorrido";
+            window.location="/viaje";
         }
     })
     .catch(function(err){

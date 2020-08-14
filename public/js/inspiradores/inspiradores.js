@@ -26,6 +26,9 @@ function getVotesvalidate(identity){
                 if(category=="Cuerpo" || category=="Arte" || category=="Sociedad" || category=="Ciencia"){
                     data.push(category);  
                 }
+                var inspiring=e.inspiring.split(" ")[0];
+                $("."+inspiring).attr("src", "../../images/inspiracion/personas/"+inspiring+"_check.jpg");
+                $("."+inspiring).css("pointer-events", "none");
             });
             
             var data_filter = data.filter( onlyUnique );
