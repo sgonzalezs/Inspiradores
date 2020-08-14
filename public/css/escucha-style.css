@@ -81,7 +81,7 @@ div.audio audio{
 
 #success{
     font-style: italic;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .btnReflexion, .btnRecompensa{
@@ -140,7 +140,8 @@ div.congratulations{
         margin-top: 70%;
     }
     .footer img{
-        margin-top:95%;
+        margin-top:460px;
+        width: 200px;
     }
 }
 

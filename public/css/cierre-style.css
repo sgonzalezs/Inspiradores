@@ -6,9 +6,8 @@ body{
 }
 
 div.premiacion img{
-    width: 50%;
-    height: 550px;
-    margin-left:20%;
+    width: 100%;
+    position: relative;
 }
 
 @media only screen and (max-width: 800px) {

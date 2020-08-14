@@ -20,7 +20,7 @@ function getRecorridos(identity){
         if(response.ok){
             if(response.data.length>0){
                 $(".alert").css("display", "block");
-                $(".alert").text("Haz clic en continuar");
+                $(".alert").text("Ya completaste al menos un recorrido. Puedes continuar.");
                 $(".btnContinue").css("display", "block");
                 
                 response.data.forEach(function(e,i){
