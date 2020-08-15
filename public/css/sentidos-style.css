@@ -36,17 +36,10 @@ body{
 }
 
 @media only screen and (max-width: 1020px) {
-
-    body{
-        background-size: 100% 100%;
-    }
     .contentSentidosImg img{
-        width: 75px;
+        width: 80px;
         height: 300px;
     } 
-    .footer img{
-        position: relative;
-    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -56,7 +49,7 @@ body{
     } 
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 960px) {
     .contentSentidosImg img{
         width: 50px;
         height: 300px;
@@ -140,3 +133,9 @@ p.reflexion{
     width: 220px;
 }
 
+@media only screen and (max-width: 1080px) {
+   
+    .footer img{
+        position: relative;
+    }
+}
