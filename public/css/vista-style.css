@@ -5,6 +5,10 @@ body{
     background-size: 100% 100vh;
 }
 
+.content{
+    margin: 10px 3%;
+}
+
 /* @media only screen and (max-width: 960px) {
     .contentSentidosImg img{
         width: 50px;
