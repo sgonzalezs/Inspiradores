@@ -12,6 +12,13 @@ body{
     }
 }
 
+@media only screen and (max-width: 960px) {
+
+    body {
+        background-size: 100% 100%;
+    }
+}
+
 .videoLoad{
     width: 100%;
     height: auto;
@@ -116,7 +123,7 @@ div.audio audio{
     width: 220px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 960px) {
     .footer img{
         position: relative;
     }

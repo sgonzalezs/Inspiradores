@@ -11,6 +11,16 @@ body{
     }
 }
 
+@media only screen and (max-width: 1080px) {
+    body {
+        background-size: 100% 100%;
+    }
+
+    .footer img{
+        position: relative;
+    }
+}
+
 .title{
     font-family: 'Bungee', cursive;
 }

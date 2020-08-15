@@ -26,7 +26,7 @@
     margin-left:20%;
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 960px) {
     
     body{
         background-size: 100% 100%;
