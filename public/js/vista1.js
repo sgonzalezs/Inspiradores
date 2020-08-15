@@ -1,6 +1,6 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    getValidate(identity, "vista")
+    getValidate(identity, "vista");
 });
 
 var cAns=0;
@@ -111,6 +111,7 @@ function getValidate(identity, sense){
         return res.json();
     })
     .then(function(response){
+        console.log(response);
         if(!response.ok){
             if(response.message=="not found"){
                 answerVista(identity);
@@ -120,6 +121,7 @@ function getValidate(identity, sense){
             answerVista(identity);
         }
         if(response.data.length==4){
+            
             $(".btnContinue").css("display", "block");
             $(".vistaContent").css("pointer-events", "none");
             $(".alert").css("display", "block");
