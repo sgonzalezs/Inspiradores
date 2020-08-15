@@ -72,7 +72,7 @@ body{
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     body{
         background-image: url('../images/avatar/fondo_2.png');
         background-size: cover;
@@ -80,24 +80,24 @@ body{
         background-size: 100% 100vh;
     }
     .mapa img{
-        width: 300px;
+        width: 400px;
     }
 
     .inspiradoresIsla img{
-        width: 85px;
+        width: 120px;
         bottom: 0px;
-        left:110px;
+        left:130px;
     }
     
     .sentidosIsla img{
-        width: 75px;
+        width: 100px;
         bottom: 5px;
-        left:235px;
+        left:310px;
     }
     
     .recorridosIsla img{
-        width: 40px;
-        top: 73px;
+        width: 60px;
+        top: 93px;
         left:25px;
     }
 }
