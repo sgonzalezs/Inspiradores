@@ -1,5 +1,6 @@
 const express=require('express');
 const User=require("../models/user.js");
+const Student=require("../models/students.js");
 const Quest=require("../models/questions.js");
 const Inspiring=require("../models/inspiring.js");
 
@@ -365,82 +366,117 @@ app.post("/respuesta", (req,res)=>{
 app.post("/login", (req,res)=>{
     let body=req.body;
 
-    User.findOne({email:body.email, name:body.name}, (err, currentUser)=>{
-		if(err){
-			return res.status(400).json({
-				ok:false,
-				message:err
-			});
-		}
-		if(currentUser){
-            let token=jwt.sign({
-                user:currentUser
-            }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
-            return res.status(200).json({
-                ok:true,
-                message:"login",
-                user:currentUser,
-                token
+    Student.findOne({document:body.document}, (failed, studentData)=>{
+        if(failed){
+            return res.status(400).json({
+                ok:false,
+                message:failed
             });
-		}else{
+        }
+        if(!studentData){
             return res.status(404).json({
                 ok:false,
-                message:"not found"
+                message:"student not found"
             });
-		}
-	});
+        }
+
+        User.findOne({email:body.email}, (err, currentUser)=>{
+            if(err){
+                return res.status(400).json({
+                    ok:false,
+                    message:err
+                });
+            }
+            if(currentUser){
+                let token=jwt.sign({
+                    user:currentUser
+                }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
+                return res.status(200).json({
+                    ok:true,
+                    message:"login",
+                    user:currentUser,
+                    token,
+                    student:studentData
+                });
+            }else{
+                return res.status(404).json({
+                    ok:false,
+                    message:"not found"
+                });
+            }
+        });
+    });
 });
 
 app.post("/registro", (req,res)=>{
     let body=req.body;
 
-    User.findOne({email:body.email}, (err, currentUser)=>{
-		if(err){
-			return res.status(400).json({
-				ok:false,
-				message:err
-			});
-		}
-
-		if(currentUser){
-            let token=jwt.sign({
-                user:currentUser
-            }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
-            return res.status(200).json({
-                ok:true,
-                message:"login",
-                user:currentUser,
-                token
+    Student.findOne({document:body.document, type_doc:body.type_doc}, (failed, studentData)=>{
+        if(failed){
+            return res.status(400).json({
+                ok:false,
+                message:failed
             });
-		}else{
-			let user=new User({
-				name:body.name,
-                email:body.email,
-                typeDoc:body.type_doc,
-                document:body.document,
-                number:body.number,
-                parentName:body.parent_name,
-                parentDoc:body.parent_doc
-			});
-			user.save((error, newUser)=>{
-				if(error){
-					return res.status(400).json({
-						ok:false,
-						message:error
-					});
-				}
-				let token=jwt.sign({
-					user:newUser
-				}, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
-				return res.status(200).json({
+        }
+        if(!studentData){
+            return res.status(404).json({
+                ok:false,
+                message:"student not found"
+            });
+        }
+
+        User.findOne({email:body.email}, (err, currentUser)=>{
+            if(err){
+                return res.status(400).json({
+                    ok:false,
+                    message:err
+                });
+            }
+    
+            if(currentUser){
+                let token=jwt.sign({
+                    user:currentUser
+                }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
+                return res.status(200).json({
                     ok:true,
-                    message:"created",
-					user:newUser,
-					token
-				});
-			});
-		}
-	});
+                    message:"login",
+                    user:currentUser,
+                    token,
+                    student: studentData
+                });
+            }else{
+                let user=new User({
+                    name:body.name,
+                    email:body.email,
+                    typeDoc:body.type_doc,
+                    document:body.document,
+                    number:body.number,
+                    parentName:body.parent_name,
+                    parentDoc:body.parent_doc
+                });
+                user.save((error, newUser)=>{
+                    if(error){
+                        return res.status(400).json({
+                            ok:false,
+                            message:error
+                        });
+                    }
+                    let token=jwt.sign({
+                        user:newUser
+                    }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
+                    return res.status(200).json({
+                        ok:true,
+                        message:"created",
+                        user:newUser,
+                        token,
+                        student: studentData
+                    });
+                });
+            }
+        });
+    });
+
+    
 });
 
 app.put("/avatar", (req,res)=>{

@@ -1,13 +1,14 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    let age=identity.age;
+    let student=JSON.parse(localStorage.getItem('student'));
+    let age=student.age;
     getValidate(identity, "escucha", age);
     
 });
 
 function answerEscuchaReflexion(identity, age){
     $("#questionEscucha").text();
-    if(age<13){
+    if(age<6){
         $("#questionEscucha").text("¿Qué consecuencias has vivido por no escuchar a tus papás?");
     }else{
         $("#questionEscucha").text("¿Qué conflicto crees que se pudo evitar en tu barrio, si los involucrados se hubieran sentado a conversar, escuchando lo que el otro tiene para decir?");

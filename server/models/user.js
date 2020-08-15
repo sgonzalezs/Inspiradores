@@ -19,7 +19,8 @@ let userSchema=new Schema({
     },
     document:{
         type:String,
-        required:[true, "Debes ingresar el numero de documento"]
+        required:[true, "Debes ingresar el numero de documento"],
+        unique:true
     },
     number:{
         type:Number,

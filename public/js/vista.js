@@ -1,12 +1,13 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    let age=identity.age;
+    let student=JSON.parse(localStorage.getItem('student'));
+    let age=student.age;
     getValidate(identity, "vista", age);
 });
 
 function answerVista(identity, age){
     $("#questionVista").text();
-    if(age<13){
+    if(age<6){
         $("#questionVista").text("¿Has sentido pena o temor por cómo te ves?");
     }else{
         $("#questionVista").text("¿En qué momento me he sentido excluido o juzgado por cómo me veo, hablo o cómo me comporto?");

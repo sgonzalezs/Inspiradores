@@ -1,9 +1,10 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    let age=identity.age;
+    let student=JSON.parse(localStorage.getItem('student'));
+    let age=student.age;
     var video=document.getElementById('video');
     validateVote(identity);
-    if(age<13){
+    if(age<6){
         video.src="https://www.youtube.com/embed/oMo6tTQwTSI";
     }else{
         video.src="https://www.youtube.com/embed/vj9EOqv-GF4";

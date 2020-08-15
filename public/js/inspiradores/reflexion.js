@@ -1,13 +1,14 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
-    let age=identity.age;
+    let student=JSON.parse(localStorage.getItem('student'));
+    let age=student.age;
     
     getValidate(identity, "inspiradores", age)
 });
 
 function answerInspiradores(identity, age){
     $("#question").text();
-    if(age<13){
+    if(age<6){
         $("#question").text("¿Quisieras ser como alguno de ellos?");
     }else{
         $("#question").text("¿Te identificas con alguno de ellos?");

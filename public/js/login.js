@@ -6,11 +6,17 @@ $(document).ready(function(){
 	$(".login").click(function(){
 		$("#formIngresa").css("display", "none");
 		$("#formLogin").css("display", "block");
+
+		$(".alert").css("display", "none");
+		$(".alert").text("");
 	});
 
 	$(".register").click(function(){
 		$("#formIngresa").css("display", "block");
 		$("#formLogin").css("display", "none");
+
+		$(".alert").css("display", "none");
+		$(".alert").text("");
 	});
 
     $("#formIngresa").on('submit', function(e){
@@ -41,7 +47,13 @@ $(document).ready(function(){
 			})
 			.then(function(response){
 				if(!response.ok){
-					console.log(response.message);
+					if(response.message=="student not found"){
+						$(".alert").css("display", "block");
+						$(".alert").text("El estudiante no está registrado en la base de datos del colegio");
+					}else{
+						$(".alert").css("display", "block");
+						$(".alert").text("Error al ingresar, revisa la información");
+					}
 				}else{
 
 					if(response.message=="login"){
@@ -54,6 +66,7 @@ $(document).ready(function(){
 						localStorage.setItem('token', response.token);
 						localStorage.setItem('user', response.user.email);
 						localStorage.setItem('identity', JSON.stringify(response.user));
+						localStorage.setItem('student', JSON.stringify(response.student));
 						window.location.replace('/avatar');	
 					}
 				}
@@ -68,7 +81,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		var data = {
-			name: $("#userLogin").val(),
+			document: $("#documentLogin").val(),
 			email: $("#emailLogin").val()
 		};
 
@@ -88,11 +101,16 @@ $(document).ready(function(){
 					$(".alert").css("display", "block");
 					$(".alert").text("No existe ningun usuario con estos datos");
 				}
+				if(response.message=="student not found"){
+					$(".alert").css("display", "block");
+					$(".alert").text("El estudiante no está registrado en la base de datos del colegio");
+				}
 			}else{
 				if(response.message=="login"){
 					localStorage.setItem('token', response.token);
 					localStorage.setItem('user', response.user.email);
 					localStorage.setItem('identity', JSON.stringify(response.user));
+					localStorage.setItem('student', JSON.stringify(response.student));
 					
 					let identity=JSON.parse(localStorage.getItem('identity'))
 					localStorage.setItem('userAvatar', identity.image);
