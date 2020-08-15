@@ -1,8 +1,8 @@
 .navAvatar{
-    background-image: url('../images/avatar/navbar.jpg');
+    background-image: url('../images/avatar/navbar_l.png');
     background-size: cover;
     background-repeat:no-repeat;
-    opacity: 0.9;
+    opacity: 1;
     font-family: 'Bungee', cursive;
     font-size: 20px;
     color: #ffffff;
@@ -32,7 +32,7 @@
 }
 
 #navbarNavAltMarkup{
-    margin-left:23%;
+    margin-left:25%;
 }
 
 .navAvatar p{

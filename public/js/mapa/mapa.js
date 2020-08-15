@@ -36,13 +36,14 @@ function getSensesvalidate(identity){
                 }
             });
             if(senses.length==5){
-                $(".imgInspiradores").attr("src", "../../images/mapa/2Inspiraciones.png");
+                $(".imgInspiradores").attr("src", "../../images/mapa2/2InspiradoresAct.png");
             }else{
                 $(".imgInspiradores").css("pointer-events", "none");
             }
 
             if(insp=="inspiradores"){
-                $(".imgRecorridos").attr("src","../../images/mapa/Recorridos.png");
+                $(".imgRecorridos").css("display","block");
+                $(".imgMapa").attr("src","../../images/mapa2/Fondo.png");
             }else{
                 $(".imgRecorridos").css("pointer-events", "none");
             }

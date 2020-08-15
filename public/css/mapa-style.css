@@ -5,53 +5,70 @@ body{
     background-size: 100% 100%;
 }
 .mapa img{
-    width: 550px;
-    margin-left:30%;
+    width: 1100px;
 }
 
 .inspiradoresIsla img{
     position: absolute;
     z-index: 1;
-    width: 150px;
-    bottom: 50px;
-    left:15px;
+    width: 330px;
+    bottom: 0px;
+    left:380px;
 }
 
 .sentidosIsla img{
     position: absolute;
     z-index: 1;
-    width: 200px;
-    bottom: 30px;
-    left:320px;
-}
-
-.nivelIsla img{
-    position: absolute;
-    z-index: 1;
-    width: 110px;
-    bottom: 200px;
-    left:440px;
+    width: 280px;
+    bottom: 15px;
+    left:820px;
 }
 
 .recorridosIsla img{
     position: absolute;
     z-index: 1;
-    width: 110px;
-    top: 180px;
-    left:85px;
+    width: 160px;
+    bottom: 215px;
+    left:45px;
+    display: none;
 }
 
-.mapa>div img{
+.recorridosBase{
+    position: absolute;
+    z-index: 1;
+    width: 1100px;
+}
+
+.mapa a>img{
     transition: transform 0.2s;
 }
 
-.mapa>div img:hover{
+.mapa a>img:hover{
     transform: scale(1.03,1.03);
 }
 
 @media only screen and (max-width: 960px) {
     .mapa img{
         margin-left:0%;
+        width: 620px;
+    }
+
+    .inspiradoresIsla img{
+        width: 185px;
+        bottom: 0px;
+        left:210px;
+    }
+    
+    .sentidosIsla img{
+        width: 155px;
+        bottom: 10px;
+        left:470px;
+    }
+    
+    .recorridosIsla img{
+        width: 85px;
+        top: 148px;
+        left:33px;
     }
 }
 
@@ -63,32 +80,30 @@ body{
         background-size: 100% 100vh;
     }
     .mapa img{
-        margin-left:0%;
         width: 300px;
     }
 
     .inspiradoresIsla img{
-        width: 80px;
-        bottom: 30px;
-        left:15px;
+        width: 85px;
+        bottom: 0px;
+        left:110px;
     }
     
     .sentidosIsla img{
-        width: 110px;
-        bottom: 20px;
-        left:190px;
-    }
-    
-    .nivelIsla img{
-        width: 62px;
-        bottom: 110px;
-        left:250px;
+        width: 75px;
+        bottom: 5px;
+        left:235px;
     }
     
     .recorridosIsla img{
-        width: 60px;
-        top: 100px;
-        left:57px;
+        width: 40px;
+        top: 73px;
+        left:25px;
     }
+}
+
+.footer img{
+    position: relative;
+    width: 220px;
 }
 
