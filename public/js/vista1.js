@@ -83,7 +83,7 @@ function getStatistics(sense, activity){
         info.forEach(function(e,i){
             if(e.value==$("."+e.value).attr("class").split(" ")[1]){
                 acum[0][e.value].push({el:e.value});
-                $("."+e.value).text(acum[0][e.value].length-1+"000");
+                $("."+e.value).text(acum[0][e.value].length-1);
 
                 if($("."+e.value).text().length>=3){
                     $("div."+e.value).css({

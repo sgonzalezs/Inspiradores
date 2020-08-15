@@ -11,6 +11,11 @@ body{
     }
 }
 
+.content{
+    margin:10px 3%;
+}
+
+
 .option img{
     margin-top: 10px;
     width: 100%;
@@ -23,8 +28,12 @@ body{
 
 .olfatoContent p{
     font-family: 'Bungee', cursive;
-    font-size:25px;
+    font-size:20px;
     color: #ffffff;
+}
+
+.subTitle{
+    font-size: 17px;
 }
 
 div.statistic{

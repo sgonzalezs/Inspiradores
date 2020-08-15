@@ -27,14 +27,14 @@
     <section class="container-fluid">
         <section class="row">
             <div class="col-sm-4 offset-sm-6">
-                <form id="formLogin" class="formLogin">
+                <form id="formIngresa" class="formLogin">
                     <div class="row ">
                         <div class=" formTitle">
                             <h4 class="">INSCRÍBETE</h4>
                         </div>
                     </div>
                     <div class="form-group subTitleLogin">
-                        <p>Informacion de usuario</p>
+                        <p>Información de usuario</p>
                     </div>
                     <div class="form-group">
                         <input type="text" id="txtName" name="txtName" 
@@ -56,33 +56,66 @@
                             <div class="input-group">
                                 <div class="input-group-icon">N°</div>
                                 <div class="input-group-area">
-                                    <input type="number" id="n_document" name="n_document" required>
+                                    <input type="text" id="n_document" name="n_document" class="document" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="number" id="txt_number" name="txt_number" placeholder="Whatsapp" required/>
+                        <input type="text" id="txt_number" name="txt_number" class="phone" placeholder="Whatsapp" required/>
                     </div>
-                    <!-- <div class="form-group">
-                        <input type="number" id="txtAge" name="txtAge" placeholder="Edad" required/>
-                    </div> -->
                     <div class="form-group ">
                         <p class="paragraphLogin">
-                            ¡Hola! ahora haces parte de esta aventura y para poder continuar con la busqueda del tesoro,
-                            debemos asegurarnos de contar con la autorización de tus padres o acudientes
+                            ¡Hola! Ahora haces parte de esta aventura y para poder continuar con la búsqueda del tesoro,
+                            debemos asegurarnos de contar con la autorización de tus padres o acudientes.
                         </p>
-                        <p class="subTitleParent">Informacion de acudiente</p>
+                        <p class="subTitleParent">Información de acudiente</p>
                     </div>
                     <div class="form-group">
                         <input type="text" id="txt_nameParent" name="txt_nameParent" placeholder="Nombre completo" 
                         required/>
-                        <input type="number" id="txt_docParent" name="txt_docParent" 
-                        placeholder="Numero de documento" style="margin-top: 7px;" 
+                        <input type="text" id="txt_docParent" name="txt_docParent" 
+                        placeholder="Número de documento" class="document" style="margin-top: 7px;" 
                         required/>
+                    </div>
+                    <div class="form-group alert alert-danger" style="display: none;">
+                        valida los campos para continuar
                     </div>
                     <div class="form-group groupFooter">
                         <button type="Submit" class="btnLogin">INGRESA</button>
+                        <a href="#" class="login">Ya estoy registrado</a>
+                    </div>
+                    <div class="form-group groupFooter">
+                        <a href="#">Aviso de privacidad*</a>
+                        <a href="#">Contáctenos</a>
+                    </div>
+                </form>
+
+                <form id="formLogin" class="formLogin" style="display: none;">
+                    <div class="row ">
+                        <div class=" formTitle">
+                            <h4 class="">INGRESA</h4>
+                        </div>
+                    </div>
+                    <div class="form-group subTitleLogin">
+                        <p>Información de usuario</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="userLogin" name="userLogin" 
+                            placeholder="Nombre de usuario" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="emailLogin" name="emailLogin" 
+                            placeholder="Correo electrónico" required  />
+                    </div>
+                    <div class="form-group alert alert-danger" style="display: none;">
+                        valida los campos para continuar
+                    </div>
+                    <div class="form-group groupFooter">
+                        <button type="Submit" class="btnLogin">INGRESA</button>
+                        <a href="#" class="register">Regístrate</a>
+                    </div>
+                    <div class="form-group groupFooter">
                         <a href="#">Aviso de privacidad*</a>
                         <a href="#">Contáctenos</a>
                     </div>

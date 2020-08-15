@@ -2,25 +2,38 @@ body{
     background-image: url('../images/fondo/Fondo4.png');
     background-size: cover;
     background-repeat:no-repeat;
-    background-size: 100% 110%;
+    background-size: 100% 100vh;
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        background-size: 100% 100%;
+    }
 }
 
 .contentSentidos{
-    margin-top: 2%;
+    margin:10px 3%;
 }
 
 .contentSentidosDesc{
     width: 90%;
-    margin-top: 5%;
+    margin-top: 2%;
     float: left;
 }
 
 .contentSentidosImg img{
-    width: 30%;
-    height: 500px;
+    width: 150px;
+    height: 450px;
     padding:10px 0px;
     float: left;
     transition: transform 0.2s;
+}
+
+@media only screen and (max-width: 600px) {
+    .contentSentidosImg img{
+        width: 80px;
+        height: 300px;
+    } 
 }
 
 .contentSentidosImg img:hover{
@@ -129,6 +142,17 @@ p.resume{
     outline-width: 0 !important;
 }
 
+.footer img{
+    position: absolute;
+    width: 220px;
+}
 
+@media only screen and (max-width: 1080px) {
+    
+    .footer img{
+        position: relative;
+        margin-top: 10px;
+    }
+}
 
 

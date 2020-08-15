@@ -362,6 +362,35 @@ app.post("/respuesta", (req,res)=>{
     });
 });
 
+app.post("/login", (req,res)=>{
+    let body=req.body;
+
+    User.findOne({email:body.email, name:body.name}, (err, currentUser)=>{
+		if(err){
+			return res.status(400).json({
+				ok:false,
+				message:err
+			});
+		}
+		if(currentUser){
+            let token=jwt.sign({
+                user:currentUser
+            }, 'SECREET-SEED-999',{expiresIn:60*60*24*30});
+            return res.status(200).json({
+                ok:true,
+                message:"login",
+                user:currentUser,
+                token
+            });
+		}else{
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            });
+		}
+	});
+});
+
 app.post("/registro", (req,res)=>{
     let body=req.body;
 

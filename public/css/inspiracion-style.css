@@ -100,3 +100,15 @@ p.votes{
     font-family: 'Bungee', cursive;
 }
 
+.footer img{
+    position: absolute;
+    width: 220px;
+}
+
+@media only screen and (max-width: 1080px) {
+    
+    .footer img{
+        position: relative;
+        margin-top: 10px;
+    }
+}
