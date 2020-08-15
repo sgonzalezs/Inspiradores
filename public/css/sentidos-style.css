@@ -35,7 +35,26 @@ body{
     transition: transform 0.2s;
 }
 
+@media only screen and (max-width: 1020px) {
+    .contentSentidosImg img{
+        width: 80px;
+        height: 300px;
+    } 
+}
+@media only screen and (max-width: 1080px) {
+    .footer img{
+        position: relative;
+    }
+}
+
 @media only screen and (max-width: 600px) {
+    .contentSentidosImg img{
+        width: 50px;
+        height: 300px;
+    } 
+}
+
+@media only screen and (max-width: 800px) {
     .contentSentidosImg img{
         width: 50px;
         height: 300px;
@@ -75,7 +94,7 @@ body{
 }
 
 .content{
-    margin:2%;
+    margin:1%;
 }
 
 .title{
@@ -119,9 +138,9 @@ p.reflexion{
     width: 220px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1080px) {
+   
     .footer img{
         position: relative;
     }
 }
-
