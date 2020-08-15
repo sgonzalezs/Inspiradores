@@ -2,17 +2,6 @@ $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem('identity'));
     let type=$(".paragraph").attr("id").split("-")[1];
     getValidate(identity, type);
-    // if(!localStorage.getItem('recorridos')){
-    //     localStorage.setItem('recorridos', JSON.stringify(
-    //         {
-    //             user:identity._id,
-    //             centro:false,
-    //             apropiacion:false,
-    //             conocimiento:false,
-
-    //         })
-    //     );
-    // }
 });
 
 function answerReflexionRecorridos(identity, type){
@@ -48,9 +37,7 @@ function answerReflexionRecorridos(identity, type){
                 $(".alert").css("display", "block");
                 $(".alert").text(response.message);
                 $(".btnContinue").css("display", "block");
-                // let recorridos=JSON.parse(localStorage.getItem('recorridos'));
-                // recorridos[type]=true;
-                // localStorage.setItem('recorridos', JSON.stringify(recorridos));
+                getRecorridos(identity);
             }
         })
         .catch(function(err){
@@ -88,3 +75,91 @@ function getValidate(identity, sense){
     });
 }
 
+function getRecorridos(identity){
+    let user=identity._id;
+    fetch("/recorridos-validacion/"+user+"&recorridos", {
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.ok){
+            var categories=[];
+            if(response.data.length>0){
+                response.data.forEach(function(e,i){
+                    if(e.sense=="centro" || e.sense=="conocimiento" || e.sense=="apropiacion"){
+                        categories.push(e.sense);
+                    }
+                });
+                var points=categories.length*100;
+                getTrophyRecorridos(identity,points);
+            }
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+    
+}
+
+function getTrophyRecorridos(identity, points){
+    // let trophy=$(".trophyImg").attr("value");
+    let data={
+        user:identity._id,
+        sense:"recorridos",
+        trophy:"espada.png",
+        points
+    };
+    
+    fetch('/premio', {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{
+        'Content-Type': 'application/json'
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.message=="exists"){
+            updatedPoints(data.user, data.sense, data.points);
+        }else{
+            // window.location="/premiacion";
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function updatedPoints(user, sense, points){
+    let data={
+        user,
+        sense,
+        points
+    };
+
+    fetch("/puntaje", {
+        method:"PUT",
+        body:JSON.stringify(data),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.ok){
+            // window.location="/premiacion";
+        }
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}

@@ -7,8 +7,8 @@
 }
 
 .trophyEscucha img{
-    width: 200px;
-    margin-left:40%;
+    width: 70%;
+    margin-left:30%;
     margin-top:5%;
     margin-bottom:5%;
     bottom:50%;
@@ -41,7 +41,7 @@ div.congratulations p{
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 960px) {
     
     .avatarLoaded{  
         display: none;
