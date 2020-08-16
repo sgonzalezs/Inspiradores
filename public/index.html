@@ -88,10 +88,10 @@
                     </div>
                     <div class="form-group groupFooter">
                         <button type="Submit" class="btnLogin">INGRESA</button>
-                        <a href="#" class="login">Ya estoy registrado</a>
+                        <a href="#" class="login">Iniciar sesión</a>
                     </div>
                     <div class="form-group groupFooter">
-                        <a href="#">Aviso de privacidad*</a>
+                        <a href="#" data-toggle="modal" data-target="#authModal">Aviso de privacidad*</a>
                         <a href="#">Contáctenos</a>
                     </div>
                 </form>
@@ -121,11 +121,49 @@
                         <a href="#" class="register">Regístrate</a>
                     </div>
                     <div class="form-group groupFooter">
-                        <a href="#">Aviso de privacidad*</a>
+                        <a href="#" data-toggle="modal" data-target="#authModal">Aviso de privacidad*</a>
                         <a href="#">Contáctenos</a>
                     </div>
                 </form>
             </div>
+            <!-- MODAL Autorizacion -->
+            <div class="modal fade" id="authModal" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Aviso de Privacidad</h5>
+                      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button> -->
+                    </div>
+                    <div class="modal-body">
+                        <p class="authParagraph">
+                            Al Ingresar al sitio, el Adulto o Acudiente relacionado en el formulario con Nombre y Número de
+                            Cédula, obrando en nombre del niño, niña o joven del cual también se relacionan sus datos
+                            personales en el formulario, en su calidad de representante legal, acepta y consiente en lo
+                            siguiente:
+                            COMFAMA me ha informado de su interés en el tratamiento de datos personales del niño, niña o
+                            joven, en ejecución del Proyecto “Inspiración Comfama”, implementado por la CORPORACIÓN
+                            NAVEGANTES, encargada del tratamiento de los datos.
+                            Autorizo de manera expresa y previo ejercicio del derecho del del niño, niña o joven de ser
+                            escuchado/a, el tratamiento de sus datos personales con los fines establecidos en la Política de
+                            Protección de Datos Personales de COMFAMA que podrás consultar en la página comfama.com,
+                            que incluyen actividades educativas, culturales, recreativas, entre otras, relacionadas directa o
+                            indirectamente con su objeto social. Comprendo que en cualquier momento puedo revocar esta
+                            autorización.
+                            Los datos podrán ser tratados en sistemas informáticos propios de COMFAMA o en sistemas
+                            informáticos de terceros encargados, bajo la dirección y auditoría de COMFAMA, en los términos
+                            de la autorización dada.
+                            Si tienes alguna duda o solicitud respecto al uso de los datos personales suministrados, puedes
+                            escribirnos al siguiente correo electrónico: ProteccionDatosPersonales@comfama.com.co
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <!-- <div class="faro">
                 <img src="./images/olas/faro.png">
             </div>

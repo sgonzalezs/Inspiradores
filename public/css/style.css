@@ -53,6 +53,15 @@ body{
     color:#fff;
 }
 
+.authParagraph{
+    font-style: italic;
+    font-size: 15px;
+}
+
+.modal-footer button{
+    border-radius: 0px;
+}
+
 .btnLogin{
     width: 150px;
     font-family: 'Bungee', cursive;
