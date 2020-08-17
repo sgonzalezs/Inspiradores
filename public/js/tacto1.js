@@ -5,15 +5,15 @@ $(document).ready(function(){
 
 function answerTacto(identity){
     var pictures=[ 
-        'abuelito',
+        'Abuelito',
         'Cantante', 
-        'deportista', 
+        'Deportista', 
         'Empresario', 
-        'enfermero', 
+        'Enfermero', 
         'Juez', 
         'Ladron', 
         'Panadero', 
-        'policia', 
+        'Policía', 
         'Profesor'
     ];
     var count=0;

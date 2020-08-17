@@ -2,34 +2,35 @@ body{
     background-image: url('../images/avatar/fondo_2.png');
     background-size: cover;
     background-repeat:no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100vh;
 }
 .mapa img{
-    width: 1100px;
+    width: 840px;
+    margin: 0px 150px;
 }
 
 .inspiradoresIsla img{
     position: absolute;
     z-index: 1;
-    width: 330px;
+    width: 250px;
     bottom: 0px;
-    left:380px;
+    left:300px;
 }
 
 .sentidosIsla img{
     position: absolute;
     z-index: 1;
-    width: 280px;
-    bottom: 15px;
-    left:820px;
+    width: 220px;
+    bottom: 10px;
+    left:630px;
 }
 
 .recorridosIsla img{
     position: absolute;
     z-index: 1;
-    width: 160px;
-    bottom: 215px;
-    left:45px;
+    width: 120px;
+    bottom: 162px;
+    left:40px;
     display: none;
 }
 
@@ -103,7 +104,8 @@ body{
 }
 
 .footer img{
-    position: relative;
+    position: absolute;
     width: 220px;
+    bottom: 0;
 }
 
