@@ -28,4 +28,30 @@ app.get("/usuarios", (req,res)=>{
     });
 });
 
+app.get("/usuario/:user", (req,res)=>{
+    let user=req.params.user;
+
+    Quest.find({user}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        if(!data){
+            return res.status(404).json({
+                ok:false,
+                message:"not found"
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+
+    });
+});
+
 module.exports=app;

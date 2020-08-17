@@ -10,3 +10,7 @@
     margin-bottom: 10px;
 }
 
+#tableUsers tr:hover{
+    cursor: pointer;
+}
+

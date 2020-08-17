@@ -16,13 +16,13 @@ function getUsersData(){
     .then(function(response){
         $(".usersData").empty();
         response.data.forEach(function(e,i){
+
             $(".usersData").append(`
-                <tr onclick="getUserInfo('${e._id}');">
+                <tr onclick="getUserInfo('${e._id}', '${e.name}','${e.email}','${e.parentName}','${e.number}');" data-toggle="modal" data-target="#userInfoModal">
                     <td>${e.typeDoc.toUpperCase()}</td>
                     <td>${e.document}</td>
                     <td>${e.name}</td>
                     <td>${e.email}</td>
-                    <td>${e.number}</td>
                 </tr>
             `);
         });
@@ -40,8 +40,73 @@ function logout(){
     window.location="/";
 }
 
-function getUserInfo(id){
-    console.log(id);
+function getUserInfo(id, name, email, parent, number){
+    $(".basic-info").empty();
+    $(".basic-info").append(`
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre del estudiante</th>
+                    <th>Correo</th>
+                    <th>Número</th>
+                    <th>Acudiente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${number}</td>
+                    <td>${parent}</td>
+                </tr>
+            </tbody>
+        </table>
+    `);
+    fetch("/usuario/"+id,{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(response){
+        if(response.data.length>0){
+            var respuestas=[];
+            var data=response.data;
+            // extraccion de datos: preguntas y respuestas
+            data.forEach(function(e,i){
+                if(e.activity=="reflexion" || e.activity=="recorridos"){
+                    respuestas.push({sense:e.sense,question:e.question, answer:e.value});
+                }
+            });
+
+            //asignacion de los datos en la vista: sentidos
+            $(".info-sentidos").empty();
+            respuestas.forEach(function(e,i){
+                if(e.sense!=""){
+                    $(".info-sentidos").append(`
+                        <div class="col-md-4 mt-1">
+                            <div class="card">
+                                <div class="card-header">
+                                    <p><b>${e.sense.toUpperCase()}</b></p>
+                                    <p><b>${e.question}</b></p>
+                                </div>
+                                <div class="card-body">
+                                    <p>${e.answer}</p>
+                                </div>
+                            </div>
+                        </div>    
+                    `);
+                }  
+            });
+        }
+        
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 }
 
 function doSearch(){
