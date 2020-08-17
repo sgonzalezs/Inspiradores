@@ -116,6 +116,13 @@ $(document).ready(function(){
 					localStorage.setItem('userAvatar', identity.image);
 					window.location.replace('/viaje');
 				}
+
+				if(response.message=="admin login"){
+					window.location="/administracion";
+					localStorage.setItem('token', response.token);
+					localStorage.setItem('user', response.user.email);
+					localStorage.setItem('identity', JSON.stringify(response.user));
+				}
 			}
 		})
 		.catch(function(err){

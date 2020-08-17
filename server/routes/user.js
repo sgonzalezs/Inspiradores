@@ -96,11 +96,6 @@ app.get("/sentidos-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/"});
 });
 
-// Configuracion
-app.get("/ajuste", (req,res)=>{
-    res.sendFile("ajuste.html", {root:"public/"});
-});
-
 // Inspiracion
 app.get("/inspiraciones", (req,res)=>{
     res.sendFile("inspiracion.html", {root:"public"});
@@ -230,99 +225,6 @@ app.get("/datos/:sense&:activity", (req,res)=>{
     });
 });
 
-app.post("/insp", (req,res)=>{
-    let inspiring=new Inspiring({
-        name:req.body.name,
-        like:0,
-        dislike:0
-    });
-
-    inspiring.save((err, data)=>{
-        if(err){
-            return res.status(400).json({
-                ok:false,
-                message:err
-            });
-        }
-
-        return res.status(200).json({
-            ok:true,
-            message:data
-        });
-    });
-});
-
-app.post("/votes", (req,res)=>{
-    let body=req.body;
-    
-    let inspiring=new Inspiring({
-        name:body.name,
-        category:"Cuerpo",
-        user:"55522",
-        like:true,
-        dislike:false
-    });
-
-    inspiring.save((err, newVote)=>{
-        if(err){
-            return res.status(400).json({
-                ok:false,
-                message:err
-            });
-        }
-
-        return res.status(200).json({
-            ok:true,
-            message:newVote
-        });
-    });
-});
-
-app.post("/votacion", (req,res)=>{
-    let body=req.body;
-
-    Inspiring.findOne({name:body.name}, (err, dataFounded)=>{
-        if(err){
-            return res.status(400).json({
-                ok:false,
-                message:err
-            });
-        }
-
-        if(dataFounded){
-            var changes={};
-            let value=parseInt(dataFounded.like+1);
-            if(body.option=="like"){
-                changes={
-                    like:value
-                };
-            }else{
-                changes={
-                    dislike:value
-                };
-            }
-
-            Inspiring.findOneAndUpdate({name:body.name},changes, (err, dataUpdated)=>{
-                if(err){
-                    return res.status(400).json({
-                        ok:false,
-                        message:err
-                    });
-                }
-                return res.status(200).json({
-                    ok:true,
-                    data:changes
-                });
-            });
-        }else{
-            return res.status(404).json({
-                ok:false,
-                message:"Datos no encontrados"
-            });
-        }
-    });
-});
-
 app.post("/respuesta", (req,res)=>{
     let body=req.body;
     let question=new Quest({
@@ -365,6 +267,13 @@ app.post("/respuesta", (req,res)=>{
 
 app.post("/login", (req,res)=>{
     let body=req.body;
+
+    if(body.document=="00000000" && body.email=="admin@admin.admin"){
+        return res.status(200).json({
+            ok:true,
+            message:"admin login"
+        });
+    }
 
     Student.findOne({document:body.document}, (failed, studentData)=>{
         if(failed){
