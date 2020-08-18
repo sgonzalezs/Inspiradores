@@ -64,7 +64,7 @@ function detectDevice(){
             "background-image": "url('../images/fondo/Fondo.png')",
             "background-size": "cover",
             "background-repeat":"no-repeat",
-            "background-size": "100% 100%"
+            "background-size": "100% 100vh"
         });
         $(".device").css("display", "block");
     }
@@ -74,24 +74,24 @@ function detectDevice(){
         console.log(orientation2);
         if(orientation2=="portrait-primary"){
             $("body section").css("display", "none");
-            $("body").css({
-                "background-image": "url('../images/fondo/Fondo.png')",
-                "background-size": "cover",
-                "background-repeat":"no-repeat",
-                "background-size": "100% 100%"
-            });
+            // $("body").css({
+            //     "background-image": "url('../images/fondo/Fondo.png')",
+            //     "background-size": "cover",
+            //     "background-repeat":"no-repeat",
+            //     "background-size": "100% 100%"
+            // });
             $(".device").css("display", "block");
         }
         
         if(orientation2=="landscape-primary")
         {
             $("body section").css("display", "block");
-            $("body").css({
-                "background-image": "url('../images/avatar/fondo_2.png')",
-                "background-size": "cover",
-                "background-repeat":"no-repeat",
-                "background-size": "100% 800px"
-            });
+            // $("body").css({
+            //     "background-image": "url('../images/avatar/fondo_2.png')",
+            //     "background-size": "cover",
+            //     "background-repeat":"no-repeat",
+            //     "background-size": "100% 800px"
+            // });
             $(".device").css("display", "none");
             $(".footer img").css({
                 "position": "relative",
