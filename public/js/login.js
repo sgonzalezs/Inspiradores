@@ -7,23 +7,23 @@ $(document).ready(function(){
 		$("#formIngresa").css("display", "none");
 		$("#formLogin").css("display", "block");
 
-		$(".alert").css("display", "none");
-		$(".alert").text("");
+		$(".alertMessage").css("display", "none");
+		$(".alertMessage").text("");
 	});
 
 	$(".register").click(function(){
 		$("#formIngresa").css("display", "block");
 		$("#formLogin").css("display", "none");
 
-		$(".alert").css("display", "none");
-		$(".alert").text("");
+		$(".alertMessage").css("display", "none");
+		$(".alertMessage").text("");
 	});
 
     $("#formIngresa").on('submit', function(e){
 		e.preventDefault();
 		
 		if($(".document").val().length<5 || $(".phone").val().length<10){
-			$(".alert").css("display", "block");
+			$(".alertMessage").css("display", "block");
 		}else{
 			var data = {
 				name: $("#txtName").val(),
@@ -48,17 +48,17 @@ $(document).ready(function(){
 			.then(function(response){
 				if(!response.ok){
 					if(response.message=="student not found"){
-						$(".alert").css("display", "block");
-						$(".alert").text("El estudiante no está registrado en la base de datos del colegio");
+						$(".alertMessage").css("display", "block");
+						$(".alertMessage").text("El estudiante no está registrado en la base de datos del colegio");
 					}else{
-						$(".alert").css("display", "block");
-						$(".alert").text("Error al ingresar, revisa la información");
+						$(".alertMessage").css("display", "block");
+						$(".alertMessage").text("Error al ingresar, revisa la información");
 					}
 				}else{
 
 					if(response.message=="login"){
-						$(".alert").css("display", "block");
-						$(".alert").text("ya existe un usuario con estos datos");
+						$(".alertMessage").css("display", "block");
+						$(".alertMessage").text("ya existe un usuario con estos datos");
 						// let identity=JSON.parse(localStorage.getItem('identity'))
 						// localStorage.setItem('userAvatar', identity.image);
 						// window.location.replace('/viaje');

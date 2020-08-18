@@ -19,9 +19,9 @@ body{
 }
 
 @media only screen and (max-width: 800px) {
-    body {
+    /* body {
         background-size: 100% 100vh;
-    }
+    } */
     .alertDevice{
         display: none;
     }
