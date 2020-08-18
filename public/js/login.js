@@ -98,12 +98,12 @@ $(document).ready(function(){
 		.then(function(response){
 			if(!response.ok){
 				if(response.message=="not found"){
-					$(".alert").css("display", "block");
-					$(".alert").text("No existe ningun usuario con estos datos");
+					$(".alertMessage").css("display", "block");
+					$(".alertMessage").text("No existe ningun usuario con estos datos");
 				}
 				if(response.message=="student not found"){
-					$(".alert").css("display", "block");
-					$(".alert").text("El estudiante no está registrado en la base de datos del colegio");
+					$(".alertMessage").css("display", "block");
+					$(".alertMessage").text("El estudiante no está registrado en la base de datos del colegio");
 				}
 			}else{
 				if(response.message=="login"){

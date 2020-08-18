@@ -36,7 +36,7 @@ $(document).ready(function(){
                 "background-image": "url('../images/fondo/FondoCompleto.png')",
                 "background-size": "cover",
                 "background-repeat":"no-repeat",
-                "background-size": "100% 100vh"
+                "background-size": "100% 800px"
             });
             $(".device").css("display", "none");
         }
