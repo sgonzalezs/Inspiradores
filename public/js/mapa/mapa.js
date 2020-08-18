@@ -68,13 +68,12 @@ function detectDevice(){
         });
         $(".device").css("display", "block");
         $(".footer img").css({
-            "position":"absolute"
+            "position":"relative"
         });
     }
     
     $(window).on("orientationchange",function( event ){
         var orientation2=screen.orientation.type;
-        console.log(orientation2);
         if(orientation2=="portrait-primary"){
             $("body section").css("display", "none");
             $("body").css({
@@ -85,7 +84,7 @@ function detectDevice(){
             });
             $(".device").css("display", "block");
             $(".footer img").css({
-                "position":"absolute"
+                "position":"relative"
             });
         }
         
