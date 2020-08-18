@@ -68,7 +68,7 @@ function detectDevice(){
         });
         $(".device").css("display", "block");
         $(".footer img").css({
-            "position":"relative"
+            "position":"absolute"
         });
     }
     
@@ -84,7 +84,7 @@ function detectDevice(){
             });
             $(".device").css("display", "block");
             $(".footer img").css({
-                "position":"relative"
+                "position":"absolute",
             });
         }
         
