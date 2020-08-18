@@ -9,9 +9,9 @@ body{
     display: none;
 }
 
-@media only screen and (max-width: 1080px) {
+/* @media only screen and (max-width: 1080px) {
     body {
-        background-size: 100% 600px;
+        background-size: 100% 100vh;
     }
     .alertDevice{
         display: none;
@@ -19,13 +19,13 @@ body{
 }
 
 @media only screen and (max-width: 800px) {
-    /* body {
+    body {
         background-size: 100% 100vh;
-    } */
+    }
     .alertDevice{
         display: none;
     }
-}
+} */
 
 @media only screen and (max-width:600px) {
     body {
@@ -40,6 +40,13 @@ body{
     }
 }
 
+div.device{
+    display: none;
+    padding: 20px;
+    margin: 50% 10%;
+    font-size: 50px;
+    width: 80%;
+}
 
 .formLogin{
     position: relative;

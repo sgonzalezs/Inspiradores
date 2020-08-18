@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    detectDevice();
     var identity=JSON.parse(localStorage.getItem('identity'));
     $(".imgLevel").css("pointer-events", "none");
     getSensesvalidate(identity);
@@ -53,4 +54,49 @@ function getSensesvalidate(identity){
     .catch(function(err){
         console.log(err);
     }); 
+}
+
+function detectDevice(){
+    var orientation=screen.orientation.type;
+    if(orientation=="portrait-primary"){
+        $("body section").css("display", "none");
+        $("body").css({
+            "background-image": "url('../images/fondo/Fondo.png')",
+            "background-size": "cover",
+            "background-repeat":"no-repeat",
+            "background-size": "100% 100%"
+        });
+        $(".device").css("display", "block");
+    }
+    
+    $(window).on("orientationchange",function( event ){
+        var orientation2=screen.orientation.type;
+        console.log(orientation2);
+        if(orientation2=="portrait-primary"){
+            $("body section").css("display", "none");
+            $("body").css({
+                "background-image": "url('../images/fondo/Fondo.png')",
+                "background-size": "cover",
+                "background-repeat":"no-repeat",
+                "background-size": "100% 100%"
+            });
+            $(".device").css("display", "block");
+        }
+        
+        if(orientation2=="landscape-primary")
+        {
+            $("body section").css("display", "block");
+            $("body").css({
+                "background-image": "url('../images/avatar/fondo_2.png')",
+                "background-size": "cover",
+                "background-repeat":"no-repeat",
+                "background-size": "100% 800px"
+            });
+            $(".device").css("display", "none");
+            $(".footer img").css({
+                "position": "relative",
+                "width": "220px"
+            })
+        }
+    });
 }

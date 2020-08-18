@@ -4,8 +4,9 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Navegantes</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <meta name='viewport' content='width=device-width, initial-scale=1'> -->
     <script>
+        
         if(localStorage.getItem('token')){
             if(localStorage.getItem('userAvatar')){
                 window.location="/sentido";
@@ -185,7 +186,9 @@
             </div> -->
         </section>
     </section>
-    
+    <div class="alert alert-danger device">
+        Gira tu dispositivo para una mejor experiencia.
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
@@ -200,5 +203,6 @@
         crossorigin="anonymous">
     </script>
     <script src="./js/login.js"></script>
+    <script src="./js/movil-detect.js"></script>
 </body>
 </html>

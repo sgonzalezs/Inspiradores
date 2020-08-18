@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    detectDevice();
     var identity=JSON.parse(localStorage.getItem('identity'));
     // loadInspiradores(identity);
     getSensesComplete(identity);
@@ -81,39 +82,6 @@ function getSensesComplete(identity){
     }); 
 }
 
-// function validateSenses(identity){
-//     let user=identity._id;
-//     let answer='complete';
-//     let question='senses';
-
-//     fetch('/senses/'+user+"&"+answer+"&"+question, {
-//         method: 'GET',
-//         headers:{
-//         'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(function(res){
-//         return res.json();
-//     })
-//     .then(function(response){
-//         if(!response.ok){
-//             if(response.message=="not found"){
-
-//                 $(".alert").css("display", "none");
-//                 $(".btnContinue").css("display", "none");
-//                 $(".alert").text("");
-//             }
-//         }else{
-//             $(".alert").css("display", "block");
-//             $(".btnContinue").css("display", "block");
-//             $(".alert").text("Ya has completado todas las actividades de los sentidos");
-//         }
-//     })
-//     .catch(function(err){
-//         console.log('Error:', err);
-//     });
-// }
-
 function loadInspiradores(identity){
 
     var senses=JSON.parse(localStorage.getItem('senses'));
@@ -168,4 +136,61 @@ function loadInspiradores(identity){
             });
         }
     }
+}
+
+function detectDevice(){
+    var orientation=screen.orientation.type;
+    if(orientation=="portrait-primary"){
+        $("body section").css("display", "none");
+        $("body").css({
+            "background-image": "url('../images/fondo/Fondo.png')",
+            "background-size": "cover",
+            "background-repeat":"no-repeat",
+            "background-size": "100% 100vh"
+        });
+        $(".device").css("display", "block");
+    }
+    // if(orientation=="landscape-primary")
+    // {
+    //     $("body section").css("display", "block");
+    //     $("body").css({
+    //         "background-image": "url('../images/fondo/Fondo2-sentidos.png')",
+    //         "background-size": "cover",
+    //         "background-repeat":"no-repeat",
+    //         "background-size": "100% 100vh"
+    //     });
+    //     $(".device").css("display", "none");
+    // }
+    $(window).on("orientationchange",function( event ){
+        var orientation2=screen.orientation.type;
+        console.log(orientation2);
+        if(orientation2=="portrait-primary"){
+            $("body section").css("display", "none");
+            $("body").css({
+                "background-image": "url('../images/fondo/Fondo.png')",
+                "background-size": "cover",
+                "background-repeat":"no-repeat",
+                "background-size": "100% 100vh"
+            });
+            $(".device").css("display", "block");
+        }
+        
+        if(orientation2=="landscape-primary")
+        {
+            $("body section").css("display", "block");
+            $("body").css({
+                "background-image": "url('../images/fondo/Fondo2-sentidos.png')",
+                "background-size": "cover",
+                "background-repeat":"no-repeat",
+                "background-size": "100% 800px"
+            });
+            $(".device").css("display", "none");
+            $(".footer img").css({
+                "position": "relative",
+                "width": "220px",
+                "bottom":"0",
+                "position": "fixed"
+            })
+        }
+    });
 }
