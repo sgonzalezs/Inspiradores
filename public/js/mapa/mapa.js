@@ -81,7 +81,7 @@ function detectDevice(){
                 "background-image": "url('../images/fondo/Fondo.png')",
                 "background-size": "cover",
                 "background-repeat":"no-repeat",
-                "background-size": "100% 100%"
+                "background-size": "100% 100vh"
             });
             $(".device").css("display", "block");
             $(".footer img").css({
