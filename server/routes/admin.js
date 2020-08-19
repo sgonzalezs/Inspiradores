@@ -12,6 +12,23 @@ app.get("/administracion", (req,res)=>{
     res.sendFile("admin.html", {root:"public"});
 });
 
+app.get("/school/:doc", (req,res)=>{
+    let doc=req.params.doc;
+    Student.findOne({document:doc},(errno, dataJoin)=>{
+        if(errno){
+            return res.status(400).json({
+                ok:false,
+                message:errno
+            });
+        }
+        return res.status(200).json({
+            ok:true,
+            name:dataJoin.name,
+            school:dataJoin.school
+        });
+    });
+})
+
 app.get("/usuarios", (req,res)=>{
     User.find((err, data)=>{
         if(err){
@@ -20,7 +37,6 @@ app.get("/usuarios", (req,res)=>{
                 message:err
             });
         }
-
         return res.status(200).json({
             ok:true,
             data

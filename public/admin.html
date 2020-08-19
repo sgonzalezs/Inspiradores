@@ -39,9 +39,16 @@
         </div>
     </nav>
     <section class="container-fluid">
-        <section class="row m-5 content">
+        <section class="row mt-5 content">
             
             <div class="col-md-12">
+                <div class="row">
+                    <h1 class="display-4">Usuarios Registrados</h1>
+                    <button class="btn btn-success ml-auto" onclick="tableToExcel('tableUsers', 'Usuarios');">
+                        <img src="./images/icons/excel.png" width="25" alt="">
+                        Exportar
+                    </button>
+                </div>
                 <form>
                     Buscar:
                     <input id="searchTerm" class="form-control" type="text" placeholder="Buscar..." onkeyup="doSearch()" />
@@ -53,6 +60,7 @@
                             <th>Número de documento</th>
                             <th>Nombre Completo</th>
                             <th>Correo</th>
+                            <th>Colegio</th>
                         </tr>
                     </thead>
                     <tbody class="usersData">
