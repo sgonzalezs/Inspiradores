@@ -42,6 +42,7 @@ function logout(){
 
 function getUserInfo(id, name, email, parent, number){
     $(".basic-info").empty();
+    $(".info-sentidos").empty();
     $(".basic-info").append(`
         <table class="table table-bordered">
             <thead>
@@ -72,6 +73,7 @@ function getUserInfo(id, name, email, parent, number){
         return res.json();
     })
     .then(function(response){
+        console.log(response);
         if(response.data.length>0){
             var respuestas=[];
             var data=response.data;

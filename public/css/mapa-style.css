@@ -115,3 +115,7 @@ div.device{
     width: 80%;
 }
 
+div.device img{
+    width:100%;
+}
+

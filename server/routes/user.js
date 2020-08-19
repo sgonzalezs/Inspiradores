@@ -225,6 +225,23 @@ app.get("/datos/:sense&:activity", (req,res)=>{
     });
 });
 
+app.get("/student/:user", (req,res)=>{
+    let user=req.params.user;
+
+    Student.findOne({document:user}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message: err
+            });
+        }
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    })
+})
+
 app.post("/respuesta", (req,res)=>{
     let body=req.body;
     let question=new Quest({

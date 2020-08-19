@@ -28,6 +28,22 @@ app.get("/usuarios", (req,res)=>{
     });
 });
 
+app.get("/quest", (req,res)=>{
+    Quest.find((err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    });
+});
+
 app.get("/usuario/:user", (req,res)=>{
     let user=req.params.user;
 

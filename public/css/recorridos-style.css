@@ -162,4 +162,16 @@ p.resume{
     }
 }
 
+div.device{
+    display: none;
+    padding: 20px;
+    margin: 50% 10%;
+    font-size: 50px;
+    width: 80%;
+}
+
+div.device img{
+    width:100%;
+}
+
 

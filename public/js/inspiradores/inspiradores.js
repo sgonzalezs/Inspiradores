@@ -1,7 +1,6 @@
 $(document).ready(function(){
+    getDevice();
     let identity=JSON.parse(localStorage.getItem('identity'));
-    // validateInspirings(identity);
-    // loadRecorridos(identity);
     getSensesComplete(identity);
     getVotesvalidate(identity)
 });
@@ -48,94 +47,6 @@ function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
 
-
-// function loadRecorridos(identity){
-//     let user=identity._id;
-//     let answer='complete';
-//     let question='inspirings';
-
-//     fetch('/senses/'+user+"&"+answer+"&"+question, {
-//         method: 'GET',
-//         headers:{
-//         'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(function(res){
-//         return res.json();
-//     })
-//     .then(function(response){
-//         if(!response.ok){
-//             if(response.message=="not found"){
-
-//                 $(".alert").css("display", "none");
-//                 $(".btnContinue").css("display", "none");
-//                 $(".alert").text("");
-//             }
-//         }else{
-//             $(".alert").css("display", "block");
-//             $(".alert").text("Haz clic en continuar");
-//             $(".btnContinue").css("display", "block");
-//         }
-//     })
-//     .catch(function(err){
-//         console.log('Error:', err);
-//     });
-// }
-
-// function validateInspirings(identity){
-//     let inspirings=JSON.parse(localStorage.getItem('inspiring'));
-
-//     if(inspirings){
-//         let validate={
-//             arte:inspirings.arte,
-//             ciencia:inspirings.ciencia,
-//             cuerpo:inspirings.cuerpo,
-//             sociedad:inspirings.sociedad
-//         };
-
-//         if(validate.arte && validate.ciencia &&validate.cuerpo &&validate.sociedad){
-//             $(".alert").css("display", "block");
-//             $(".alert").text("Haz clic en continuar");
-//             $(".btnContinue").css("display", "block");
-
-//             let data={
-//                 id:identity._id,
-//                 answer:"complete",
-//                 question:"inspirings",
-//                 sense:'all',
-//                 activity:'validate'
-//             };
-
-//             fetch('/respuesta', {
-//                 method: 'POST', 
-//                 body: JSON.stringify(data),
-//                 headers:{
-//                 'Content-Type': 'application/json'
-//                 }
-//             })
-//             .then(function(res){
-//                 return res.json();
-//             })
-//             .then(function(response){
-//                 if(!response.ok){
-//                     if(response.message=="exists"){
-//                         $(".alert").css("display", "block");
-//                         $(".btnContinue").css("display", "block");
-//                         $(".alert").text("Haz clic en continuar");
-//                     }
-//                 }else{
-//                     $(".alert").css("display", "block");
-//                     $(".btnContinue").css("display", "block");
-//                     $(".alert").text("Haz clic en continuar");
-//                 }
-//             })
-//             .catch(function(err){
-//                 console.log('Error:', err);
-//             });
-//         }
-//     }
-// }
-
 function getSensesComplete(identity){
     
     fetch('/premios/'+identity._id,{
@@ -177,4 +88,25 @@ function getSensesComplete(identity){
     .catch(function(err){
         console.log(err);
     }); 
+}
+
+function getDevice(){
+    var orientation=screen.orientation.type;
+    if(orientation=="portrait-primary"){
+        $("body section").css("display", "none");
+        $(".device").css("display", "block");
+    }else{
+        $("body section").css("display", "block");
+        $(".device").css("display", "none");
+    }
+    $(window).on("orientationchange",function( event ){
+        var orientation2=screen.orientation.type;
+        if(orientation2=="portrait-primary"){
+            $("body section").css("display", "none");
+            $(".device").css("display", "block");
+        }else{
+            $("body section").css("display", "block");
+            $(".device").css("display", "none");
+        }
+    });
 }
