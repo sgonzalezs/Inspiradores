@@ -87,7 +87,7 @@ function getUserInfo(id, name, email, parent, number){
             respuestas.forEach(function(e,i){
                 if(e.sense!=""){
                     $(".info-sentidos").append(`
-                        <div class="col-sm-12 col-md-4 mt-1">
+                        <div class="col-sm-12 col-md-12 mt-1">
                             <div class="card">
                                 <div class="card-header">
                                     <p><b>${e.sense.toUpperCase()}</b></p>
