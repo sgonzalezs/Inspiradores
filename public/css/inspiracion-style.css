@@ -17,26 +17,10 @@ body{
 
 .content{
     margin:2%;
-    display: inline;
 }
-
-.content .col-md-4{
-    float: right;
-    top:1;
-    right: 0;
-    position: absolute;
-}
-
-@media only screen and (max-width: 960px) {
-    .content .col-md-4{
-        top:400px;
-    }
-}
-
-
 .imagesSection img{
     width: 25%;
-    float: right;
+    float: left;
     transition: transform 0.1s;
 }
 
