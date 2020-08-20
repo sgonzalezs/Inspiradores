@@ -337,7 +337,7 @@ app.post("/login", (req,res)=>{
 app.post("/registro", (req,res)=>{
     let body=req.body;
 
-    Student.findOne({document:body.document, type_doc:body.type_doc}, (failed, studentData)=>{
+    Student.findOne({document:body.document}, (failed, studentData)=>{
         if(failed){
             return res.status(400).json({
                 ok:false,

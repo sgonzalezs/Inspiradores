@@ -43,7 +43,7 @@ app.get("/students", (req,res)=>{
             data
         });
     });
-})
+});
 
 app.get("/usuarios", (req,res)=>{
     User.find((err, data)=>{
@@ -144,6 +144,6 @@ app.get("/student/:doc", (req,res)=>{
             data
         });
     });
-})
+});
 
 module.exports=app;
