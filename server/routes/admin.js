@@ -86,4 +86,30 @@ app.get("/usuario/:user", (req,res)=>{
     });
 });
 
+app.post("/student", (req,res)=>{
+    let body=req.body;
+
+    let student=new Student({
+        type_doc:body.type_doc,
+        document:body.document,
+        grade:body.grade,
+        name:body.name,
+        school:body.school
+    });
+
+    student.save((err,newData)=>{
+        if(err){
+            return res.status(401).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            data:newData
+        });
+    });
+});
+
 module.exports=app;
