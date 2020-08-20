@@ -93,19 +93,19 @@ function getSensesComplete(identity){
 function getDevice(){
     var orientation=screen.orientation.type;
     if(orientation=="portrait-primary"){
-        $("body section").css("display", "none");
+        $("body>section").css("display", "none");
         $(".device").css("display", "block");
     }else{
-        $("body section").css("display", "block");
+        $("body>section").css("display", "block");
         $(".device").css("display", "none");
     }
     $(window).on("orientationchange",function( event ){
         var orientation2=screen.orientation.type;
         if(orientation2=="portrait-primary"){
-            $("body section").css("display", "none");
+            $("body>section").css("display", "none");
             $(".device").css("display", "block");
         }else{
-            $("body section").css("display", "block");
+            $("body>section").css("display", "block");
             $(".device").css("display", "none");
         }
     });
