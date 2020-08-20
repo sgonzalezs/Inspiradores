@@ -83,10 +83,18 @@
                         
                     </div>
                     <div class="row info-sentidos">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <h4 class="m-auto">Respuestas</h4>
                         </div>
-                        
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-succces float-right" onclick="tableToExcel('userAnswer', 'respuestas');">
+                                <img src="./images/icons/excel.png" width="25" alt="">
+                                Exportar
+                            </button>
+                        </div>
+                        <table id="userAnswer" class="table table-bordered table-striped">
+                            
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">

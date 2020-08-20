@@ -29,6 +29,22 @@ app.get("/school/:doc", (req,res)=>{
     });
 })
 
+app.get("/students", (req,res)=>{
+    // let doc=req.params.doc;
+    Student.find((errno, data)=>{
+        if(errno){
+            return res.status(400).json({
+                ok:false,
+                message:errno
+            });
+        }
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    });
+})
+
 app.get("/usuarios", (req,res)=>{
     User.find((err, data)=>{
         if(err){
@@ -111,5 +127,23 @@ app.post("/student", (req,res)=>{
         });
     });
 });
+
+app.get("/student/:doc", (req,res)=>{
+    let document=req.params.doc;
+
+    Student.findOne({document}, (err, data)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                message:err
+            });
+        }
+
+        return res.status(200).json({
+            ok:true,
+            data
+        });
+    });
+})
 
 module.exports=app;

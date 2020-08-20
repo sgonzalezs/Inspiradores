@@ -28,7 +28,7 @@ function getUsersData(){
             .then(function(response){
                 if(response.ok){
                     $(".usersData").append(`
-                    <tr onclick="getUserInfo('${e._id}', '${e.name}','${e.email}','${e.parentName}','${e.number}');" data-toggle="modal" data-target="#userInfoModal">
+                    <tr onclick="getUserInfo('${e._id}','${e.name}','${e.email}','${e.parentName}','${e.number}','${e.document}','${response.name}');" data-toggle="modal" data-target="#userInfoModal">
                         <td>${e.typeDoc.toUpperCase()}</td>
                         <td>${e.document}</td>
                         <td>${response.name}</td>
@@ -80,9 +80,9 @@ function getSchool(doc){
    
 }
 
-function getUserInfo(id, name, email, parent, number){
+function getUserInfo(id, user, email, parent, number, doc, name){
     $(".basic-info").empty();
-    $(".info-sentidos").empty();
+    $("#userAnswer").empty();
     $(".basic-info").append(`
         <table class="table table-bordered">
             <thead>
@@ -95,13 +95,19 @@ function getUserInfo(id, name, email, parent, number){
             </thead>
             <tbody>
                 <tr>
-                    <td>${name}</td>
+                    <td>${user}</td>
                     <td>${email}</td>
                     <td>${number}</td>
                     <td>${parent}</td>
                 </tr>
             </tbody>
         </table>
+    `);
+    $("#userAnswer").append(`
+        <tr>
+            <td style="">${doc}</td>
+            <td style="">${name}</td>
+        </tr>
     `);
     fetch("/usuario/"+id,{
         method:"GET",
@@ -125,21 +131,14 @@ function getUserInfo(id, name, email, parent, number){
             });
 
             //asignacion de los datos en la vista: sentidos
-            $(".info-sentidos").empty();
+            
             respuestas.forEach(function(e,i){
                 if(e.sense!=""){
-                    $(".info-sentidos").append(`
-                        <div class="col-sm-12 col-md-12 mt-1">
-                            <div class="card">
-                                <div class="card-header">
-                                    <p><b>${e.sense.toUpperCase()}</b></p>
-                                    <p><b>${e.question}</b></p>
-                                </div>
-                                <div class="card-body">
-                                    <p>${e.answer}</p>
-                                </div>
-                            </div>
-                        </div>    
+                    $("#userAnswer").append(`
+                        <tr>
+                            <th style="width:50%">${e.question}</th>
+                            <td style="width:50%">${e.answer}</td>
+                        </tr>
                     `);
                 }  
             });
