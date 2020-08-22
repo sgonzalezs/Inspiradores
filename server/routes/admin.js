@@ -8,7 +8,7 @@ const Quest=require("../models/questions.js");
 
 const app=express();
 
-app.get("/administracion", (req,res)=>{
+app.get("/inspiracioncomfama/administracion", (req,res)=>{
     res.sendFile("admin.html", {root:"public"});
 });
 

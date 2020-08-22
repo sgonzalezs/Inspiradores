@@ -65,5 +65,5 @@ function logout(){
     localStorage.removeItem('recorridos');
     localStorage.removeItem('videos');
 
-    window.location="/";
+    window.location="/inspiracioncomfama";
 }

@@ -17,7 +17,6 @@ function validateVote(identity){
         return res.json();
     })
     .then(function(response){
-        console.log(response);
         if(!response.ok){
             if(response.message=="not found"){
                 
@@ -50,7 +49,6 @@ function getVotes(){
         if(!response.ok){
             console.log(response.message);
         }else{
-            console.log(response);
             var likes=0;
             var dislikes=0;
             for(var i=0; i<response.data.length; i++){

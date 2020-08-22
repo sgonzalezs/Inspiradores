@@ -59,7 +59,7 @@ function getTrophyRecorridos(identity, points){
         if(response.message=="exists"){
             updatedPoints(data.user, data.sense, data.points);
         }else{
-            window.location="/premiacion";
+            window.location="/inspiracioncomfama/premiacion";
         }
     })
     .catch(function(err){
@@ -87,7 +87,7 @@ function updatedPoints(user, sense, points){
     .then(function(response){
         if(response.ok){
             
-            window.location="/premiacion";
+            window.location="/inspiracioncomfama/premiacion";
         }
     })
     .catch(function(err){

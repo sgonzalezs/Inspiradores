@@ -68,7 +68,7 @@ $(document).ready(function(){
 						localStorage.setItem('user', response.user.email);
 						localStorage.setItem('identity', JSON.stringify(response.user));
 						localStorage.setItem('student', JSON.stringify(response.student));
-						window.location.replace('/avatar');	
+						window.location.replace('/inspiracioncomfama/avatar');	
 					}
 				}
 			})
@@ -115,11 +115,11 @@ $(document).ready(function(){
 					
 					let identity=JSON.parse(localStorage.getItem('identity'))
 					localStorage.setItem('userAvatar', identity.image);
-					window.location.replace('/viaje');
+					window.location.replace('/inspiracioncomfama/viaje');
 				}
 
 				if(response.message=="admin login"){
-					window.location="/administracion";
+					window.location="/inspiracioncomfama/administracion";
 					localStorage.setItem('token', response.token);
 					localStorage.setItem('user', response.user.email);
 					localStorage.setItem('identity', JSON.stringify(response.user));

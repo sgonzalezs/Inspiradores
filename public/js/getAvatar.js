@@ -1,7 +1,7 @@
 $(document).ready(function(){
     let identity=JSON.parse(localStorage.getItem("identity"));
     getAvatarUser();
-    // $(".avatarLoaded img").attr("src", "./images/sentidos/pirata.png");
+    // $(".avatarLoaded img").attr("src", "../images/sentidos/pirata.png");
     $(".btnReflexion").click(function(){
         let sense=$(this).attr("value").split("-")[1];
         let category=$(this).attr("value").split("-")[0];
@@ -24,7 +24,7 @@ $(document).ready(function(){
                     $(".alert").css("display", "block");
                     $(".alert").attr("class", "alert alert-danger mt-2");
                     $(".alert").text("Debes compeltar todo el recorrido para reclamar el premio");
-                    $(".redirectRecompensa").attr("href", "/sentido");
+                    $(".redirectRecompensa").attr("href", "/inspiracioncomfama/sentido");
                 }
             }else{
                 getTrophy(sense, category);
@@ -49,7 +49,7 @@ function getAvatarUser(){
                 "width": "80px",
                 "margin":"0px 0px 0px 10px"
             });
-            $(".avatarLoaded").attr("src", "./images/sentidos/pirata.png");
+            $(".avatarLoaded").attr("src", "../images/sentidos/pirata.png");
         break;
 
         case "pirataMin_2.png":
@@ -58,7 +58,7 @@ function getAvatarUser(){
                 "width": "80px",
                 "margin":"0px 0px 0px 10px"
             });
-            $(".avatarLoaded").attr("src", "./images/sentidos/pirata_2.png");
+            $(".avatarLoaded").attr("src", "../images/sentidos/pirata_2.png");
         break;
 
         case "pirataMin_3.png":
@@ -67,7 +67,7 @@ function getAvatarUser(){
                 "width": "70px",
                 "margin":"0px 0px 0px 10px"
             });
-            $(".avatarLoaded").attr("src", "./images/sentidos/pirata_3.png");
+            $(".avatarLoaded").attr("src", "../images/sentidos/pirata_3.png");
         break;
 
         case "pirataMin_4.png":
@@ -76,7 +76,7 @@ function getAvatarUser(){
                 "width":"55px", 
                 "margin":"6px 0px 0px 15px"
             });
-            $(".avatarLoaded").attr("src", "./images/sentidos/pirata_4.png");
+            $(".avatarLoaded").attr("src", "../images/sentidos/pirata_4.png");
         break;
     }
 }
@@ -100,7 +100,7 @@ function validateReflection(identity, type){
                 $(".alert").css("display", "block");
                 $(".alert").attr("class", "alert alert-danger mt-2");
                 $(".alert").text("Debes compeltar todo el recorrido para reclamar el premio");
-                $(".redirectRecompensa").attr("href", "/sentido");
+                $(".redirectRecompensa").attr("href", "/inspiracioncomfama/sentido");
             }
         }else{
             
@@ -138,7 +138,7 @@ function getTrophy(sense, category){
     })
     .then(function(response){
 
-        window.location="/sentido";
+        window.location="/inspiracioncomfama/sentido";
         
     })
     .catch(function(err){

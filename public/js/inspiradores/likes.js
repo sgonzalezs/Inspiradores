@@ -55,9 +55,8 @@ function getVote(name){
     })
     .then(function(response){
         if(!response.ok){
-            console.log(response.message);
+            console.log(400);
         }else{
-            console.log(response);
             var likes=0;
             var dislikes=0;
             for(var i=0; i<response.data.length; i++){
@@ -100,7 +99,6 @@ function getInspirings(identity){
                     data.push(category);  
                 }
             });
-            console.log(data);
             
             var points=75*data.length;
             getTrophy(identity, points);

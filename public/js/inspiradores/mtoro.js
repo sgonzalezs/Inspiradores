@@ -25,10 +25,9 @@ function validateVote(identity){
         return res.json();
     })
     .then(function(response){
-        console.log(response.message);
         if(!response.ok){
             if(response.message=="not found"){
-                
+                console.log(404);   
             }
         }
         if(response.message=="complete"){
@@ -56,9 +55,8 @@ function getVotes(){
     })
     .then(function(response){
         if(!response.ok){
-            console.log(response.message);
+            console.log(400);
         }else{
-            console.log(response);
             var likes=0;
             var dislikes=0;
             for(var i=0; i<response.data.length; i++){

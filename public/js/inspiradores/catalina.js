@@ -52,7 +52,6 @@ function getVotes(){
         if(!response.ok){
             console.log(response.message);
         }else{
-            console.log(response);
             var likes=0;
             var dislikes=0;
             for(var i=0; i<response.data.length; i++){

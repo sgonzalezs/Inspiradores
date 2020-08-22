@@ -111,7 +111,6 @@ function getValidate(identity, sense){
         return res.json();
     })
     .then(function(response){
-        console.log(response);
         if(!response.ok){
             if(response.message=="not found"){
                 answerVista(identity);

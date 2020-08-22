@@ -26,7 +26,6 @@ function getInspirings(identity){
                     data.push(category);  
                 }
             });
-            console.log(data);
             
             var points=75*data.length;
             getTrophy(identity, points);
@@ -63,7 +62,7 @@ function getTrophy(identity, points){
                 updatedPoints(data.user, data.sense, data.points);
             }
         }else{
-            window.location="/viaje";
+            window.location="/inspiracioncomfama/viaje";
         }
     })
     .catch(function(err){
@@ -90,7 +89,7 @@ function updatedPoints(user, sense, points){
     })
     .then(function(response){
         if(response.ok){
-            window.location="/viaje";
+            window.location="/inspiracioncomfama/viaje";
         }
     })
     .catch(function(err){

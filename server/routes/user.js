@@ -10,168 +10,168 @@ const { verifyToken } = require('../middlewares/auth.js');
 
 const app=express();
 
-app.get("/", (req,res)=>{
+app.get("/inspiracioncomfama", (req,res)=>{
     res.sendFile('index.html', {root:'public/'});
 });
 
-app.get("/avatar", (req,res)=>{
+app.get("/inspiracioncomfama/avatar", (req,res)=>{
     res.sendFile("avatar.html", {root: 'public/'});
 });
 
-app.get("/sentido", (req,res)=>{
+app.get("/inspiracioncomfama/sentido", (req,res)=>{
     res.sendFile("sentidos.html", {root: 'public/'});
 });
 
 // Rutas Sentido Escucha
-app.get("/escucha", (req,res)=>{
+app.get("/inspiracioncomfama/escucha", (req,res)=>{
     res.sendFile("musica.html", {root:"public/sentidos/escucha"});
 });
-app.get("/escucha-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/escucha-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/escucha"});
 });
 
-app.get("/escucha-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/escucha-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/escucha"});
 });
 
 // ----------------------------------------
 
 //Rutas Sentido Vista
-app.get("/vista", (req,res)=>{
+app.get("/inspiracioncomfama/vista", (req,res)=>{
     res.sendFile("vista.html", {root:"public/sentidos/vista"});
 });
 
-app.get("/vista-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/vista-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/vista"});
 });
 
-app.get("/vista-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/vista-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/vista"});
 });
 // ----------------------------------------
 
 // Rutas Sentido Tacto
-app.get("/tacto", (req,res)=>{
+app.get("/inspiracioncomfama/tacto", (req,res)=>{
     res.sendFile("tacto.html", {root:"public/sentidos/tacto"});
 });
 
-app.get("/tacto-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/tacto-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/tacto"});
 });
 
-app.get("/tacto-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/tacto-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/tacto"});
 });
 // -------------------------------------------
 
 // Rutas Sentido Olfato
-app.get("/olfato", (req,res)=>{
+app.get("/inspiracioncomfama/olfato", (req,res)=>{
     res.sendFile("olfato.html", {root:"public/sentidos/olfato"});
 });
 
-app.get("/olfato-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/olfato-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/olfato"});
 });
 
-app.get("/olfato-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/olfato-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/olfato"});
 });
 // --------------------------------------------------
 
 // Ruras Sentido Gusto
-app.get("/gusto", (req,res)=>{
+app.get("/inspiracioncomfama/gusto", (req,res)=>{
     res.sendFile("gusto.html", {root:"public/sentidos/gusto"});
 });
 
-app.get("/gusto-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/gusto-reflexion", (req,res)=>{
     res.sendFile("index.html", {root:"public/sentidos/gusto"});
 });
 
-app.get("/gusto-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/gusto-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/sentidos/gusto"});
 });
 
 // Sentidos
-app.get("/sentidos-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/sentidos-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/"});
 });
 
 // Inspiracion
-app.get("/inspiraciones", (req,res)=>{
+app.get("/inspiracioncomfama/inspiraciones", (req,res)=>{
     res.sendFile("inspiracion.html", {root:"public"});
 });
 
-app.get("/catalina-arroyave", (req,res)=>{
+app.get("/inspiracioncomfama/catalina-arroyave", (req,res)=>{
     res.sendFile("catalina.html", {root:"public/inspiracion"});
 });
 
-app.get("/maria-camila-trillos", (req,res)=>{
+app.get("/inspiracioncomfama/maria-camila-trillos", (req,res)=>{
     res.sendFile("mcamila.html", {root:"public/inspiracion"});
 });
 
-app.get("/boyka", (req,res)=>{
+app.get("/inspiracioncomfama/boyka", (req,res)=>{
     res.sendFile("boyka.html", {root:"public/inspiracion"});
 });
 
-app.get("/juan-pablo-valencia", (req,res)=>{
+app.get("/inspiracioncomfama/juan-pablo-valencia", (req,res)=>{
     res.sendFile("jpablo.html", {root:"public/inspiracion"});
 });
 
-app.get("/jke", (req,res)=>{
+app.get("/inspiracioncomfama/jke", (req,res)=>{
     res.sendFile("jke.html", {root:"public/inspiracion"});
 });
 
-app.get("/brigitte-baptiste", (req,res)=>{
+app.get("/inspiracioncomfama/brigitte-baptiste", (req,res)=>{
     res.sendFile("brigette.html", {root:"public/inspiracion"});
 });
 
-app.get("/arex", (req,res)=>{
+app.get("/inspiracioncomfama/arex", (req,res)=>{
     res.sendFile("arex.html", {root:"public/inspiracion"});
 });
 
-app.get("/melissa-toro", (req,res)=>{
+app.get("/inspiracioncomfama/melissa-toro", (req,res)=>{
     res.sendFile("mtoro.html", {root:"public/inspiracion"});
 });
 
-app.get("/inspiracion-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/inspiracion-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/inspiracion"});
 });
 
-app.get("/inspiracion-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/inspiracion-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/inspiracion"});
 });
 
 // Recorridos
-app.get("/recorrido", (req,res)=>{
+app.get("/inspiracioncomfama/recorrido", (req,res)=>{
     res.sendFile("recorridos.html", {root:"public/recorridos"});
 });
 
-app.get("/encuentro", (req,res)=>{
+app.get("/inspiracioncomfama/encuentro", (req,res)=>{
     res.sendFile("centro.html", {root:"public/recorridos"});
 });
 
-app.get("/conocimiento", (req,res)=>{
+app.get("/inspiracioncomfama/conocimiento", (req,res)=>{
     res.sendFile("conocimiento.html", {root:"public/recorridos"});
 });
 
-app.get("/apropiacion", (req,res)=>{
+app.get("/inspiracioncomfama/apropiacion", (req,res)=>{
     res.sendFile("apropiacion.html", {root:"public/recorridos"});
 });
 
-app.get("/recorridos-reflexion", (req,res)=>{
+app.get("/inspiracioncomfama/recorridos-reflexion", (req,res)=>{
     res.sendFile("reflexion.html", {root:"public/recorridos"});
 });
 
-app.get("/recorridos-recompensas", (req,res)=>{
+app.get("/inspiracioncomfama/recorridos-recompensas", (req,res)=>{
     res.sendFile("recompensas.html", {root:"public/recorridos"});
 });
 
 // CIERRE
-app.get("/premiacion", (req,res)=>{
+app.get("/inspiracioncomfama/premiacion", (req,res)=>{
     res.sendFile("cierre.html", {root:"public/"});
 });
 
-app.get("/viaje", (req,res)=>{
+app.get("/inspiracioncomfama/viaje", (req,res)=>{
     res.sendFile("mapa.html", {root:"public/"});
 });
 

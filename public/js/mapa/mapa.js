@@ -19,7 +19,7 @@ function getSensesvalidate(identity){
     .then(function(response){
         if(!response.ok){
             if(response.message=="No data"){
-                
+                console.log(404);
             }
         }else{
             let trophies=response.message;

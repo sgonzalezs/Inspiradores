@@ -4,7 +4,7 @@ $(document).ready(function(){
         let attribute=$(this).attr('class');
         switch(attribute){
             case 'myAvatar myAvatar1':
-                $(".avatarSelected img").attr("src", "./images/avatar/pirataMin_1.png");
+                $(".avatarSelected img").attr("src", "../images/avatar/pirataMin_1.png");
                 $(".avatarSelected img").css({
                     "width": "80px",
                     "margin":"0px 0px 0px 10px"
@@ -12,7 +12,7 @@ $(document).ready(function(){
             break;
 
             case 'myAvatar myAvatar2':
-                $(".avatarSelected img").attr("src", "./images/avatar/pirataMin_2.png");
+                $(".avatarSelected img").attr("src", "../images/avatar/pirataMin_2.png");
                 $(".avatarSelected img").css({
                     "width": "80px",
                     "margin":"0px 0px 0px 10px"
@@ -20,7 +20,7 @@ $(document).ready(function(){
             break;
 
             case 'myAvatar myAvatar3':
-                $(".avatarSelected img").attr("src", "./images/avatar/pirataMin_3.png");
+                $(".avatarSelected img").attr("src", "../images/avatar/pirataMin_3.png");
                 $(".avatarSelected img").css({
                     "width": "70px",
                     "margin":"0px 0px 0px 10px"
@@ -28,7 +28,7 @@ $(document).ready(function(){
             break;
 
             case 'myAvatar myAvatar4':
-                $(".avatarSelected img").attr("src", "./images/avatar/pirataMin_4.png");
+                $(".avatarSelected img").attr("src", "../images/avatar/pirataMin_4.png");
                 $(".avatarSelected img").css({
                     "width":"55px", 
                     "margin":"6px 0px 0px 15px"
@@ -62,7 +62,7 @@ $(document).ready(function(){
                       console.log(response.message);
                   }else{
                       localStorage.setItem('userAvatar', image);
-                      window.location="/viaje";
+                      window.location="/inspiracioncomfama/viaje";
                   }
               })
               .catch(function(err){

@@ -61,7 +61,7 @@ function getSensesComplete(identity){
     .then(function(response){
         if(!response.ok){
             if(response.message=="No data"){
-                console.log(response);
+                console.log("response error");
             }
         }else{
             let trophies=response.message;

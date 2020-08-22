@@ -16,7 +16,7 @@ function validateReflection(identity){
     })
     .then(function(response){
 
-        window.location="/sentido";
+        window.location="/inspiracioncomfama/sentido";
         
     })
     .catch(function(err){
